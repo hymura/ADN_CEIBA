@@ -27,9 +27,9 @@ public class AppoverAmountEntity {
 	@Column(name = "user_name")
 	private String userName; 
 	@Column(name = "appoval_amount_init")
-	private double appovalAmountInit;
+	private Integer appovalAmountInit;
 	@Column(name = "appoval_amount_end")
-	private double appovalAmountEnd;
+	private Integer appovalAmountEnd;
 	@Column(name = "status")
 	private String status;
  

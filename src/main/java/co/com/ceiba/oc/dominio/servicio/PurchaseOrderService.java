@@ -30,7 +30,7 @@ public class PurchaseOrderService {
 	/**
 	 * Método para realizar la operación de guardar una OC
 	 * 
-	 * @param cliente
+	 * @param purchaseOrder
 	 * @return
 	 */
 	@Transactional
@@ -41,7 +41,7 @@ public class PurchaseOrderService {
 	/**
 	 * Método para realizar la operación de actualizar una OC
 	 * 
-	 * @param cliente
+	 * @param purchaseOrder
 	 * @return
 	 */
 	@Transactional
@@ -52,7 +52,7 @@ public class PurchaseOrderService {
 	/**
 	 * Método para realizar la operación de eliminar una OC
 	 * 
-	 * @param cliente
+	 * @param purchaseOrder
 	 */
 	@Transactional
 	public void delete(PurchaseOrderEntity purchaseOrder) {

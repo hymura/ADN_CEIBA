@@ -15,8 +15,12 @@ import co.com.ceiba.oc.dominio.repositorio.ApprovalOrderRepository;
 public class ApprovalOrderServices {
 	
 	
-	private final ApprovalOrderRepository approvalOrderRepository = null;
-	
+	private final ApprovalOrderRepository approvalOrderRepository ;
+			
+	public ApprovalOrderServices(ApprovalOrderRepository approvalOrderRepository) {		
+		this.approvalOrderRepository = approvalOrderRepository;
+	}
+
 	/**
 	 * Método para realizar la operación de guardar una orden  para aprobacion 
 	 * 
@@ -40,38 +44,17 @@ public class ApprovalOrderServices {
 	}
 
 	
-	
-	/**
-	 * Definición de método para Consultar las Oc por numero de OC
-	 * @param poHeaderId
-	 * @return
-	 */
-	public ApprovalOrderEntity findByIdOc(int poHeaderId) {
-		return this.approvalOrderRepository.findByIdOc(poHeaderId);
-	}
-	
 	/**
 	 * Definición de método para buscar ordenes por id de aprobador
 	 * @param ApprovalId
 	 * @return
 	 */
 	
-	public ApprovalOrderEntity findByApprovalId(int ApprovalId) {
-		return approvalOrderRepository.findByApprovalId(ApprovalId);		
+	public ApprovalOrderEntity findByApprovalId(int approvalId) {
+		return approvalOrderRepository.findByApprovalId(approvalId);		
 	}
 	
-	/**
-	 * Definición de método para buscar ordenes por estado
-	 * @param status
-	 * @return
-	 */
-	
-	//@Query("SELECT ph FROM PO_HEADER ph WHERE ph.status = ?1")	
-	
-	public List<ApprovalOrderEntity> findByUserId(int userId){
-		return approvalOrderRepository.findByUserId(userId);
-	}
-
+		
 	
 	/**
 	 * Definición de método para buscar todas las ordenes

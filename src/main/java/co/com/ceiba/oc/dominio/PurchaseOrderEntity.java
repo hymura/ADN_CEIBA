@@ -36,8 +36,10 @@ public class PurchaseOrderEntity {
 	@Temporal(TemporalType.DATE)
 	private  Date creationDate;
 	private int buyerId;
+	@Temporal(TemporalType.DATE)
 	private Date approvedDate;
-	private double totalAmount;
+	private Integer totalAmount;
+	private String Status;
 	
 	@OneToMany(fetch=FetchType.LAZY)
 	 @JoinColumn(name="PO_HEADER_ID")

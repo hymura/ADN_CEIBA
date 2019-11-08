@@ -1,6 +1,11 @@
 package co.com.ceiba.oc.vista.resources;
 
+
+//SERVICIO PARA OC
+
 import java.util.List;
+
+
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +26,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping("/api/PurchaseOrder")
+@RequestMapping("/api/oc")
 @Api(tags="PurchaseOrder")
 
 public class PurchaseOrderResource {
@@ -46,6 +51,7 @@ public class PurchaseOrderResource {
 		purchaseOrder.setBuyerId(purchaseOrderVo.getBuyerId());
 		purchaseOrder.setApprovedDate(purchaseOrderVo.getApprovedDate());
 		purchaseOrder.setTotalAmount(purchaseOrderVo.getTotalAmount());
+		purchaseOrder.setStatus(purchaseOrderVo.getStatus());
 		
 		return new ResponseEntity<>(this.purchaseOrderService.create(purchaseOrder),HttpStatus.CREATED);
 		
@@ -70,6 +76,7 @@ public class PurchaseOrderResource {
 			purchaseOrder.setCreationDate( purchaseOrderVo.getCreationDate());
 			purchaseOrder.setBuyerId(purchaseOrderVo.getBuyerId());
 			purchaseOrder.setApprovedDate(purchaseOrderVo.getApprovedDate());
+			purchaseOrder.setStatus(purchaseOrderVo.getStatus());
 			purchaseOrder.setTotalAmount(purchaseOrderVo.getTotalAmount());
 		}
 		return new ResponseEntity<>(this.purchaseOrderService.update(purchaseOrder), HttpStatus.OK);

@@ -1,20 +1,21 @@
-package co.com.ceiba.oc.vista.resources.controller;
-
+package co.com.ceiba.oc.vista.controllers;
+/*
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-
+*/
 /**
  * Controlador para controlar el login personalizado
- * @author hymura
+ * @author martosfre
+ *
  */
-
-@Controller
-@RequestMapping("app")
+//@Controller
+//@RequestMapping("app")
 public class LoginController {
-	@GetMapping(value= {"/login", "/"})
+//	@GetMapping(value= {"/login", "/"})
+	/*
+	
 	public ModelAndView login() {
 		    ModelAndView mav = new ModelAndView();
 		    String errorMessage= "Usuario no autorizado, debe autentificarse.";
@@ -23,10 +24,11 @@ public class LoginController {
 		    return mav;
     }
 	
-	@GetMapping("/home")
+	//@GetMapping("/home")
 	public ModelAndView home() {
 		    ModelAndView mav = new ModelAndView();
 		    mav.setViewName("home");
 		    return mav;
     }	
+    */
 } 

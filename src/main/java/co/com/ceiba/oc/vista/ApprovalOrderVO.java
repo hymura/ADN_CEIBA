@@ -13,14 +13,8 @@ public class ApprovalOrderVO {
 	private int approvalId;
 	@Temporal(TemporalType.DATE)
 	private Date approvalDate;
-	private double appovalAmount;
-	private int userId;
+	private Integer appovalAmount;
 	private PurchaseOrderVO purchaseOrder;
-	
-	
-	
-	
-
-	
+	private ApproverAmountVO approverAmount;
 	
 }

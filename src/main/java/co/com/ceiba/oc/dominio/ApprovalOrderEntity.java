@@ -27,7 +27,7 @@ public class ApprovalOrderEntity {
 	@Id
 	private int approvalId;
 	private Date approvalDate;
-	private double appovalAmount;
+	private Integer appovalAmount;
 	
 	@ManyToOne
 	  @JoinColumn(name="PO_HEADER_ID")	  

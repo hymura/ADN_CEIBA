@@ -1,7 +1,10 @@
 package co.com.ceiba.oc.vista.resources;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -27,12 +30,12 @@ import io.swagger.annotations.ApiResponse;
 @Api(tags = "aprobacion")
 public class ApprovalOrderResources {
 	
-	
 
 	private final ApprovalOrderServices approvalOrderServices;
 	private final PurchaseOrderService purchaseOrderService;
 	private final AppoverAmountServices approverAmountServices;
-	private static  String  ACTIVO="Activo";
+	private static  String  ACTIVE="ACTIVE";
+
 	
 
 	public ApprovalOrderResources(ApprovalOrderServices approvalOrderServices,
@@ -46,7 +49,7 @@ public class ApprovalOrderResources {
 
 
 	@PostMapping
-	@ApiOperation(value = "Crear Cliente", notes = "Servicio para crear un nuevo cliente")
+	@ApiOperation(value = "Proceso Aprobacion", notes = "Servicio para bandeja de aprobacion ")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Cliente creado correctamente"),
 			@ApiResponse(code = 400, message = "Solicitud Inválida") })
 	
@@ -54,7 +57,7 @@ public class ApprovalOrderResources {
 		
     //valida excepciones  numero de OC y aprobador		
 		PurchaseOrderEntity purchaseOrder = purchaseOrderService.findByOrderNumber(approvalOrderVO.getPurchaseOrder().getOrderNumber());		
-		AppoverAmountEntity appoverAmount=approverAmountServices.findByAmountApprover(approvalOrderVO.getPurchaseOrder().getTotalAmount(),ACTIVO);
+		AppoverAmountEntity appoverAmount=approverAmountServices.findByAmountApprover(approvalOrderVO.getPurchaseOrder().getTotalAmount(),ACTIVE);
 					
 				
 		ApprovalOrderEntity approvalOrder = new ApprovalOrderEntity();
@@ -84,6 +87,15 @@ public class ApprovalOrderResources {
 			approvalOrder.setApprovalDate(approvalOrderVO.getApprovalDate());
 		}
 		return new ResponseEntity<>(this.approvalOrderServices.update(approvalOrder), HttpStatus.OK);
+	}
+	
+	
+	@GetMapping
+	@ApiOperation(value = "Listar Ordenes", notes = "Servicio para listar Ordenes pendiente")
+	@ApiResponses(value = { @ApiResponse(code = 201, message = "Ordenes encontrados"),
+			@ApiResponse(code = 404, message = "Ordenes no encontrados") })
+	public ResponseEntity<List<ApprovalOrderEntity>> findAll() {
+		return ResponseEntity.ok(this.approvalOrderServices.findAll());
 	}
 	
 

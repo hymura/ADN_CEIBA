@@ -19,10 +19,11 @@ public class PurchaseOrderVO {
 	private int buyerId;
 	@Temporal(TemporalType.DATE)
 	private Date approvedDate;	
-	private double totalAmount;
+	private Integer totalAmount;
+	private String Status;
 	
 	
-	public double getTotalAmount() {
+	public Integer getTotalAmount() {
 		// TODO Auto-generated method stub
 		return totalAmount;
 	}

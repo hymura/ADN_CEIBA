@@ -1,8 +1,8 @@
 package co.com.ceiba.oc.dominio.repositorio;
 
-import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import co.com.ceiba.oc.dominio.PurchaseOrderEntity;
 
@@ -14,6 +14,7 @@ public interface  PurchaseOrderRepository  extends JpaRepository<PurchaseOrderEn
 	 * @param orderNumber
 	 * @return
 	 */
+	@Query("Select pao from PurchaseOrderEntity pao where pao.orderNumber =:orderNumber")
 	public PurchaseOrderEntity findByOrderNumber(String orderNumber);
 	
 	/**
@@ -22,15 +23,10 @@ public interface  PurchaseOrderRepository  extends JpaRepository<PurchaseOrderEn
 	 * @return
 	 */
 	
-	//@Query("SELECT ph FROM PO_HEADER ph WHERE ph.status = ?1")	
+
 	
 		
-	/**
-	 * Definición de método para buscar todas las ordenes
-	 * @params
-	 * @return
-	 */
-	public List<PurchaseOrderEntity> findAll();
+	
 
 	
 

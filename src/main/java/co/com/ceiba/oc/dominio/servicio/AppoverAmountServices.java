@@ -21,9 +21,13 @@ import co.com.ceiba.oc.dominio.repositorio.AppoverAmountRepository;
 public class AppoverAmountServices {
 	
 		
-	private final AppoverAmountRepository appoverAmountRepository=null;
+	private final AppoverAmountRepository appoverAmountRepository;
 	
 	
+	public AppoverAmountServices(AppoverAmountRepository appoverAmountRepository) {	
+		this.appoverAmountRepository = appoverAmountRepository;
+	}
+
 	/**
 	 * Método para realizar la operación de guardar un aprobador
 	 * 
@@ -57,17 +61,18 @@ public class AppoverAmountServices {
 	}
 
 	/**
-	 * Definición de método para consultar aprobadores por el monto OC y estado 
+	 * Definición de método para consultar aprobadores por nombre y estado 
 	 * @param totalAmount
 	 * @param status
 	 * @return
 	 */
 	
-	public AppoverAmountEntity findByApprover(String UserName,String status){
-		return this.appoverAmountRepository.findByApprover(UserName,status);
+	public  AppoverAmountEntity findByApprover(int  UserId){
+		return this.appoverAmountRepository.findByApprover(UserId);
 				}
+				
 	
-	public AppoverAmountEntity findByAmountApprover(double amountTotal, String status){
+	public AppoverAmountEntity findByAmountApprover(Integer amountTotal, String status){
 		return this.appoverAmountRepository.findByAmountApprover(amountTotal,status);
 	}
 	
