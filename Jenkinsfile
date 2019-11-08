@@ -34,15 +34,15 @@ pipeline{
 			 
 			stage('Build project') { 
 			   steps { 
-					sh 'gradle --b ./AprobacionOC/build.gradle clean'
-					sh 'gradle --b ./AprobacionOC/build.gradle build'
+					sh 'gradle --b ./build.gradle clean'
+					sh 'gradle --b ./build.gradle build'
 				}
 			}
 
 			stage('Unit Test & Coverage') {
 				steps {
-				    sh 'gradle --b ./AprobacionOC/build.gradle test'
-				    sh 'gradle --b ./AprobacionOC/build.gradle jacocoTestReport'
+				    sh 'gradle --b ./build.gradle test'
+				    sh 'gradle --b ./build.gradle jacocoTestReport'
 				}
 			}          
 			
