@@ -1,36 +1,16 @@
 package co.com.ceiba.oc.dominio.repositorio;
 
+import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import co.com.ceiba.oc.dominio.model.PurchaseOrder;
+import co.com.ceiba.oc.infraestructura.repositorio.entity.PurchaseOrderEntity;
 
-import co.com.ceiba.oc.dominio.PurchaseOrderEntity;
-
-public interface  PurchaseOrderRepository  extends JpaRepository<PurchaseOrderEntity, String>{
-		
-	
-	/**
-	 * Definición de método para buscar las Oc por numero de OC
-	 * @param orderNumber
-	 * @return
-	 */
-	@Query("Select pao from PurchaseOrderEntity pao where pao.orderNumber =:orderNumber")
+public interface PurchaseOrderRepository {
 	public PurchaseOrderEntity findByOrderNumber(String orderNumber);
-	
-	/**
-	 * Definición de método para buscar ordenes por estado
-	 * @param status
-	 * @return
-	 */
-	
-
-	
-		
-	
-
-	
-
-
-	
+	public PurchaseOrderEntity findByIdOc(int PoheaderId);
+	public List<PurchaseOrder> findAll();
+	public PurchaseOrderEntity save (PurchaseOrderEntity purchaseOrder);
+	public void delete(PurchaseOrderEntity purchaseOrder);
+	public PurchaseOrderEntity update(PurchaseOrderEntity purchaseOrder);
 
 }

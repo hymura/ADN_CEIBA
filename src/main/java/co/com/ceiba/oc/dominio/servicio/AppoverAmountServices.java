@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import co.com.ceiba.oc.dominio.AppoverAmountEntity;
-import co.com.ceiba.oc.dominio.repositorio.AppoverAmountRepository;
+import co.com.ceiba.oc.dominio.model.ApproverAmount;
+import co.com.ceiba.oc.dominio.repositorio.ApproverAmountRepository;
+import co.com.ceiba.oc.infraestructura.repositorio.entity.AppoverAmountEntity;
+
 
 
 /**
@@ -20,12 +22,12 @@ import co.com.ceiba.oc.dominio.repositorio.AppoverAmountRepository;
 
 public class AppoverAmountServices {
 	
-		
-	private final AppoverAmountRepository appoverAmountRepository;
+			
+	private final ApproverAmountRepository approverAmountRepository;
 	
 	
-	public AppoverAmountServices(AppoverAmountRepository appoverAmountRepository) {	
-		this.appoverAmountRepository = appoverAmountRepository;
+	public AppoverAmountServices(ApproverAmountRepository appoverAmountRepository) {	
+		this.approverAmountRepository = appoverAmountRepository;
 	}
 
 	/**
@@ -36,7 +38,7 @@ public class AppoverAmountServices {
 	 */
 	@Transactional
 	public AppoverAmountEntity create(AppoverAmountEntity AppoverAmount) {
-		return this.appoverAmountRepository.save(AppoverAmount);
+		return this.approverAmountRepository.save(AppoverAmount);
 	}
 
 	/**
@@ -47,7 +49,7 @@ public class AppoverAmountServices {
 	 */
 	@Transactional
 	public AppoverAmountEntity update(AppoverAmountEntity AppoverAmount) {
-		return this.appoverAmountRepository.save(AppoverAmount);
+		return this.approverAmountRepository.save(AppoverAmount);
 	}
 
 	/**
@@ -57,7 +59,7 @@ public class AppoverAmountServices {
 	 */
 	@Transactional
 	public void delete(AppoverAmountEntity AppoverAmount) {
-		this.appoverAmountRepository.delete(AppoverAmount);
+		this.approverAmountRepository.delete(AppoverAmount);
 	}
 
 	/**
@@ -67,17 +69,17 @@ public class AppoverAmountServices {
 	 * @return
 	 */
 	
-	public  AppoverAmountEntity findByApprover(int  UserId){
-		return this.appoverAmountRepository.findByApprover(UserId);
+	public  AppoverAmountEntity findByApprover(int  userId){
+		return this.approverAmountRepository.findByApprover(userId);
 				}
 				
 	
-	public AppoverAmountEntity findByAmountApprover(Integer amountTotal, String status){
-		return this.appoverAmountRepository.findByAmountApprover(amountTotal,status);
+	public AppoverAmountEntity findByAmountApprover(int amountTotal, String status){
+		return this.approverAmountRepository.findByAmountApprover(amountTotal,status);
 	}
 	
-	public List<AppoverAmountEntity> findAll(){
-		return this.appoverAmountRepository.findAll();		
+	public List<ApproverAmount> findAll(){
+		return this.approverAmountRepository.findAll();		
 	}
 	
 }

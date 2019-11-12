@@ -5,8 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import co.com.ceiba.oc.dominio.PurchaseOrderEntity;
+import co.com.ceiba.oc.dominio.model.PurchaseOrder;
 import co.com.ceiba.oc.dominio.repositorio.PurchaseOrderRepository;
+import co.com.ceiba.oc.infraestructura.repositorio.entity.PurchaseOrderEntity;
 
 /**
 * Clase para definir los servicios de orden de compra
@@ -69,11 +70,16 @@ public class PurchaseOrderService {
 		return this.purchaseOrderRepository.findByOrderNumber(orderNumber);
 	}
 	
+	public PurchaseOrderEntity findByIdOc(int PoheaderId) {
+		return this.purchaseOrderRepository.findByIdOc(PoheaderId);
+		
+	}
+	
 	/**
 	 * Método para consultar todas las OC
 	 * @return
 	 */
-	public List<PurchaseOrderEntity> findAll(){
+	public List<PurchaseOrder> findAll(){
 		return this.purchaseOrderRepository.findAll();
 	}
 	

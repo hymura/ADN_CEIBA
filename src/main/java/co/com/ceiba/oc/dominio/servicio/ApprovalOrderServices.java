@@ -5,9 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-import co.com.ceiba.oc.dominio.ApprovalOrderEntity;
-import co.com.ceiba.oc.dominio.repositorio.ApprovalOrderRepository;
+import co.com.ceiba.oc.infraestructura.repositorio.ApprovalOrderRepositoryBd;
+import co.com.ceiba.oc.infraestructura.repositorio.entity.ApprovalOrderEntity;
 
 @Service
 @Transactional(readOnly = true)
@@ -15,9 +14,9 @@ import co.com.ceiba.oc.dominio.repositorio.ApprovalOrderRepository;
 public class ApprovalOrderServices {
 	
 	
-	private final ApprovalOrderRepository approvalOrderRepository ;
+	private final ApprovalOrderRepositoryBd approvalOrderRepository ;
 			
-	public ApprovalOrderServices(ApprovalOrderRepository approvalOrderRepository) {		
+	public ApprovalOrderServices(ApprovalOrderRepositoryBd approvalOrderRepository) {		
 		this.approvalOrderRepository = approvalOrderRepository;
 	}
 
