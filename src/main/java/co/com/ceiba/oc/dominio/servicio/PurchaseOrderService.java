@@ -2,12 +2,9 @@ package co.com.ceiba.oc.dominio.servicio;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import co.com.ceiba.oc.dominio.model.PurchaseOrder;
 import co.com.ceiba.oc.dominio.repositorio.PurchaseOrderRepository;
-import co.com.ceiba.oc.infraestructura.repositorio.entity.PurchaseOrderEntity;
+
 
 /**
 * Clase para definir los servicios de orden de compra
@@ -16,8 +13,7 @@ import co.com.ceiba.oc.infraestructura.repositorio.entity.PurchaseOrderEntity;
 *
 */
 
-@Service
-@Transactional(readOnly = true)
+
 public class PurchaseOrderService {
 	
 	private final PurchaseOrderRepository purchaseOrderRepository ;
@@ -34,8 +30,7 @@ public class PurchaseOrderService {
 	 * @param purchaseOrder
 	 * @return
 	 */
-	@Transactional
-	public PurchaseOrderEntity create(PurchaseOrderEntity purchaseOrder) {
+	public PurchaseOrder create(PurchaseOrder purchaseOrder) {
 		return this.purchaseOrderRepository.save(purchaseOrder);
 	}
 
@@ -45,8 +40,7 @@ public class PurchaseOrderService {
 	 * @param purchaseOrder
 	 * @return
 	 */
-	@Transactional
-	public PurchaseOrderEntity update(PurchaseOrderEntity purchaseOrder) {
+	public PurchaseOrder update(PurchaseOrder purchaseOrder) {
 		return this.purchaseOrderRepository.save(purchaseOrder);
 	}
 
@@ -55,8 +49,7 @@ public class PurchaseOrderService {
 	 * 
 	 * @param purchaseOrder
 	 */
-	@Transactional
-	public void delete(PurchaseOrderEntity purchaseOrder) {
+	public void delete(PurchaseOrder purchaseOrder) {
 		this.purchaseOrderRepository.delete(purchaseOrder);
 	}
 
@@ -66,15 +59,17 @@ public class PurchaseOrderService {
 	 * @param identificacionCli
 	 * @return
 	 */
-	public PurchaseOrderEntity findByOrderNumber(String orderNumber) {
+	public PurchaseOrder findByOrderNumber(String orderNumber) {
 		return this.purchaseOrderRepository.findByOrderNumber(orderNumber);
 	}
 	
-	public PurchaseOrderEntity findByIdOc(int PoheaderId) {
+/*	
+	public PurchaseOrder findByIdOc(int PoheaderId) {
 		return this.purchaseOrderRepository.findByIdOc(PoheaderId);
 		
 	}
 	
+*/	
 	/**
 	 * Método para consultar todas las OC
 	 * @return

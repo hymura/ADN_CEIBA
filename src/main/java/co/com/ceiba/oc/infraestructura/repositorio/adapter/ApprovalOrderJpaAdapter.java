@@ -1,74 +1,70 @@
 package co.com.ceiba.oc.infraestructura.repositorio.adapter;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import co.com.ceiba.oc.dominio.model.ApprovalOrder;
-import co.com.ceiba.oc.dominio.model.ApproverAmount;
-import co.com.ceiba.oc.dominio.model.PurchaseOrder;
+
+
 import co.com.ceiba.oc.dominio.repositorio.ApprovalOrderRepositoy;
 import co.com.ceiba.oc.infraestructura.repositorio.ApprovalOrderRepositoryBd;
-import co.com.ceiba.oc.infraestructura.repositorio.entity.AppoverAmountEntity;
 import co.com.ceiba.oc.infraestructura.repositorio.entity.ApprovalOrderEntity;
-import co.com.ceiba.oc.infraestructura.repositorio.entity.PurchaseOrderEntity;
+import co.com.ceiba.oc.infraestructura.repositorio.entity.factory.ApprovalOrderFactory;
 
 
 
+
+@Repository
 public class ApprovalOrderJpaAdapter implements ApprovalOrderRepositoy {
 	
-	@Autowired
+	
+		
 	private ApprovalOrderRepositoryBd approvalOrderRepositoyBd;
 
- 
+	@Autowired
+	public ApprovalOrderJpaAdapter(ApprovalOrderRepositoryBd approvalOrderRepositoyBd) {
+
+		this.approvalOrderRepositoyBd = approvalOrderRepositoyBd;
+	}
 
 	@Override
 	public List<ApprovalOrder> findAll() {
-				
-		//return approvalOrderRepositoyBd.findAll();
-	
-		List<ApprovalOrder> listApprovalOrder=new ArrayList<>();
+		   return approvalOrderRepositoyBd.findAll().stream()
+	                .map(ApprovalOrderFactory::toModel)
+	                .collect(Collectors.toList());
+	}
 
-		PurchaseOrderEntity purchaseOrderBd=new PurchaseOrderEntity(); //= new PurchaseOrderEntity();
-		AppoverAmountEntity approverAmountBd=new AppoverAmountEntity();//= new AppoverAmountEntity();
+	@Override
+	public ApprovalOrder findByApprovalId(int approvalId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	@Override
+	public ApprovalOrder save(ApprovalOrder approvalOrder) {
 		
-			
-	for(ApprovalOrderEntity approvalOrderBd: approvalOrderRepositoyBd.findAll()) {			
-
-	listApprovalOrder.add(new ApprovalOrder(approvalOrderBd.getApprovalId(),
-													approvalOrderBd.getApprovalDate(), 
-													approvalOrderBd.getAppovalAmount(),
-													new  PurchaseOrder(purchaseOrderBd.getPoHeaderId()),
-													new ApproverAmount(approverAmountBd.getUserId() )
-													)
-			);
-	
-							}
-	return listApprovalOrder; 						
-
+		ApprovalOrderEntity entity = ApprovalOrderFactory.toEntity(approvalOrder);
+        return ApprovalOrderFactory.toModel(approvalOrderRepositoyBd.save(entity));
 	}
 
 	@Override
-	public ApprovalOrderEntity findByApprovalId(int approvalId) {
+	public ApprovalOrder create(ApprovalOrder approvalOrder) {
 		// TODO Auto-generated method stub
-		return approvalOrderRepositoyBd.findByApprovalId(approvalId);
+		ApprovalOrderEntity entity = ApprovalOrderFactory.toEntity(approvalOrder);
+        return ApprovalOrderFactory.toModel(approvalOrderRepositoyBd.save(entity));
 	}
 
 	@Override
-	public ApprovalOrderEntity create(ApprovalOrderEntity approvalOrder) {
+	public ApprovalOrder update(ApprovalOrder approvalOrder) {
 		// TODO Auto-generated method stub
-		return approvalOrderRepositoyBd.save(approvalOrder);
+		ApprovalOrderEntity entity = ApprovalOrderFactory.toEntity(approvalOrder);
+        return ApprovalOrderFactory.toModel(approvalOrderRepositoyBd.save(entity));
 	}
 
-	@Override
-	public ApprovalOrderEntity update(ApprovalOrderEntity approvalOrder) {
-		// TODO Auto-generated method stub
-		return approvalOrderRepositoyBd.save(approvalOrder);
-	}
+ 
 
-	
-	
 
 }

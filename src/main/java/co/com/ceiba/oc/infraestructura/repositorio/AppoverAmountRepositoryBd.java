@@ -14,11 +14,12 @@ public interface AppoverAmountRepositoryBd extends JpaRepository<AppoverAmountEn
 		
 	@Query("Select paa from AppoverAmountEntity paa where paa.userId =:userId")		
 	public AppoverAmountEntity findByApprover(@Param("userId") int userId);
+	//public AppoverAmountEntity findByApprover(int userId);
 
 	
 	@Query("Select paa from AppoverAmountEntity paa where paa.appovalAmountInit>=:amountTotal and paa.appovalAmountEnd<=:amountTotal and paa.status=:status")
 	public AppoverAmountEntity findByAmountApprover(@Param("amountTotal") int amountTotal,@Param("status") String status);
-	
+	//public AppoverAmountEntity findByAmountApprover( int amountTotal,String status);
 	
 	/**
 	 * Definición de método para buscar todoa los aprobadores

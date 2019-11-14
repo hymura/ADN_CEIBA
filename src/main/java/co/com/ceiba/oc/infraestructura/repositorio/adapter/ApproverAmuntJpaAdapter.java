@@ -1,7 +1,9 @@
 package co.com.ceiba.oc.infraestructura.repositorio.adapter;
 
-import java.util.ArrayList;
+
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -10,54 +12,69 @@ import co.com.ceiba.oc.dominio.model.ApproverAmount;
 import co.com.ceiba.oc.dominio.repositorio.ApproverAmountRepository;
 import co.com.ceiba.oc.infraestructura.repositorio.AppoverAmountRepositoryBd;
 import co.com.ceiba.oc.infraestructura.repositorio.entity.AppoverAmountEntity;
+import co.com.ceiba.oc.infraestructura.repositorio.entity.factory.ApprovalOrderFactory;
+import co.com.ceiba.oc.infraestructura.repositorio.entity.factory.ApproverFactory;
+
 
 @Repository
 public class ApproverAmuntJpaAdapter  implements ApproverAmountRepository {
 	
-	@Autowired
-	private AppoverAmountRepositoryBd approverAmountRepositoryBd; 
 
-	@Override
-	public AppoverAmountEntity findByApprover(int userId) {
-		// TODO Auto-generated method stub
-		return approverAmountRepositoryBd.findByApprover(userId);
+	private AppoverAmountRepositoryBd approverAmountRepositoryBd;
+	
+	
+	@Autowired
+	public ApproverAmuntJpaAdapter(AppoverAmountRepositoryBd approverAmountRepositoryBd) {
+
+		this.approverAmountRepositoryBd = approverAmountRepositoryBd;
 	}
 
 	@Override
-	public AppoverAmountEntity findByAmountApprover(int amountTotal, String status) {
-		// TODO Auto-generated method stub
-		return approverAmountRepositoryBd.findByAmountApprover(amountTotal, status);
+	public Optional <ApproverAmount> findByApprover(int userId) {
+/*
+		 return approverAmountRepositoryBd.findByApprover(userId)
+	                .map(ApproverFactory::toModel);
+	              */
+		
+		return null;
+	}
+
+	@Override
+	public ApproverAmount findByAmountApprover(int amountTotal, String status) {
+
+		return null;
 	}
 
 	@Override
 	public List<ApproverAmount> findAll() {
-		// TODO Auto-generated method stub
-		List<ApproverAmount> listApproverAmount= new ArrayList<>();				
 		
-		for(AppoverAmountEntity approverAmountBd :approverAmountRepositoryBd.findAll()) {
-			listApproverAmount.add(new ApproverAmount(approverAmountBd.getUserId(), "Mister "+approverAmountBd.getUserName(), approverAmountBd.getAppovalAmountInit(), approverAmountBd.getAppovalAmountEnd(), approverAmountBd.getStatus()));
-		}
-		return listApproverAmount;
+		 return approverAmountRepositoryBd.findAll().stream()
+	                .map(ApproverFactory::toModel)
+	                .collect(Collectors.toList());
 	}
 
 	@Override
-	public AppoverAmountEntity save(AppoverAmountEntity appoverAmount) {
-		// TODO Auto-generated method stub
-		return approverAmountRepositoryBd.save(appoverAmount);
+	public ApproverAmount save(ApproverAmount appoverAmount) {
+		
+		AppoverAmountEntity entity = ApproverFactory.toEntity(appoverAmount);
+        return ApproverFactory.toModel(approverAmountRepositoryBd.save(entity));
 	}
 
 	@Override
-	public void delete(AppoverAmountEntity AppoverAmount) {
-		// TODO Auto-generated method stub
-		 approverAmountRepositoryBd.delete(AppoverAmount);
+	public void delete(ApproverAmount appoverAmount) {
+		AppoverAmountEntity entity = ApproverFactory.toEntity(appoverAmount);
+		approverAmountRepositoryBd.delete(entity);
 		
 	}
 
 	@Override
-	public AppoverAmountEntity update(AppoverAmountEntity AppoverAmount) {
-		// TODO Auto-generated method stub
-		return approverAmountRepositoryBd.save(AppoverAmount);
-	}
+	public ApproverAmount update(ApproverAmount appoverAmount) {
+
+		AppoverAmountEntity entity = ApproverFactory.toEntity(appoverAmount);
+        return ApproverFactory.toModel(approverAmountRepositoryBd.save(entity));
+	} 
+
+	
 	
 	
 

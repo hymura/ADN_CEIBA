@@ -11,8 +11,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.Set;
@@ -25,6 +27,9 @@ import java.util.Set;
 
 @Data
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "po_header")
 public class PurchaseOrderEntity {
 
@@ -43,6 +48,8 @@ public class PurchaseOrderEntity {
 	@OneToMany(fetch=FetchType.LAZY)
 	 @JoinColumn(name="PO_HEADER_ID")
 	private Set<ApprovalOrderEntity> approvalOrderEntity;
+
+	
 	
 
 

@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-import co.com.ceiba.oc.dominio.model.ApproverAmount;
 import co.com.ceiba.oc.infraestructura.repositorio.entity.PurchaseOrderEntity;
 
 public interface  PurchaseOrderRepositoryBd  extends JpaRepository<PurchaseOrderEntity, String>{
@@ -18,24 +18,18 @@ public interface  PurchaseOrderRepositoryBd  extends JpaRepository<PurchaseOrder
 	 * @return
 	 */
 	@Query("Select pao from PurchaseOrderEntity pao where pao.orderNumber =:orderNumber")
-	public PurchaseOrderEntity findByOrderNumber(String orderNumber);
+	public PurchaseOrderEntity findByOrderNumber(@Param("orderNumber")  String orderNumber);
 	
-
+/*
 	@Query("Select pao from PurchaseOrderEntity pao where pao.poHeaderId =:PoheaderId")
 	public PurchaseOrderEntity findByIdOc(int PoheaderId);
-	
+*/	
 	/**
 	 * Definición de método para buscar todas las OC
 	 * @param status
 	 * @return
 	 */
 	public List<PurchaseOrderEntity> findAll();
-
-	
-		
-	
-
-	
 
 
 	

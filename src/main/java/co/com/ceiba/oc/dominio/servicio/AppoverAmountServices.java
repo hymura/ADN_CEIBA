@@ -1,14 +1,11 @@
 package co.com.ceiba.oc.dominio.servicio;
 
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import co.com.ceiba.oc.dominio.model.ApproverAmount;
 import co.com.ceiba.oc.dominio.repositorio.ApproverAmountRepository;
-import co.com.ceiba.oc.infraestructura.repositorio.entity.AppoverAmountEntity;
-
 
 
 /**
@@ -17,8 +14,6 @@ import co.com.ceiba.oc.infraestructura.repositorio.entity.AppoverAmountEntity;
 * @author hymura
 *
 */
-@Service
-@Transactional(readOnly = true)
 
 public class AppoverAmountServices {
 	
@@ -37,7 +32,7 @@ public class AppoverAmountServices {
 	 * @return
 	 */
 	@Transactional
-	public AppoverAmountEntity create(AppoverAmountEntity AppoverAmount) {
+	public ApproverAmount create(ApproverAmount AppoverAmount) {
 		return this.approverAmountRepository.save(AppoverAmount);
 	}
 
@@ -48,7 +43,7 @@ public class AppoverAmountServices {
 	 * @return
 	 */
 	@Transactional
-	public AppoverAmountEntity update(AppoverAmountEntity AppoverAmount) {
+	public ApproverAmount update(ApproverAmount AppoverAmount) {
 		return this.approverAmountRepository.save(AppoverAmount);
 	}
 
@@ -58,7 +53,7 @@ public class AppoverAmountServices {
 	 * @param cliente
 	 */
 	@Transactional
-	public void delete(AppoverAmountEntity AppoverAmount) {
+	public void delete(ApproverAmount AppoverAmount) {
 		this.approverAmountRepository.delete(AppoverAmount);
 	}
 
@@ -69,12 +64,12 @@ public class AppoverAmountServices {
 	 * @return
 	 */
 	
-	public  AppoverAmountEntity findByApprover(int  userId){
+	public  Optional<ApproverAmount> findByApprover(int  userId){
 		return this.approverAmountRepository.findByApprover(userId);
 				}
 				
 	
-	public AppoverAmountEntity findByAmountApprover(int amountTotal, String status){
+	public ApproverAmount findByAmountApprover(int amountTotal, String status){
 		return this.approverAmountRepository.findByAmountApprover(amountTotal,status);
 	}
 	

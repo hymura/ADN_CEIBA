@@ -1,39 +1,55 @@
-package co.com.ceiba.oc.aplicacion.resource;
+package co.com.ceiba.oc.infraestructura.repositorio.resource.purchase;
 
 
 //SERVICIO PARA OC
 
-import java.util.List;
 
+import javax.transaction.Transactional;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import co.com.ceiba.oc.aplicacion.PurchaseOrderVO;
+import co.com.ceiba.oc.aplicacion.manejador.purchase.CreatePurchaseHandler;
 import co.com.ceiba.oc.dominio.model.PurchaseOrder;
-import co.com.ceiba.oc.dominio.servicio.PurchaseOrderService;
-import co.com.ceiba.oc.infraestructura.repositorio.entity.PurchaseOrderEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping("/api/oc")
+@RequestMapping("/api/CrearCompra")
 @Api(tags="PurchaseOrder")
 
-public class PurchaseOrderResource {
+public class CreatePurchaseOrderController {
 	
-	private final PurchaseOrderService purchaseOrderService;
+	
+	private final CreatePurchaseHandler createPurchaseHandler;
+	 @Autowired
+	public CreatePurchaseOrderController(CreatePurchaseHandler createPurchaseHandler) {	
+		this.createPurchaseHandler = createPurchaseHandler;
+	}
+	
+	
+	 @PostMapping
+	 @Transactional
+		@ApiOperation(value = "Crear OC", notes = "Servicio para crear una OC")
+		@ApiResponses(value = { @ApiResponse(code = 201, message = "OC creado correctamente"),
+				@ApiResponse(code = 400, message = "Solicitud Inválida") })
+		public ResponseEntity<PurchaseOrder> createPurchaseOrder(@RequestBody PurchaseOrder purchaseOrderVo) {
+			
+			//PurchaseOrderEntity  purchaseOrder =new PurchaseOrderEntity();			
+			createPurchaseHandler.execute(purchaseOrderVo);								
+			return new ResponseEntity<>(HttpStatus.CREATED);
+			
+		}
 
+
+	
+	/*
 	public PurchaseOrderResource(PurchaseOrderService purchaseOrderService) {
 		this.purchaseOrderService = purchaseOrderService;
 	}
@@ -86,15 +102,20 @@ public class PurchaseOrderResource {
 	
 	
 	@GetMapping
-	@ApiOperation(value = "Listar OC", notes = "Servicio para listar todas las OC")
+	@ApiOperation(value = "Listar idoC", notes = "Servicio para traer una Oc por Id")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "OC encontrados"),
 			@ApiResponse(code = 404, message = "OC no encontrados") })
 	
-	public ResponseEntity<List<PurchaseOrder>> findAll(){
+	public ResponseEntity<List<PurchaseOrder>> findAll(){ // PurchaseOrder
 		
 		return ResponseEntity.ok(this.purchaseOrderService.findAll());
 		
 	}
+*/	
+	
+	
+
+	
 	
 
 }

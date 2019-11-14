@@ -2,8 +2,6 @@ package co.com.ceiba.oc.dominio.model;
 
 import java.util.Date;
 
-
-
 import static java.util.Objects.requireNonNull;
 
 public class ApprovalOrder {
@@ -12,22 +10,31 @@ public class ApprovalOrder {
 	private Date approvalDate;
 	private int appovalAmount;
 	private PurchaseOrder purchaseOder;
-	private ApproverAmount approvalAmount; 
+	private ApproverAmount approverAmount; 
 	//private StatusPurchase statusPurchase;
 	
 	
 	public ApprovalOrder(int approvalId, Date approvalDate,int appovalAmount, PurchaseOrder purchaseOder,
-			ApproverAmount approvalAmount) {
+			ApproverAmount approverAmount) {
 
 			this.approvalId = approvalId;
 			this.approvalDate = approvalDate;
 			this.appovalAmount = appovalAmount;
 			this.purchaseOder = requireNonNull(purchaseOder);
-			this.approvalAmount = requireNonNull(approvalAmount);		
+			this.approverAmount = requireNonNull(approverAmount);		
 	}
 	
-	
-	
+	public ApprovalOrder() {
+		super();
+	}
+
+	private void validaAprobador(ApproverAmount approverAmount2, PurchaseOrder purchaseOrder ) {
+		
+		if (!(this.purchaseOder.getTotalAmount()>=approverAmount2.getAppovalAmountInit() && this.purchaseOder.getTotalAmount()<=approverAmount2.getAppovalAmountEnd())) {
+			throw new ExcepcionRule("NO cumple en el rango del aprobador");
+		}
+		
+	}
 
 	public int getApprovalId() {
 		return approvalId;
@@ -47,9 +54,9 @@ public class ApprovalOrder {
 	public void setAppovalAmount(int appovalAmount) {
 		this.appovalAmount = appovalAmount;
 	}
-		
-	public int getPurchaseOder() {
-		return purchaseOder.getPoHeaderId();
+
+	public PurchaseOrder getPurchaseOder() {
+		return purchaseOder;
 	}
 
 	public void setPurchaseOder(PurchaseOrder purchaseOder) {
@@ -57,21 +64,19 @@ public class ApprovalOrder {
 	}
 
 
-
-
-
-	public ApproverAmount getApprovalAmount() {
-		return approvalAmount;
+	public ApproverAmount getApproverAmount() {
+		return approverAmount;
 	}
 
 
-	public void setApprovalAmount(ApproverAmount approvalAmount) {
-		this.approvalAmount = approvalAmount;
+	public void setApproverAmount(ApproverAmount approverAmount) {
+		this.approverAmount = approverAmount;
 	}
+	
 
+/*
 
-
-/*	public StatusPurchase getStatusPurchase() {
+	public StatusPurchase getStatusPurchase() {
 		return statusPurchase;
 	}
 

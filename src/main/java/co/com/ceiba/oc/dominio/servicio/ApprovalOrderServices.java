@@ -2,22 +2,20 @@ package co.com.ceiba.oc.dominio.servicio;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import co.com.ceiba.oc.infraestructura.repositorio.ApprovalOrderRepositoryBd;
-import co.com.ceiba.oc.infraestructura.repositorio.entity.ApprovalOrderEntity;
 
-@Service
-@Transactional(readOnly = true)
+
+import co.com.ceiba.oc.dominio.model.ApprovalOrder;
+import co.com.ceiba.oc.dominio.repositorio.ApprovalOrderRepositoy;
+
 
 public class ApprovalOrderServices {
 	
 	
-	private final ApprovalOrderRepositoryBd approvalOrderRepository ;
+	private final ApprovalOrderRepositoy approvalOrderRepository ;
 			
-	public ApprovalOrderServices(ApprovalOrderRepositoryBd approvalOrderRepository) {		
-		this.approvalOrderRepository = approvalOrderRepository;
+	public ApprovalOrderServices(ApprovalOrderRepositoy approvalOrderRep) {		
+		this.approvalOrderRepository = approvalOrderRep;
 	}
 
 	/**
@@ -26,8 +24,8 @@ public class ApprovalOrderServices {
 	 * @param cliente
 	 * @return
 	 */
-	@Transactional
-	public ApprovalOrderEntity create(ApprovalOrderEntity approvalOrder) {
+
+		public ApprovalOrder create(ApprovalOrder approvalOrder) {
 		return this.approvalOrderRepository.save(approvalOrder);
 	}
 
@@ -37,8 +35,10 @@ public class ApprovalOrderServices {
 	 * @param cliente
 	 * @return
 	 */
-	@Transactional
-	public ApprovalOrderEntity update(ApprovalOrderEntity approvalOrder) {
+	
+	
+	
+	public ApprovalOrder update(ApprovalOrder approvalOrder) {
 		return this.approvalOrderRepository.save(approvalOrder);
 	}
 
@@ -49,7 +49,7 @@ public class ApprovalOrderServices {
 	 * @return
 	 */
 	
-	public ApprovalOrderEntity findByApprovalId(int approvalId) {
+	public ApprovalOrder findByApprovalId(int approvalId) {
 		return approvalOrderRepository.findByApprovalId(approvalId);		
 	}
 	
@@ -60,7 +60,7 @@ public class ApprovalOrderServices {
 	 * @params
 	 * @return
 	 */
-	public List<ApprovalOrderEntity> findAll(){
+	public List<ApprovalOrder> findAll(){
 		return approvalOrderRepository.findAll();
 	}
 	

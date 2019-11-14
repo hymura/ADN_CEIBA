@@ -1,6 +1,7 @@
 package co.com.ceiba.oc.infraestructura.repositorio.entity;
 
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -12,11 +13,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "PO_APPOVER_AMOUNT")
 
 public class AppoverAmountEntity {
@@ -38,9 +44,7 @@ public class AppoverAmountEntity {
 	 @JoinColumn(name="USER_ID")
 	private Set<ApprovalOrderEntity> approvalOrderEntity;
 
-	public AppoverAmountEntity() {
 	
-	}
 	
 
 }

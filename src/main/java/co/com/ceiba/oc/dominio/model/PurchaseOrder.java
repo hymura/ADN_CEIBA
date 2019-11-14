@@ -1,5 +1,6 @@
 package co.com.ceiba.oc.dominio.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -12,6 +13,10 @@ public class PurchaseOrder {
 	private Date approvedDate;
 	private int totalAmount;
 	private String status;
+	//private ApproverAmount approverAmount;
+	private static final String ESTADO_AROBADO="APROBADO";
+	private static final String ESTADO_PENDIENTE="PENDIENTE";
+	
 	
 	
 	public PurchaseOrder(int poHeaderId, String orderNumber, Date creationDate, int buyerId, Date approvedDate,
@@ -23,13 +28,35 @@ public class PurchaseOrder {
 		this.buyerId = buyerId;
 		this.approvedDate = approvedDate;
 		this.totalAmount = totalAmount;
-		this.status = status;
+		this.status=status;
+		 
 	}
-			
+	
+	public PurchaseOrder() {
+		super();
+	}
+
+	public PurchaseOrder(int poHeaderId, String orderNumber, Date creationDate, int buyerId, Date approvedDate,
+			int totalAmount) {
+	
+		this(poHeaderId, orderNumber, creationDate, buyerId, approvedDate,totalAmount,ESTADO_PENDIENTE );
+	}
 	
 	public PurchaseOrder(int poHeaderId) {	
 		this.poHeaderId = poHeaderId;
 	}
+	
+/*	
+	public void ApprovedProcess(ApproverAmount approverAmount ){
+		validaAprobador(approverAmount);
+		this.approverAmount=approverAmount;
+		this.approvedDate=new Date();
+		this.status=ESTADO_AROBADO;
+			
+	}
+*/	
+
+
 
 
 	public int getPoHeaderId() {
@@ -65,8 +92,10 @@ public class PurchaseOrder {
 	public Integer getTotalAmount() {
 		return totalAmount;
 	}
-	public void setTotalAmount(Integer totalAmount) {
-		this.totalAmount = totalAmount;
+	public void setTotalAmount(int totalAmount) {
+				
+			this.totalAmount = totalAmount;
+		
 	}
 	public String getStatus() {
 		return this.status;

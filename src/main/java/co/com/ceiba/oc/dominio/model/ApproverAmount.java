@@ -1,7 +1,6 @@
 package co.com.ceiba.oc.dominio.model;
 
 
-
 public class ApproverAmount {	
 	private int userId;
 	private String userName; 
@@ -9,8 +8,11 @@ public class ApproverAmount {
 	private int appovalAmountEnd;
 	private String status;
 	
-	
 
+	public ApproverAmount() {
+		super();
+	}
+	
 	public ApproverAmount(int userId, String userName, int appovalAmountInit, int appovalAmountEnd, String status) {
 		this.userId = userId;
 		this.userName = userName;
@@ -18,12 +20,12 @@ public class ApproverAmount {
 		this.appovalAmountEnd = appovalAmountEnd;
 		this.status = status;
 	}
-	
+/*	
 	public ApproverAmount(int userId) {
 		this.userId = userId;
 	}
 	
-	
+*/	
 	public int getUserId() {
 		return userId;
 	}
