@@ -34,7 +34,7 @@ public class CreateApproverController {
 	 @Transactional
 	 @ApiOperation(value = "Crear Aprobador", notes = "Servicio para crear un Aprobador")
 		@ApiResponses(value = { @ApiResponse(code = 201, message = "Aprobador creado correctamente"),
-				@ApiResponse(code = 400, message = "Solicitud Inválida") })
+				@ApiResponse(code = 400, message = "Solicitud Invalida") })
 		public ResponseEntity<ApproverAmount> createPurchaseOrder(@RequestBody ApproverAmount approver) {
 			
 			//PurchaseOrderEntity  purchaseOrder =new PurchaseOrderEntity();			

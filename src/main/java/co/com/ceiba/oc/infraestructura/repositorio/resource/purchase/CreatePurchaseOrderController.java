@@ -38,7 +38,7 @@ public class CreatePurchaseOrderController {
 	 @Transactional
 		@ApiOperation(value = "Crear OC", notes = "Servicio para crear una OC")
 		@ApiResponses(value = { @ApiResponse(code = 201, message = "OC creado correctamente"),
-				@ApiResponse(code = 400, message = "Solicitud Inválida") })
+				@ApiResponse(code = 400, message = "Solicitud Invalida") })
 		public ResponseEntity<PurchaseOrder> createPurchaseOrder(@RequestBody PurchaseOrder purchaseOrderVo) {
 			
 			//PurchaseOrderEntity  purchaseOrder =new PurchaseOrderEntity();			
