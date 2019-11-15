@@ -18,11 +18,11 @@ import io.swagger.annotations.ApiResponses;
 @RequestMapping("/api/aprobacion")
 @Api(tags = "aprobacion")
 
-public class FindaAllRegisterApproval {
+public class FindaAllRegisterApprovalController {
 
 	private FindAllApprovalHandler findAllApprovalHandler;
 
-	public FindaAllRegisterApproval(FindAllApprovalHandler findAllApprovalHandler) {	
+	public FindaAllRegisterApprovalController(FindAllApprovalHandler findAllApprovalHandler) {	
 		this.findAllApprovalHandler = findAllApprovalHandler;
 	}
 		

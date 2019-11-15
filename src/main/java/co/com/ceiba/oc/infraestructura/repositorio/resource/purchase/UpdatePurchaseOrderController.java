@@ -3,6 +3,7 @@ package co.com.ceiba.oc.infraestructura.repositorio.resource.purchase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,28 +35,24 @@ public class UpdatePurchaseOrderController {
 		}
 	 
 
-	@PutMapping("/{orderNumber}")
+	@Transactional
+	@PutMapping("/{orderNumber}")	
 	@ApiOperation(value = "Actualizar OC", notes = "Servicio para actualizar una OC")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "OC actualizado correctamente"),
 			@ApiResponse(code = 404, message = "OC  no encontrada") })
 	
-	public ResponseEntity<PurchaseOrder> updateCliente(@PathVariable("orderNumber") String orderNumber,PurchaseOrder purchaseOrderVo ){
+	public ResponseEntity<PurchaseOrder> updateCliente(@PathVariable("orderNumber") String orderNumber, PurchaseOrder purchaseOrder ){
 		
 		
-		PurchaseOrder purchaseOrder = this.findByOrderHandler.execute(orderNumber);
-		if (purchaseOrderVo==null) {
+		PurchaseOrder purchaseOrder1 = this.findByOrderHandler.execute(orderNumber);
+		if (purchaseOrder==null) {
 			return new ResponseEntity<PurchaseOrder>(HttpStatus.NOT_FOUND);		
 			
 		}else {
-			purchaseOrder.setPoHeaderId(purchaseOrderVo.getPoHeaderId());
-			purchaseOrder.setOrderNumber(purchaseOrderVo.getOrderNumber());
-			purchaseOrder.setCreationDate( purchaseOrderVo.getCreationDate());
-			purchaseOrder.setBuyerId(purchaseOrderVo.getBuyerId());
-			purchaseOrder.setApprovedDate(purchaseOrderVo.getApprovedDate());
-			purchaseOrder.setStatus(purchaseOrderVo.getStatus());
-			purchaseOrder.setTotalAmount(purchaseOrderVo.getTotalAmount());
+			return new ResponseEntity<>(this.updatePurchaseHandler.execute(purchaseOrder), HttpStatus.OK);
+				
 		}
-		return new ResponseEntity<>(this.updatePurchaseHandler.execute(purchaseOrderVo), HttpStatus.OK);
+		
 		
 	}
 

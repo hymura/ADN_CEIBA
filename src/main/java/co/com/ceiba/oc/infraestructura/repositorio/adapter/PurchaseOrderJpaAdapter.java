@@ -29,16 +29,20 @@ public class PurchaseOrderJpaAdapter implements PurchaseOrderRepository {
 
 	@Override
 	public PurchaseOrder findByOrderNumber(String orderNumber) {
-		 return null;
+		
+		PurchaseOrderEntity purchaseOrderEntity = purchaseOrderRepositoryBd.findByOrderNumber(orderNumber);
+		return PurchaseOrderFactory.toModel(purchaseOrderEntity);
 	                
 	}
 
 	@Override
 	public PurchaseOrder findByIdOc(int PoheaderId) {
-		// TODO Auto-generated method stub
-		return null;
-		//return purchaseOrderRepositoryBd.findByIdOc(PoheaderId).;
-				
+		
+	return null;
+		/*	PurchaseOrderEntity purchaseOrderEntity = purchaseOrderRepositoryBd.findByIdOc(PoheaderId);
+		return PurchaseOrderFactory.toModel(purchaseOrderEntity);		
+	
+	*/			
 	}
 
 	@Override

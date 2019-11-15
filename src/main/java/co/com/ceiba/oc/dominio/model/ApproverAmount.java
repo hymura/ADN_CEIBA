@@ -26,6 +26,8 @@ public class ApproverAmount {
 	}
 	
 */	
+		
+	
 	public int getUserId() {
 		return userId;
 	}
