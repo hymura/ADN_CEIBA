@@ -22,7 +22,7 @@ public interface AppoverAmountRepositoryBd extends JpaRepository<AppoverAmountEn
 	//public AppoverAmountEntity findByAmountApprover( int amountTotal,String status);
 	
 	/**
-	 * Definición de método para buscar todoa los aprobadores
+	 * Definicion de metodo para buscar todoa los aprobadores
 	 * @params
 	 * @return
 	 */

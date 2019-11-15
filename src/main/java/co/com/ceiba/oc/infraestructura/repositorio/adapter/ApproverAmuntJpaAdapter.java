@@ -12,7 +12,6 @@ import co.com.ceiba.oc.dominio.model.ApproverAmount;
 import co.com.ceiba.oc.dominio.repositorio.ApproverAmountRepository;
 import co.com.ceiba.oc.infraestructura.repositorio.AppoverAmountRepositoryBd;
 import co.com.ceiba.oc.infraestructura.repositorio.entity.AppoverAmountEntity;
-import co.com.ceiba.oc.infraestructura.repositorio.entity.factory.ApprovalOrderFactory;
 import co.com.ceiba.oc.infraestructura.repositorio.entity.factory.ApproverFactory;
 
 

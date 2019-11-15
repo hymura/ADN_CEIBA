@@ -21,7 +21,7 @@ import java.util.Set;
 
 /**
  * Clase que representa la tabla purchase
- * @author martosfre
+ * @author hymura
  *
  */
 

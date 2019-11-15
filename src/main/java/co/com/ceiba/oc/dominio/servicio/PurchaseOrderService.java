@@ -56,7 +56,7 @@ public class PurchaseOrderService {
 	/**
 	 * Metodo para consultar por numero de OC
 	 * 
-	 * @param identificacionCli
+	 * @param orderNumber
 	 * @return
 	 */
 	public PurchaseOrder findByOrderNumber(String orderNumber) {
@@ -71,7 +71,7 @@ public class PurchaseOrderService {
 	
 */	
 	/**
-	 * Método para consultar todas las OC
+	 * Metodo para consultar todas las OC
 	 * @return
 	 */
 	public List<PurchaseOrder> findAll(){

@@ -1,6 +1,6 @@
 package co.com.ceiba.oc.dominio.model;
 
-import java.time.LocalDate;
+
 import java.util.Date;
 
 
@@ -14,7 +14,6 @@ public class PurchaseOrder {
 	private int totalAmount;
 	private String status;
 	//private ApproverAmount approverAmount;
-	private static final String ESTADO_AROBADO="APROBADO";
 	private static final String ESTADO_PENDIENTE="PENDIENTE";
 	
 	

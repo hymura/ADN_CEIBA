@@ -14,7 +14,7 @@ import org.springframework.data.repository.query.Param;
 public interface ApprovalOrderRepositoryBd extends JpaRepository<ApprovalOrderEntity, String>{
 
 	/**
-	 * Definición de método para buscar por id aprobacion 
+	 * Definicin de mtodo para buscar por id aprobacion 
 	 * @param ApprovalId
 	 * @return
 	 */
@@ -23,7 +23,7 @@ public interface ApprovalOrderRepositoryBd extends JpaRepository<ApprovalOrderEn
 	//public ApprovalOrderEntity findByApprovalId(int approvalId);
 	
 	/**
-	 * Definición de método para buscar en toda la bandeja de aprobacion
+	 * Definicion de metodo para buscar en toda la bandeja de aprobacion
 	 * @param 
 	 * @return
 	 */
