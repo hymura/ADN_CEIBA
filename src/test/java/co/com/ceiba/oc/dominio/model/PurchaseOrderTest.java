@@ -12,9 +12,16 @@ public class PurchaseOrderTest {
 	int totalAmount, String status
 	*/
 	  @Test
-	    public void IngresarOrdenCompra() {
+	    public void getterAndSetter() {
+		 
 		  PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",new Date(System.currentTimeMillis()),1,new Date(System.currentTimeMillis()),2000,"PENDIENTE");			       
-	        Assert.assertEquals("2505", orderPurchase.getOrderNumber());
+	     
+		  orderPurchase.setStatus("REQ_APPROVAL");
+		  
+		  Assert.assertEquals("2505", orderPurchase.getOrderNumber());
+		  Assert.assertEquals(1, orderPurchase.getPoHeaderId());
+		  Assert.assertEquals("REQ_APPROVAL", orderPurchase.getStatus());
+		  
 	    }
 
 

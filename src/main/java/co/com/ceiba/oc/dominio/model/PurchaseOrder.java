@@ -89,7 +89,7 @@ public class PurchaseOrder {
 	public void setApprovedDate(Date approvedDate) {
 		this.approvedDate = approvedDate;
 	}
-	public Integer getTotalAmount() {
+	public int getTotalAmount() {
 		return totalAmount;
 	}
 	public void setTotalAmount(int totalAmount) {

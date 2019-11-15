@@ -26,7 +26,7 @@ public class AppoverAmountServices {
 	}
 
 	/**
-	 * Método para realizar la operación de guardar un aprobador
+	 * Metodo para realizar la operacion de guardar un aprobador
 	 * 
 	 * @param cliente
 	 * @return
@@ -37,7 +37,7 @@ public class AppoverAmountServices {
 	}
 
 	/**
-	 * Método para realizar la operación de actualizar un aprobador
+	 * Metodo para realizar la operacion de actualizar un aprobador
 	 * 
 	 * @param cliente
 	 * @return
@@ -48,7 +48,7 @@ public class AppoverAmountServices {
 	}
 
 	/**
-	 * Método para realizar la operación de eliminar un aprobador
+	 * Metodo para realizar la operacion de eliminar un aprobador
 	 * 
 	 * @param cliente
 	 */
@@ -58,7 +58,7 @@ public class AppoverAmountServices {
 	}
 
 	/**
-	 * Definición de método para consultar aprobadores por nombre y estado 
+	 * Definicion de metodo para consultar aprobadores por nombre y estado 
 	 * @param totalAmount
 	 * @param status
 	 * @return

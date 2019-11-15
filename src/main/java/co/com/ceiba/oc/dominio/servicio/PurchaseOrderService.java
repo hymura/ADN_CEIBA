@@ -25,7 +25,7 @@ public class PurchaseOrderService {
 	
 	
 	/**
-	 * Método para realizar la operación de guardar una OC
+	 * Metodo para realizar la operacion de guardar una OC
 	 * 
 	 * @param purchaseOrder
 	 * @return
@@ -35,7 +35,7 @@ public class PurchaseOrderService {
 	}
 
 	/**
-	 * Método para realizar la operación de actualizar una OC
+	 * Metodo para realizar la operacion de actualizar una OC
 	 * 
 	 * @param purchaseOrder
 	 * @return
@@ -45,7 +45,7 @@ public class PurchaseOrderService {
 	}
 
 	/**
-	 * Método para realizar la operación de eliminar una OC
+	 * Metodo para realizar la operacion de eliminar una OC
 	 * 
 	 * @param purchaseOrder
 	 */
@@ -54,7 +54,7 @@ public class PurchaseOrderService {
 	}
 
 	/**
-	 * Método para consultar por numero de OC
+	 * Metodo para consultar por numero de OC
 	 * 
 	 * @param identificacionCli
 	 * @return

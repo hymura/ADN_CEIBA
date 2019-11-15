@@ -19,7 +19,7 @@ public class ApprovalOrderServices {
 	}
 
 	/**
-	 * Método para realizar la operación de guardar una orden  para aprobacion 
+	 * Metodo para realizar la operacion de guardar una orden  para aprobacion 
 	 * 
 	 * @param cliente
 	 * @return
@@ -30,7 +30,7 @@ public class ApprovalOrderServices {
 	}
 
 	/**
-	 * Método para realizar la operación de actualizar una orden  para aprobacion
+	 * Metodo para realizar la operacion de actualizar una orden  para aprobacion
 	 * 
 	 * @param cliente
 	 * @return
@@ -44,7 +44,7 @@ public class ApprovalOrderServices {
 
 	
 	/**
-	 * Definición de método para buscar ordenes por id de aprobador
+	 * Definicion de metodo para buscar ordenes por id de aprobador
 	 * @param ApprovalId
 	 * @return
 	 */
@@ -56,7 +56,7 @@ public class ApprovalOrderServices {
 		
 	
 	/**
-	 * Definición de método para buscar todas las ordenes
+	 * Definicion de metodo para buscar todas las ordenes
 	 * @params
 	 * @return
 	 */
