@@ -13,7 +13,7 @@ public interface  PurchaseOrderRepositoryBd  extends JpaRepository<PurchaseOrder
 		
 	
 	/**
-	 * Definición de método para buscar las Oc por numero de OC
+	 * Definicin de mtodo para buscar las Oc por numero de OC
 	 * @param orderNumber
 	 * @return
 	 */
@@ -25,7 +25,7 @@ public interface  PurchaseOrderRepositoryBd  extends JpaRepository<PurchaseOrder
 	public PurchaseOrderEntity findByIdOc(int PoheaderId);
 */	
 	/**
-	 * Definición de método para buscar todas las OC
+	 * Definicin de mtodo para buscar todas las OC
 	 * @param status
 	 * @return
 	 */
