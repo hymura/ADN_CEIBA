@@ -7,10 +7,13 @@ import org.junit.Test;
 
 public class PurchaseOrderTest {
 
-	/*
-	int poHeaderId, String orderNumber, Date creationDate, int buyerId, Date approvedDate,
-	int totalAmount, String status
-	*/
+
+	@Test
+	public void validaMontoAprobacion () {
+		
+		
+	}
+		
 	  @Test
 	    public void getterAndSetter() {
 		 

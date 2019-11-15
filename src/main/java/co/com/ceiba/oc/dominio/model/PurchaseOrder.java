@@ -15,8 +15,7 @@ public class PurchaseOrder {
 	private String status;
 	//private ApproverAmount approverAmount;
 	private static final String ESTADO_PENDIENTE="PENDIENTE";
-	
-	
+		
 	
 	public PurchaseOrder(int poHeaderId, String orderNumber, Date creationDate, int buyerId, Date approvedDate,
 			int totalAmount, String status) {
@@ -35,29 +34,17 @@ public class PurchaseOrder {
 		super();
 	}
 
+/*
 	public PurchaseOrder(int poHeaderId, String orderNumber, Date creationDate, int buyerId, Date approvedDate,
 			int totalAmount) {
 	
 		this(poHeaderId, orderNumber, creationDate, buyerId, approvedDate,totalAmount,ESTADO_PENDIENTE );
 	}
-	
+*/	
 	public PurchaseOrder(int poHeaderId) {	
 		this.poHeaderId = poHeaderId;
 	}
 	
-/*	
-	public void ApprovedProcess(ApproverAmount approverAmount ){
-		validaAprobador(approverAmount);
-		this.approverAmount=approverAmount;
-		this.approvedDate=new Date();
-		this.status=ESTADO_AROBADO;
-			
-	}
-*/	
-
-
-
-
 	public int getPoHeaderId() {
 		return poHeaderId;
 	}
@@ -100,8 +87,12 @@ public class PurchaseOrder {
 		return this.status;
 	}
 	public void setStatus(String status) {
-		 this.status=status;
+		if (this.status!=ESTADO_PENDIENTE)
+				this.status=status;
 	}
+	  
+	
+	
 	
 	
 	
