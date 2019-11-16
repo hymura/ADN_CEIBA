@@ -5,23 +5,14 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import co.com.ceiba.oc.dominio.model.ApprovalOrder;
-
-
 import co.com.ceiba.oc.dominio.repositorio.ApprovalOrderRepositoy;
 import co.com.ceiba.oc.infraestructura.repositorio.ApprovalOrderRepositoryBd;
 import co.com.ceiba.oc.infraestructura.repositorio.entity.ApprovalOrderEntity;
 import co.com.ceiba.oc.infraestructura.repositorio.entity.factory.ApprovalOrderFactory;
 
-
-
-
 @Repository
 public class ApprovalOrderJpaAdapter implements ApprovalOrderRepositoy {
-	
-	
-		
 	private ApprovalOrderRepositoryBd approvalOrderRepositoyBd;
 
 	@Autowired
@@ -39,8 +30,9 @@ public class ApprovalOrderJpaAdapter implements ApprovalOrderRepositoy {
 
 	@Override
 	public ApprovalOrder findByApprovalId(int approvalId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		ApprovalOrderEntity approvalOrderEntity= approvalOrderRepositoyBd.findByApprovalId(approvalId);
+		return ApprovalOrderFactory.toModel(approvalOrderEntity);
 	}
 
 	@Override
@@ -52,19 +44,16 @@ public class ApprovalOrderJpaAdapter implements ApprovalOrderRepositoy {
 
 	@Override
 	public ApprovalOrder create(ApprovalOrder approvalOrder) {
-		// TODO Auto-generated method stub
+
 		ApprovalOrderEntity entity = ApprovalOrderFactory.toEntity(approvalOrder);
         return ApprovalOrderFactory.toModel(approvalOrderRepositoyBd.save(entity));
 	}
 
 	@Override
 	public ApprovalOrder update(ApprovalOrder approvalOrder) {
-		// TODO Auto-generated method stub
+
 		ApprovalOrderEntity entity = ApprovalOrderFactory.toEntity(approvalOrder);
         return ApprovalOrderFactory.toModel(approvalOrderRepositoyBd.save(entity));
 	}
-
- 
-
 
 }

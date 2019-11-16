@@ -1,4 +1,4 @@
-package co.com.ceiba.oc.dominio.servicio;
+package co.com.ceiba.oc.aplicacion.servicio;
 
 import java.util.List;
 

@@ -1,7 +1,6 @@
-package co.com.ceiba.oc.dominio.servicio;
+package co.com.ceiba.oc.aplicacion.servicio;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.transaction.annotation.Transactional;
 import co.com.ceiba.oc.dominio.model.ApproverAmount;
@@ -64,7 +63,7 @@ public class AppoverAmountServices {
 	 * @return
 	 */
 	
-	public  Optional<ApproverAmount> findByApprover(int  userId){
+	public  ApproverAmount findByApprover(int  userId){
 		return this.approverAmountRepository.findByApprover(userId);
 				}
 				

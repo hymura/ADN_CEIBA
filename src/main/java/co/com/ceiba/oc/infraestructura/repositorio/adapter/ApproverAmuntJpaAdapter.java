@@ -2,7 +2,6 @@ package co.com.ceiba.oc.infraestructura.repositorio.adapter;
 
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,9 @@ import co.com.ceiba.oc.dominio.model.ApproverAmount;
 import co.com.ceiba.oc.dominio.repositorio.ApproverAmountRepository;
 import co.com.ceiba.oc.infraestructura.repositorio.AppoverAmountRepositoryBd;
 import co.com.ceiba.oc.infraestructura.repositorio.entity.AppoverAmountEntity;
+
 import co.com.ceiba.oc.infraestructura.repositorio.entity.factory.ApproverFactory;
+
 
 
 @Repository
@@ -29,19 +30,16 @@ public class ApproverAmuntJpaAdapter  implements ApproverAmountRepository {
 	}
 
 	@Override
-	public Optional <ApproverAmount> findByApprover(int userId) {
-/*
-		 return approverAmountRepositoryBd.findByApprover(userId)
-	                .map(ApproverFactory::toModel);
-	              */
+	public ApproverAmount findByApprover(int userId) {
 		
-		return null;
+		AppoverAmountEntity appoverAmountEntity = approverAmountRepositoryBd.findByApprover(userId);
+		return ApproverFactory.toModel(appoverAmountEntity);
 	}
 
 	@Override
 	public ApproverAmount findByAmountApprover(int amountTotal, String status) {
-
-		return null;
+		AppoverAmountEntity appoverAmountEntity = approverAmountRepositoryBd.findByAmountApprover(amountTotal,status);
+		return ApproverFactory.toModel(appoverAmountEntity);
 	}
 
 	@Override
@@ -62,8 +60,7 @@ public class ApproverAmuntJpaAdapter  implements ApproverAmountRepository {
 	@Override
 	public void delete(ApproverAmount appoverAmount) {
 		AppoverAmountEntity entity = ApproverFactory.toEntity(appoverAmount);
-		approverAmountRepositoryBd.delete(entity);
-		
+		approverAmountRepositoryBd.delete(entity);		
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import co.com.ceiba.oc.aplicacion.servicio.AppoverAmountServices;
 import co.com.ceiba.oc.dominio.model.ApproverAmount;
 import co.com.ceiba.oc.dominio.repositorio.ApproverAmountRepository;
 
@@ -44,5 +45,30 @@ public class AppoverAmountServicesTest {
 		assertEquals(2,approverAmountResponse.getUserId());
 
 	}
+
+	@Test
+	public void testUpdateApprover() {
+		
+	//Arrange
+		ApproverAmount approver=new ApproverAmount( );
+		approver.setUserId(1);
+		
+		ApproverAmount approver2=new ApproverAmount( );
+		approver2.setUserId(3);
+		
+		
+		Mockito.when(approverAmountRepository.save(Mockito.any(ApproverAmount.class))).thenReturn(approver2);
+		
+	//act
+		
+		ApproverAmount approverAmountResponse=appoverAmount.update(approver);
+		
+	//Assert
+		assertEquals(3,approverAmountResponse.getUserId());
+
+	}
+
+
+	
 
 }
