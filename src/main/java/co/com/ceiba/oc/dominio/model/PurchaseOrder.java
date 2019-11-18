@@ -73,7 +73,7 @@ public class PurchaseOrder {
 	
 	public void setApprovedDate(Date approvedDate) {
 		
-		if(this.status==ESTADO_APROBADO) {
+		if(this.status.equals(ESTADO_APROBADO)) {
 			this.approvedDate = approvedDate;
 		}
 				
