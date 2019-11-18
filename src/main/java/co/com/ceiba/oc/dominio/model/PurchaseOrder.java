@@ -14,17 +14,17 @@ public class PurchaseOrder {
 	private int totalAmount;
 	private String status;
 	//private ApproverAmount approverAmount;
-	private static final String ESTADO_PENDIENTE="PENDIENTE";
+	private static final String ESTADO_PENDIENTE="REQ_APPROVAL";
+	private static final String ESTADO_APROBADO="APPROVED";
 		
 	
-	public PurchaseOrder(int poHeaderId, String orderNumber, Date creationDate, int buyerId, Date approvedDate,
+	public PurchaseOrder(int poHeaderId, String orderNumber, Date creationDate, int buyerId,
 			int totalAmount, String status) {
 	
 		this.poHeaderId = poHeaderId;
 		this.orderNumber = orderNumber;
 		this.creationDate = creationDate;
 		this.buyerId = buyerId;
-		this.approvedDate = approvedDate;
 		this.totalAmount = totalAmount;
 		this.status=status;
 		 
@@ -34,13 +34,6 @@ public class PurchaseOrder {
 		super();
 	}
 
-/*
-	public PurchaseOrder(int poHeaderId, String orderNumber, Date creationDate, int buyerId, Date approvedDate,
-			int totalAmount) {
-	
-		this(poHeaderId, orderNumber, creationDate, buyerId, approvedDate,totalAmount,ESTADO_PENDIENTE );
-	}
-*/	
 	public PurchaseOrder(int poHeaderId) {	
 		this.poHeaderId = poHeaderId;
 	}
@@ -55,13 +48,19 @@ public class PurchaseOrder {
 		return orderNumber;
 	}
 	public void setOrderNumber(String orderNumber) {
-		this.orderNumber = orderNumber;
+		
+		if (orderNumber.matches("[Z0-9]+")) {
+			this.orderNumber = orderNumber;
+		}else {
+			throw new IllegalArgumentException("No cumple con valores de 0 a 9"+orderNumber);
+		}
+
 	}
 	public Date getCreationDate() {
 		return creationDate;
 	}
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
+	public void setCreationDate() {
+		this.creationDate = new Date();
 	}
 	public int getBuyerId() {
 		return buyerId;
@@ -69,32 +68,38 @@ public class PurchaseOrder {
 	public void setBuyerId(int buyerId) {
 		this.buyerId = buyerId;
 	}
-	public Date getApprovedDate() {
+	public Date getApprovedDate() {		
 		return approvedDate;
 	}
+	
 	public void setApprovedDate(Date approvedDate) {
-		this.approvedDate = approvedDate;
+		
+		if(this.status==ESTADO_APROBADO) {
+			this.approvedDate = approvedDate;
+		}
+				
 	}
+	
 	public int getTotalAmount() {
 		return totalAmount;
 	}
 	public void setTotalAmount(int totalAmount) {
-				
-			this.totalAmount = totalAmount;
-		
+			
+		if (totalAmount>0 ){
+			this.totalAmount = totalAmount;			
+		}else {
+			throw new IllegalArgumentException("El Monto de la orden debe ser mayor a cero");
+		}
+					
 	}
 	public String getStatus() {
 		return this.status;
 	}
 	public void setStatus(String status) {
-		if (this.status!=ESTADO_PENDIENTE)
+		//if (status!=ESTADO_PENDIENTE)
 				this.status=status;
 	}
 	  
-	
-	
-	
-	
 	
 
 }

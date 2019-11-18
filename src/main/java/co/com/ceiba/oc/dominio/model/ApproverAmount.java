@@ -7,7 +7,8 @@ public class ApproverAmount {
 	private int appovalAmountInit;
 	private int appovalAmountEnd;
 	private String status;
-	private static final String ESTADO="ACTIVO";
+	private static final String ESTADO_ACTIVO="ACTIVO";
+	//private static final String ESTADO_INACTIVO="INACTIVO";
 	
 
 	public ApproverAmount() {
@@ -29,7 +30,7 @@ public class ApproverAmount {
 		this.userName = userName;
 		this.appovalAmountInit = appovalAmountInit;
 		this.appovalAmountEnd = appovalAmountEnd;
-		this.status = ESTADO;
+		this.status = ESTADO_ACTIVO;
 	}
 	
 	
@@ -48,6 +49,7 @@ public class ApproverAmount {
 	public int getAppovalAmountInit() {
 		return appovalAmountInit;
 	}
+	
 	public void setAppovalAmountInit(int appovalAmountInit) {
 		
 		if (appovalAmountInit>0) {
@@ -55,9 +57,8 @@ public class ApproverAmount {
 		}else {
 			throw new IllegalArgumentException("El rango inicial debe ser mayor a 0 :"+appovalAmountInit);
 		}
-		
-		
 	}
+	
 	public int getAppovalAmountEnd() {
 		return appovalAmountEnd;
 	}
@@ -73,9 +74,14 @@ public class ApproverAmount {
 		return status;
 	}
 	public void setStatus(String status) {
-		this.status = status;
+		
+		//if (status.equals(ESTADO_ACTIVO)||status.equals(ESTADO_INACTIVO)) {
+		      this.status = status;
+		//}else {
+//			throw new IllegalArgumentException("El aprobador No cumple regla de estados");
+	//	}
+	
 	}
-
 	
 	
 }

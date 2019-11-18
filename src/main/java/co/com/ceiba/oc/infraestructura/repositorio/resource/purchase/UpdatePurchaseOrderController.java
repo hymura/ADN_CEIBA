@@ -45,7 +45,7 @@ public class UpdatePurchaseOrderController {
 		
 		
 		PurchaseOrder purchaseOrder1 = this.findByOrderHandler.execute(orderNumber);
-		if (purchaseOrder==null) {
+		if (purchaseOrder1==null) {
 			return new ResponseEntity<PurchaseOrder>(HttpStatus.NOT_FOUND);		
 			
 		}else {

@@ -34,6 +34,7 @@ public class ApprovalOrderEntity {
 	private int approvalId;
 	private Date approvalDate;
 	private int appovalAmount;
+	private String motivo;
 	
 	@ManyToOne
 	  @JoinColumn(name="PO_HEADER_ID")	  

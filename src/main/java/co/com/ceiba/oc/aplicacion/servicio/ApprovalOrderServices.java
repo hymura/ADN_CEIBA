@@ -2,9 +2,6 @@ package co.com.ceiba.oc.aplicacion.servicio;
 
 import java.util.List;
 
-
-
-
 import co.com.ceiba.oc.dominio.model.ApprovalOrder;
 import co.com.ceiba.oc.dominio.repositorio.ApprovalOrderRepositoy;
 
@@ -63,6 +60,8 @@ public class ApprovalOrderServices {
 	public List<ApprovalOrder> findAll(){
 		return approvalOrderRepository.findAll();
 	}
+
+
 	
 	
 }

@@ -13,23 +13,24 @@ public class ApprovalOrder {
 	private int approvalId;
 	private Date approvalDate;
 	private int appovalAmount;
+	private String motivo;
 	private PurchaseOrder purchaseOder;
 	private ApproverAmount approverAmount; 
 	private static final int MONTO_MINIMO=20000;
 	private static final String ESTADO_APROBADO="APPROVED";
+	private static final String ESTADO_RECHAZDO="REJECT";
 	
 	
 	
 	public ApprovalOrder(int approvalId, Date approvalDate,int appovalAmount, PurchaseOrder purchaseOder,
-			ApproverAmount approverAmount) {
-
+			ApproverAmount approverAmount, String motivo) {
 			this.approvalId = requireNonNull(approvalId);
 			this.approvalDate =approvalDate;
 			this.appovalAmount = requireNonNull(appovalAmount);
 			this.purchaseOder = requireNonNull(purchaseOder);
-			this.approverAmount = requireNonNull(approverAmount);		
+			this.approverAmount = requireNonNull(approverAmount);	
+		    this.motivo=motivo;
 	}
-	
 	
 	public ApprovalOrder(int approvalId,int appovalAmount, PurchaseOrder purchaseOder,
 			ApproverAmount approverAmount) {
@@ -40,14 +41,19 @@ public class ApprovalOrder {
 			this.approverAmount = requireNonNull(approverAmount);		
 	}
 	
+
+	public ApprovalOrder(int approvalId, PurchaseOrder purchaseOder,ApproverAmount approverAmount, Date approvalDate) {
+		this.approvalId = approvalId;
+		this.purchaseOder = purchaseOder;
+		this.approvalDate = approvalDate;
+	}
+
+
+
 	public ApprovalOrder() {
 		super();
 	}
 	
-	public int sumaDigitos(int n1, int n2) {
-		return n1+n2;
-	}
-
 
 	private boolean validaMontoAprobador(int totalOrden) {
 		
@@ -58,6 +64,20 @@ public class ApprovalOrder {
 		 return true;
 	}
 	
+	
+public void executeApprovalPurchase() {
+	
+		setApprovalDate();
+			if (this.approvalDate!=null ) {
+				setStatusOrden(this.purchaseOder,ESTADO_APROBADO );
+				}
+}
+
+public void executeRejectPurchase(String motivo) {	
+	this.approvalDate=null;
+	setStatusOrden(this.purchaseOder,ESTADO_RECHAZDO );	
+	setMotivo(motivo);	
+}
 
 	public int getApprovalId() {
 		return approvalId;
@@ -66,7 +86,11 @@ public class ApprovalOrder {
 		this.approvalId = approvalId;
 	}
 	
-	public Date getApprovalDate() {				
+	public Date getApprovalDate() {	
+		/*if (this.approvalDate !=null) {
+		executeApprovalPurchase();
+		}
+		*/
         return approvalDate;        	
 	}
 	
@@ -78,7 +102,8 @@ public class ApprovalOrder {
             throw new IllegalArgumentException("Fecha no habil para aprobacion :");
         }else {
         	if (validaMontoAprobador(this.purchaseOder.getTotalAmount())==true) {        	   
-            	this.approvalDate=new Date();//Date(System.currentTimeMillis());            	    
+            	this.approvalDate=new Date();//Date(System.currentTimeMillis());             	
+            	
             }else {
             	this.approvalDate=null;
             }
@@ -104,20 +129,14 @@ public class ApprovalOrder {
 	}
 
 	public void setPurchaseOder(PurchaseOrder purchaseOder) {
-		
-		
 		this.purchaseOder = purchaseOder;
 	}
 	
 	
-	public void setStatusOrden(PurchaseOrder purchaseOder) {
-		
-		if (this.approvalDate!=null) {
-			purchaseOder.setStatus(ESTADO_APROBADO);
-		}
-		this.purchaseOder = purchaseOder;
+	public void setStatusOrden(PurchaseOrder purchaseOder, String statusPurchase) {				
+			purchaseOder.setStatus(statusPurchase);
 	}
-	
+			
 
 	public ApproverAmount getApproverAmount() {
 		return approverAmount;
@@ -129,22 +148,18 @@ public class ApprovalOrder {
 	}
 	
 	
-	public LocalDate dateInstance () {
-		return LocalDate.now();
+	public String getMotivo() {
+		return motivo;
+	}
+
+
+	public void setMotivo(String motivo) {
+		this.motivo = motivo;
 	}
 	
-
-/*
-
-	public StatusPurchase getStatusPurchase() {
-		return statusPurchase;
-	}
-
-	public void setStatusPurchase(StatusPurchase statusPurchase) {
-		this.statusPurchase = statusPurchase;
-	}
 	
-	*/
+
+
 	
 
 }
