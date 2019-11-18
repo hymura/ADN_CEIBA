@@ -26,7 +26,7 @@ public class PurchaseOrder {
 		this.creationDate = creationDate;
 		this.buyerId = buyerId;
 		this.totalAmount = totalAmount;
-		this.status=status;
+		this.status="REQ_APPROVAL";
 		 
 	}
 	

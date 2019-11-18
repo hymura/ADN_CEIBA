@@ -19,6 +19,7 @@ public final class PurchaseOrderFactory {
                 .buyerId(purchaseOrder.getBuyerId())
                 .approvedDate(purchaseOrder.getApprovedDate())
                 .totalAmount(purchaseOrder.getTotalAmount())                
+                .Status(purchaseOrder.getStatus())
                 .build();
     }
 	
