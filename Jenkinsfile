@@ -36,7 +36,7 @@ pipeline{
 			   steps { 
 					 sh 'chmod +x gradlew'
 					sh './gradlew --b ./build.gradle clean'
-					sh './gradlew --b ./build.gradle build'
+					sh './gradlew --b ./build.gradle build -x test'
 				}
 			}
 

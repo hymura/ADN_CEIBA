@@ -10,26 +10,17 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-
-import co.com.ceiba.oc.aplicacion.manejador.purchase.FindAllPurchaseOrderHandler;
-
 @RunWith(SpringRunner.class)
 @WebMvcTest(FindAllPurchaseOrderController.class)
 //@SpringBootTest(classes = FindAllPurchaseOrderController.class)
 public class FindAllPurchaseOrderControllerTest {
 
-
-	    @MockBean
-	    private FindAllPurchaseOrderHandler recommendationsManagement;
-
-	    
 	    @Autowired
 	    private WebApplicationContext wac;
 
