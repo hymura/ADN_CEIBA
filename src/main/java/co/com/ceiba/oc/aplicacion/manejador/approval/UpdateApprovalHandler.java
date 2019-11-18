@@ -15,8 +15,7 @@ public class UpdateApprovalHandler {
 	public UpdateApprovalHandler(ApprovalOrderServices approvalOrderServices) {
 		
 		this.approvalOrderServices = approvalOrderServices;
-	}
-	
+	}	
 
 	@Transactional(readOnly = true)	
 	public ApprovalOrder execute(ApprovalOrder approvalOrder) {		

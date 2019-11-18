@@ -1,9 +1,6 @@
 package co.com.ceiba.oc.infraestructura.repositorio.resource.purchase;
 
 
-//SERVICIO PARA OC
-
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +37,7 @@ public class CreatePurchaseOrderController {
 		@ApiResponses(value = { @ApiResponse(code = 201, message = "OC creado correctamente"),
 				@ApiResponse(code = 400, message = "Solicitud Invalda") })
 		public ResponseEntity<PurchaseOrder> createPurchaseOrder(@RequestBody PurchaseOrder purchaseOrderVo) {
-			
-			//PurchaseOrderEntity  purchaseOrder =new PurchaseOrderEntity();			
+				
 			createPurchaseHandler.execute(purchaseOrderVo);								
 			return new ResponseEntity<>(HttpStatus.CREATED);
 			

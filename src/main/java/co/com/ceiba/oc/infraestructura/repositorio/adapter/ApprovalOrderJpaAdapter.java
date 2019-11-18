@@ -39,7 +39,6 @@ public class ApprovalOrderJpaAdapter implements ApprovalOrderRepositoy {
 	public ApprovalOrder save(ApprovalOrder approvalOrder) {
 		
 		ApprovalOrderEntity entity = ApprovalOrderFactory.toEntity(approvalOrder);
-		//ApprovalOrderEntity entity = ApprovalOrderUpateFactory.toEntity(approvalOrder);
         return ApprovalOrderFactory.toModel(approvalOrderRepositoyBd.save(entity));
 	}
 

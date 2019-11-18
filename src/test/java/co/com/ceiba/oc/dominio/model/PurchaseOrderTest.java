@@ -18,9 +18,6 @@ public class PurchaseOrderTest {
 	    public void getterAndSetter() {
 		 
 		  PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",new Date(System.currentTimeMillis()),1,2000,"REQ_APPROVAL");			       
-	     
-		 // orderPurchase.setStatus("REQ_APPROVAL");
-		  
 		  Assert.assertEquals("2505", orderPurchase.getOrderNumber());
 		  Assert.assertEquals(1, orderPurchase.getPoHeaderId());
 		  Assert.assertEquals("REQ_APPROVAL", orderPurchase.getStatus());

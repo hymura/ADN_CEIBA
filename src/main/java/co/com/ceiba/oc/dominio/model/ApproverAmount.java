@@ -8,14 +8,11 @@ public class ApproverAmount {
 	private int appovalAmountEnd;
 	private String status;
 	private static final String ESTADO_ACTIVO="ACTIVO";
-	//private static final String ESTADO_INACTIVO="INACTIVO";
-	
 
 	public ApproverAmount() {
 		
 	}
-	
-	
+		
 	public ApproverAmount(int userId, String userName, int appovalAmountInit, int appovalAmountEnd, String status) {
 		this.userId = userId;
 		this.userName = userName;
@@ -74,13 +71,7 @@ public class ApproverAmount {
 		return status;
 	}
 	public void setStatus(String status) {
-		
-		//if (status.equals(ESTADO_ACTIVO)||status.equals(ESTADO_INACTIVO)) {
-		      this.status = status;
-		//}else {
-//			throw new IllegalArgumentException("El aprobador No cumple regla de estados");
-	//	}
-	
+				      this.status = status;	
 	}
 	
 	

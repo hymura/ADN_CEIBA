@@ -23,13 +23,11 @@ public class PurchaseOrderJpaAdapter implements PurchaseOrderRepository {
 	
 	@Autowired
 	public PurchaseOrderJpaAdapter(PurchaseOrderRepositoryBd purchaseOrderRepositoryBd) {
-
 		this.purchaseOrderRepositoryBd = purchaseOrderRepositoryBd;
 	}
 
 	@Override
-	public PurchaseOrder findByOrderNumber(String orderNumber) {
-		
+	public PurchaseOrder findByOrderNumber(String orderNumber) {		
 		PurchaseOrderEntity purchaseOrderEntity = purchaseOrderRepositoryBd.findByOrderNumber(orderNumber);
 		return PurchaseOrderFactory.toModel(purchaseOrderEntity);
 	                
@@ -37,7 +35,6 @@ public class PurchaseOrderJpaAdapter implements PurchaseOrderRepository {
 
 	@Override
 	public PurchaseOrder findByIdOc(int PoheaderId) {
-
 		PurchaseOrderEntity purchaseOrderEntity = purchaseOrderRepositoryBd.findByIdOc(PoheaderId);
 		return PurchaseOrderFactory.toModel(purchaseOrderEntity);		
 	
@@ -46,7 +43,6 @@ public class PurchaseOrderJpaAdapter implements PurchaseOrderRepository {
 
 	@Override
 	public List<PurchaseOrder> findAll() {
-		// TODO Auto-generated method stub		
 		return purchaseOrderRepositoryBd.findAll().stream().map(PurchaseOrderFactory::toModel)
                 .collect(Collectors.toList());
 		
@@ -54,7 +50,6 @@ public class PurchaseOrderJpaAdapter implements PurchaseOrderRepository {
 
 	@Override
 	public PurchaseOrder save(PurchaseOrder purchaseOrder) {
-		// TODO Auto-generated method stub
 		   PurchaseOrderEntity entity = PurchaseOrderFactory.toEntity(purchaseOrder);
 	       return PurchaseOrderFactory.toModel(purchaseOrderRepositoryBd.save(entity));
 	
@@ -70,7 +65,6 @@ public class PurchaseOrderJpaAdapter implements PurchaseOrderRepository {
 
 	@Override
 	public PurchaseOrder update(PurchaseOrder purchaseOrder) {
-		// TODO Auto-generated method stub
 		 PurchaseOrderEntity entity = PurchaseOrderFactory.toEntity(purchaseOrder);
 	       return PurchaseOrderFactory.toModel(purchaseOrderRepositoryBd.save(entity));
 	}

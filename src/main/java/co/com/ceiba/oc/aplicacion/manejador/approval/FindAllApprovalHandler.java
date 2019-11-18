@@ -16,8 +16,7 @@ public class FindAllApprovalHandler {
 	public FindAllApprovalHandler(ApprovalOrderServices approvalOrderServices) {	
 		this.approvalOrderServices = approvalOrderServices;
 	}
-	
-	
+		
 	public List<ApprovalOrder>  execute() {	
 		return approvalOrderServices.findAll();		
 	}

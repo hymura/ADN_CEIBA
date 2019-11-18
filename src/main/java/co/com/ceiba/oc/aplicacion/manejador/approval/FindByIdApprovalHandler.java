@@ -14,8 +14,7 @@ public class FindByIdApprovalHandler {
 	public FindByIdApprovalHandler(ApprovalOrderServices approvalOrderServices) {	
 		this.approvalOrderServices = approvalOrderServices;
 	}
-	    
-	
+	    	
 public ApprovalOrder execute(int approvalId) {
 
     return approvalOrderServices.findByApprovalId(approvalId);

@@ -37,8 +37,7 @@ public class CreateRegisterApprovalController {
 		@ApiResponses(value = { @ApiResponse(code = 201, message = "registro de aprobacion creado correctamente"),
 				@ApiResponse(code = 400, message = "Solicitud Invalida") })
 		public ResponseEntity<ApprovalOrder> createPurchaseOrder(@RequestBody ApprovalOrder approvalOrder) {
-			
-			//PurchaseOrderEntity  purchaseOrder =new PurchaseOrderEntity();			
+									
 		 	createApprovalHandler.execute(approvalOrder);								
 			return new ResponseEntity<>(HttpStatus.CREATED);
 			

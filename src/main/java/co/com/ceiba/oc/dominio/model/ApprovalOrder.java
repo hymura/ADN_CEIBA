@@ -57,11 +57,10 @@ public class ApprovalOrder {
 
 	private boolean validaMontoAprobador(int totalOrden) {
 		
-		if (!(totalOrden>=this.approverAmount.getAppovalAmountInit() && totalOrden<=this.approverAmount.getAppovalAmountEnd())) {
-			//throw new ExcepcionRule("NO cumple con el  rango de monto del  aprobador");
-			 return false;
+		if ((totalOrden>=this.approverAmount.getAppovalAmountInit() && totalOrden<=this.approverAmount.getAppovalAmountEnd())) {
+			 return true;			 
 			}
-		 return true;
+		return false;
 	}
 	
 	
@@ -87,11 +86,7 @@ public void executeRejectPurchase(String motivo) {
 	}
 	
 	public Date getApprovalDate() {	
-		/*if (this.approvalDate !=null) {
-		executeApprovalPurchase();
-		}
-		*/
-        return approvalDate;        	
+		  return approvalDate;        	
 	}
 	
 	public void setApprovalDate() {
@@ -101,11 +96,8 @@ public void executeRejectPurchase(String motivo) {
 	    if (dia.getDayOfWeek() == DayOfWeek.SATURDAY || dia.getDayOfWeek() == DayOfWeek.SUNDAY) {
             throw new IllegalArgumentException("Fecha no habil para aprobacion :");
         }else {
-        	if (validaMontoAprobador(this.purchaseOder.getTotalAmount())==true) {        	   
-            	this.approvalDate=new Date();//Date(System.currentTimeMillis());             	
-            	
-            }else {
-            	this.approvalDate=null;
+        	if (validaMontoAprobador(this.purchaseOder.getTotalAmount())) {        	   
+            	this.approvalDate=new Date();             	            
             }
         }
 	     
@@ -122,7 +114,6 @@ public void executeRejectPurchase(String motivo) {
 		}
 		this.appovalAmount = appovalAmount;
 	}
-
 	
 	public PurchaseOrder getPurchaseOder() {
 		return purchaseOder;
@@ -131,35 +122,25 @@ public void executeRejectPurchase(String motivo) {
 	public void setPurchaseOder(PurchaseOrder purchaseOder) {
 		this.purchaseOder = purchaseOder;
 	}
-	
-	
+		
 	public void setStatusOrden(PurchaseOrder purchaseOder, String statusPurchase) {				
 			purchaseOder.setStatus(statusPurchase);
 	}
 			
-
 	public ApproverAmount getApproverAmount() {
 		return approverAmount;
 	}
 
-
 	public void setApproverAmount(ApproverAmount approverAmount) {
 		this.approverAmount = approverAmount;
 	}
-	
-	
+		
 	public String getMotivo() {
 		return motivo;
 	}
-
 
 	public void setMotivo(String motivo) {
 		this.motivo = motivo;
 	}
 	
-	
-
-
-	
-
 }

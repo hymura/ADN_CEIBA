@@ -13,7 +13,6 @@ public class PurchaseOrder {
 	private Date approvedDate;
 	private int totalAmount;
 	private String status;
-	//private ApproverAmount approverAmount;
 	private static final String ESTADO_PENDIENTE="REQ_APPROVAL";
 	private static final String ESTADO_APROBADO="APPROVED";
 		
@@ -26,7 +25,7 @@ public class PurchaseOrder {
 		this.creationDate = creationDate;
 		this.buyerId = buyerId;
 		this.totalAmount = totalAmount;
-		this.status="REQ_APPROVAL";
+		this.status=ESTADO_PENDIENTE;
 		 
 	}
 	
@@ -96,7 +95,6 @@ public class PurchaseOrder {
 		return this.status;
 	}
 	public void setStatus(String status) {
-		//if (status!=ESTADO_PENDIENTE)
 				this.status=status;
 	}
 	  
