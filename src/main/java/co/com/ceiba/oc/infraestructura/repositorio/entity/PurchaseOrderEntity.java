@@ -1,7 +1,5 @@
 package co.com.ceiba.oc.infraestructura.repositorio.entity;
 
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -48,6 +46,7 @@ public class PurchaseOrderEntity {
 	private int totalAmount;
 	private String status;
 	
+
 	@OneToMany(fetch=FetchType.LAZY)
 	 @JoinColumn(name="PO_HEADER_ID")
 	private Set<ApprovalOrderEntity> approvalOrderEntity;

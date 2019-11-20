@@ -10,7 +10,9 @@ import co.com.ceiba.oc.dominio.repositorio.ApprovalOrderRepositoy;
 import co.com.ceiba.oc.infraestructura.repositorio.ApprovalOrderRepositoryBd;
 import co.com.ceiba.oc.infraestructura.repositorio.PurchaseOrderRepositoryBd;
 import co.com.ceiba.oc.infraestructura.repositorio.entity.ApprovalOrderEntity;
+import co.com.ceiba.oc.infraestructura.repositorio.entity.PurchaseOrderEntity;
 import co.com.ceiba.oc.infraestructura.repositorio.entity.factory.ApprovalOrderFactory;
+import co.com.ceiba.oc.infraestructura.repositorio.entity.factory.PurchaseOrderFactory;
 
 
 @Repository
@@ -59,10 +61,10 @@ public class ApprovalOrderJpaAdapter implements ApprovalOrderRepositoy  {
 	@Override
 	public ApprovalOrder update(ApprovalOrder approvalOrder) {
 		ApprovalOrderEntity entity = ApprovalOrderFactory.toEntity(approvalOrder);
-		/*
-		purchaseOrderRepositoryBd.findById(entity.getPurchaseOrderEntity().getPoHeaderId())
-				.ifPresent(entity::setPurchaseOrderEntity);
-		*/		
-        return ApprovalOrderFactory.toModel(approvalOrderRepositoyBd.save(entity));
+		PurchaseOrderEntity entity2= PurchaseOrderFactory.toEntity(approvalOrder.getPurchaseOder());
+		PurchaseOrderFactory.toModel(purchaseOrderRepositoryBd.saveAndFlush(entity2));
+		
+		
+        return ApprovalOrderFactory.toModel(approvalOrderRepositoyBd.saveAndFlush(entity));
 	}
 }

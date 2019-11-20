@@ -59,8 +59,7 @@ public class ApprovalOrderServices {
 
 	public ApprovalOrder generateApproval(ApprovalOrder approvalOrder) {
 			approvalOrder.approvePurchase();			
-			//return this.approvalOrderRepository.update(approvalOrder);
-			return this.approvalOrderRepository.save(approvalOrder);
+			return this.approvalOrderRepository.update(approvalOrder);
 			
 	}
 }

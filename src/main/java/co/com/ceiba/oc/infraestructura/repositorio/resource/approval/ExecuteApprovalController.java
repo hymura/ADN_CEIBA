@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.com.ceiba.oc.aplicacion.manejador.approval.FindByIdApprovalHandler;
 import co.com.ceiba.oc.aplicacion.manejador.approval.GenerateApprovalOrRejection;
+import co.com.ceiba.oc.aplicacion.manejador.purchase.UpdatePurchaseHandler;
 import co.com.ceiba.oc.dominio.model.ApprovalOrder;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,9 +27,9 @@ public class ExecuteApprovalController {
 
 	@Autowired
 	public ExecuteApprovalController(GenerateApprovalOrRejection generateApprovalOrRejection,
-			FindByIdApprovalHandler findByIdApprovalHandler) {
+			FindByIdApprovalHandler findByIdApprovalHandler,UpdatePurchaseHandler updatePurchaseHandler) {
 		this.generateApprovalOrRejection = generateApprovalOrRejection;
-		this.findByIdApprovalHandler = findByIdApprovalHandler;
+		this.findByIdApprovalHandler = findByIdApprovalHandler;		
 	}
 
 	@PutMapping("/{approvalId}/{accion}/{motivo}")
@@ -39,10 +40,13 @@ public class ExecuteApprovalController {
 	public ResponseEntity<ApprovalOrder> updateApproval(@PathVariable("approvalId") int approvalId, String accion,
 			String motivo) {
 		ApprovalOrder approvalOrder1 = this.findByIdApprovalHandler.execute(approvalId);
+		
+	  
 		if (approvalOrder1 == null) {
 			return new ResponseEntity<ApprovalOrder>(HttpStatus.NOT_FOUND);
 		}
-		//ApprovalOrder approval = this.generateApprovalOrRejection.execute(approvalOrder1);
+
+				
 		return new ResponseEntity<ApprovalOrder>(this.generateApprovalOrRejection.execute(approvalOrder1), HttpStatus.OK);
 	}
 }
