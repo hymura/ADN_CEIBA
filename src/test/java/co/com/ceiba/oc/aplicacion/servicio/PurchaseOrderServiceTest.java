@@ -10,6 +10,7 @@ import org.mockito.MockitoAnnotations;
 
 import co.com.ceiba.oc.dominio.model.PurchaseOrder;
 import co.com.ceiba.oc.dominio.repositorio.PurchaseOrderRepository;
+import co.com.ceiba.oc.dominio.servicio.PurchaseOrderService;
 
 public class PurchaseOrderServiceTest {
 	
@@ -26,9 +27,9 @@ public class PurchaseOrderServiceTest {
 	@Test
 	public void testCreatePurchaseOrder() {
 		//Arrange
-		PurchaseOrder purchaseOrder=new PurchaseOrder();
+		PurchaseOrder purchaseOrder=new PurchaseOrder(1);
 		purchaseOrder.setPoHeaderId(1);
-		PurchaseOrder purchaseOrder1=new PurchaseOrder();
+		PurchaseOrder purchaseOrder1=new PurchaseOrder(2);
 		purchaseOrder1.setPoHeaderId(2);
 				
 		Mockito.when(purchaseOrderRepository.save(Mockito.any(PurchaseOrder.class))).thenReturn(purchaseOrder1);		
@@ -44,9 +45,9 @@ public class PurchaseOrderServiceTest {
 	
 	public void TestUpdatePuraseorder() {
 		//Arrange
-				PurchaseOrder purchaseOrder=new PurchaseOrder();
+				PurchaseOrder purchaseOrder=new PurchaseOrder(1);
 				purchaseOrder.setPoHeaderId(1);
-				PurchaseOrder purchaseOrder1=new PurchaseOrder();
+				PurchaseOrder purchaseOrder1=new PurchaseOrder(2);
 				purchaseOrder1.setPoHeaderId(2);
 						
 				Mockito.when(purchaseOrderRepository.save(Mockito.any(PurchaseOrder.class))).thenReturn(purchaseOrder1);		

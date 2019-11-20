@@ -3,7 +3,6 @@ package co.com.ceiba.oc.infraestructura.repositorio.resource.purchase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +34,6 @@ public class UpdatePurchaseOrderController {
 		}
 	 
 
-	@Transactional
 	@PutMapping("/{orderNumber}")	
 	@ApiOperation(value = "Actualizar OC", notes = "Servicio para actualizar una OC")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "OC actualizado correctamente"),

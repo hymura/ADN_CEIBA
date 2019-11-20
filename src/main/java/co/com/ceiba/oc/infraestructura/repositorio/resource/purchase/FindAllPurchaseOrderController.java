@@ -16,10 +16,10 @@ import io.swagger.annotations.ApiResponse;
 
 @RestController
 @RequestMapping("/api/ConsultarCompra")
-@Api(tags="PurchaseOrder")
+@Api(tags = "PurchaseOrder")
 
 public class FindAllPurchaseOrderController {
-	
+
 	private final FindAllPurchaseOrderHandler findAllPurchaseOrderHandler;
 
 	public FindAllPurchaseOrderController(FindAllPurchaseOrderHandler findAllPurchaseOrderHandler) {
@@ -29,9 +29,9 @@ public class FindAllPurchaseOrderController {
 	@GetMapping
 	@ApiOperation(value = "Listar idoC", notes = "Servicio para traer una Oc por Id")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "OC encontrados"),
-	@ApiResponse(code = 404, message = "Orden de compra no encontrados") })
-	public ResponseEntity<List<PurchaseOrder>> findAll(){ // PurchaseOrder
+			@ApiResponse(code = 404, message = "Orden de compra no encontrados") })
+	public ResponseEntity<List<PurchaseOrder>> findAll() { // PurchaseOrder
 		return ResponseEntity.ok(this.findAllPurchaseOrderHandler.execute());
-		
-	}	
+
+	}
 }

@@ -11,14 +11,17 @@ import co.com.ceiba.oc.infraestructura.repositorio.ApprovalOrderRepositoryBd;
 import co.com.ceiba.oc.infraestructura.repositorio.entity.ApprovalOrderEntity;
 import co.com.ceiba.oc.infraestructura.repositorio.entity.factory.ApprovalOrderFactory;
 
+
 @Repository
-public class ApprovalOrderJpaAdapter implements ApprovalOrderRepositoy {
+public class ApprovalOrderJpaAdapter implements ApprovalOrderRepositoy  {
 	private ApprovalOrderRepositoryBd approvalOrderRepositoyBd;
+	
 
 	@Autowired
 	public ApprovalOrderJpaAdapter(ApprovalOrderRepositoryBd approvalOrderRepositoyBd) {
-
+		
 		this.approvalOrderRepositoyBd = approvalOrderRepositoyBd;
+	
 	}
 
 	@Override
@@ -27,6 +30,7 @@ public class ApprovalOrderJpaAdapter implements ApprovalOrderRepositoy {
 	                .map(ApprovalOrderFactory::toModel)
 	                .collect(Collectors.toList());
 	}
+
 
 	@Override
 	public ApprovalOrder findByApprovalId(int approvalId) {
@@ -52,8 +56,7 @@ public class ApprovalOrderJpaAdapter implements ApprovalOrderRepositoy {
 	@Override
 	public ApprovalOrder update(ApprovalOrder approvalOrder) {
 
-		ApprovalOrderEntity entity = ApprovalOrderFactory.toEntity(approvalOrder);
-        return ApprovalOrderFactory.toModel(approvalOrderRepositoyBd.save(entity));
+		ApprovalOrderEntity entity = ApprovalOrderFactory.toEntity(approvalOrder);		
+        return ApprovalOrderFactory.toModel(approvalOrderRepositoyBd.saveAndFlush(entity));
 	}
-
 }

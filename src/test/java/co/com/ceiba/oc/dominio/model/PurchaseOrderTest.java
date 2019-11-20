@@ -26,7 +26,7 @@ public class PurchaseOrderTest {
 	  
 	  @Test
 	    public void TestOrdenNumberWheOnlyNumber() {
-		  PurchaseOrder orderPurchase = new PurchaseOrder();  
+		  PurchaseOrder orderPurchase = new PurchaseOrder(1);  
 		  orderPurchase.setOrderNumber("2505");		  		  
 		  Assert.assertTrue("Ok",orderPurchase.getOrderNumber().matches("[Z0-9]+") );
 	    }

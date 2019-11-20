@@ -43,14 +43,9 @@ public class PurchaseOrderEntity {
 	@Temporal(TemporalType.DATE)
 	private Date approvedDate;
 	private Integer totalAmount;
-	private String Status;
+	private String status;
 	
 	@OneToMany(fetch=FetchType.LAZY)
-	 @JoinColumn(name="PO_HEADER_ID")
+	@JoinColumn(name="PO_HEADER_ID")
 	private Set<ApprovalOrderEntity> approvalOrderEntity;
-
-	
-	
-
-
 }

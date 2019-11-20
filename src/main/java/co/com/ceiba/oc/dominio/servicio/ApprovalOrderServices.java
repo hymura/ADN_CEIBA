@@ -1,4 +1,5 @@
-package co.com.ceiba.oc.aplicacion.servicio;
+package co.com.ceiba.oc.dominio.servicio;
+
 
 import java.util.List;
 
@@ -32,13 +33,10 @@ public class ApprovalOrderServices {
 	 * @param cliente
 	 * @return
 	 */
-	
-	
-	
+
 	public ApprovalOrder update(ApprovalOrder approvalOrder) {
 		return this.approvalOrderRepository.save(approvalOrder);
 	}
-
 	
 	/**
 	 * Definicion de metodo para buscar ordenes por id de aprobador
@@ -49,9 +47,7 @@ public class ApprovalOrderServices {
 	public ApprovalOrder findByApprovalId(int approvalId) {
 		return approvalOrderRepository.findByApprovalId(approvalId);		
 	}
-	
-		
-	
+			
 	/**
 	 * Definicion de metodo para buscar todas las ordenes
 	 * @params
@@ -61,7 +57,8 @@ public class ApprovalOrderServices {
 		return approvalOrderRepository.findAll();
 	}
 
-
-	
-	
+	public ApprovalOrder generateApproval(ApprovalOrder approvalOrder) {
+			approvalOrder.approvePurchase();
+			return this.approvalOrderRepository.update(approvalOrder);
+	}
 }

@@ -21,7 +21,7 @@ public class ApprovalOrderTest {
 		 
 		// approvalOrder.setStatusOrden(orderPurchase);		 
 		 
-		 Assert.assertNotNull("ok", approvalOrder.getApprovalDate());		  
+		 Assert.assertNotNull( approvalOrder.getApprovalDate());		  
 		
 	}
 	

@@ -1,7 +1,5 @@
 package co.com.ceiba.oc.infraestructura.repositorio.resource.approval;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -25,23 +23,21 @@ import io.swagger.annotations.ApiResponses;
 public class CreateRegisterApprovalController {
 
 	private final CreateApprovalHandler createApprovalHandler;
-	 @Autowired
+
+	@Autowired
 	public CreateRegisterApprovalController(CreateApprovalHandler createApprovalHandler) {
 		this.createApprovalHandler = createApprovalHandler;
 	}
-	
-	
-	 @PostMapping
-	 @Transactional
-		@ApiOperation(value = "Crear registro aprobacion", notes = "Servicio para crear registro aprobacion")
-		@ApiResponses(value = { @ApiResponse(code = 201, message = "registro de aprobacion creado correctamente"),
-				@ApiResponse(code = 400, message = "Solicitud Invalida") })
-		public ResponseEntity<ApprovalOrder> createPurchaseOrder(@RequestBody ApprovalOrder approvalOrder) {
-									
-		 	createApprovalHandler.execute(approvalOrder);								
-			return new ResponseEntity<>(HttpStatus.CREATED);
-			
-		}
-	
+
+	@PostMapping
+	@ApiOperation(value = "Crear registro aprobacion", notes = "Servicio para crear registro aprobacion")
+	@ApiResponses(value = { @ApiResponse(code = 201, message = "registro de aprobacion creado correctamente"),
+			@ApiResponse(code = 400, message = "Solicitud Invalida") })
+	public ResponseEntity<ApprovalOrder> createPurchaseOrder(@RequestBody ApprovalOrder approvalOrder) {
+
+		createApprovalHandler.execute(approvalOrder);
+		return new ResponseEntity<>(HttpStatus.CREATED);
+
+	}
 
 }

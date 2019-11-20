@@ -9,6 +9,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import co.com.ceiba.oc.dominio.model.ApprovalOrder;
 import co.com.ceiba.oc.dominio.repositorio.ApprovalOrderRepositoy;
+import co.com.ceiba.oc.dominio.servicio.ApprovalOrderServices;
 
 public class ApprovalOrderServicesTest {
 	
@@ -26,10 +27,10 @@ public class ApprovalOrderServicesTest {
 	@Test
 	public void testCreateApprovalOrderService() {
 		//Arrange
-		ApprovalOrder approvalOrder=new ApprovalOrder();
+		ApprovalOrder approvalOrder=new ApprovalOrder(1);
 		approvalOrder.setApprovalId(1);
 		
-		ApprovalOrder approvalOrder1=new ApprovalOrder();
+		ApprovalOrder approvalOrder1=new ApprovalOrder(2);
 		approvalOrder1.setApprovalId(2);
 				
 		Mockito.when(approvalOrderRepositoy.save(Mockito.any(ApprovalOrder.class))).thenReturn(approvalOrder1);		
@@ -44,10 +45,10 @@ public class ApprovalOrderServicesTest {
 	@Test
 	public void testUpdateApprovalOrderService() {
 		//Arrange
-		ApprovalOrder approvalOrder=new ApprovalOrder();
+		ApprovalOrder approvalOrder=new ApprovalOrder(1);
 		approvalOrder.setApprovalId(1);
 		
-		ApprovalOrder approvalOrder1=new ApprovalOrder();
+		ApprovalOrder approvalOrder1=new ApprovalOrder(2);
 		approvalOrder1.setApprovalId(2);
 				
 		Mockito.when(approvalOrderRepositoy.save(Mockito.any(ApprovalOrder.class))).thenReturn(approvalOrder1);		

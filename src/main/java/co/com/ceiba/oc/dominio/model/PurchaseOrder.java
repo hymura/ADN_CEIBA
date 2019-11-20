@@ -29,9 +29,6 @@ public class PurchaseOrder {
 		 
 	}
 	
-	public PurchaseOrder() {
-		super();
-	}
 
 	public PurchaseOrder(int poHeaderId) {	
 		this.poHeaderId = poHeaderId;
@@ -94,10 +91,13 @@ public class PurchaseOrder {
 	public String getStatus() {
 		return this.status;
 	}
+	
 	public void setStatus(String status) {
 				this.status=status;
 	}
-	  
-	
 
+	public void approve() {
+		this.status = ESTADO_APROBADO;
+		this.approvedDate = new Date();
+	}
 }

@@ -8,19 +8,17 @@ import co.com.ceiba.oc.dominio.model.ApprovalOrder;
 import co.com.ceiba.oc.dominio.servicio.ApprovalOrderServices;
 
 @Component
-public class UpdateApprovalHandler {
+public class GenerateApprovalOrRejection {
 
 	private final ApprovalOrderServices approvalOrderServices;
 
 	@Autowired
-	public UpdateApprovalHandler(ApprovalOrderServices approvalOrderServices) {
-
+	public GenerateApprovalOrRejection(ApprovalOrderServices approvalOrderServices) {
 		this.approvalOrderServices = approvalOrderServices;
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	public ApprovalOrder execute(ApprovalOrder approvalOrder) {
-		return approvalOrderServices.update(approvalOrder);
+		return approvalOrderServices.generateApproval(approvalOrder);
 	}
-
 }

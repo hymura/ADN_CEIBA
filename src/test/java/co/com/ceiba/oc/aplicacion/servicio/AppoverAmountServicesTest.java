@@ -8,9 +8,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import co.com.ceiba.oc.aplicacion.servicio.AppoverAmountServices;
 import co.com.ceiba.oc.dominio.model.ApproverAmount;
 import co.com.ceiba.oc.dominio.repositorio.ApproverAmountRepository;
+import co.com.ceiba.oc.dominio.servicio.AppoverAmountServices;
 
 public class AppoverAmountServicesTest {
 

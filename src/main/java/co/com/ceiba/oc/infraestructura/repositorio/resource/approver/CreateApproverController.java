@@ -17,32 +17,27 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
-
 @RestController
 @RequestMapping("/api/approver")
-@Api(tags="Approver")
+@Api(tags = "Approver")
 public class CreateApproverController {
 	private final CreateApproverHandler createApproverHandler;
 
- @Autowired
+	@Autowired
 	public CreateApproverController(CreateApproverHandler createApproverHandler) {
-			this.createApproverHandler = createApproverHandler;
+		this.createApproverHandler = createApproverHandler;
 	}
-	
-	
-	 @PostMapping
-	 @Transactional
-	 @ApiOperation(value = "Crear Aprobador", notes = "Servicio para crear un Aprobador")
-		@ApiResponses(value = { @ApiResponse(code = 201, message = "Aprobador creado correctamente"),
-				@ApiResponse(code = 400, message = "Solicitud Invalida") })
-		public ResponseEntity<ApproverAmount> createPurchaseOrder(@RequestBody ApproverAmount approver) {
-							
-		 	createApproverHandler.execute(approver);								
-			return new ResponseEntity<>(HttpStatus.CREATED);
-			
-		}
 
-	
-	
+	@PostMapping
+	@Transactional
+	@ApiOperation(value = "Crear Aprobador", notes = "Servicio para crear un Aprobador")
+	@ApiResponses(value = { @ApiResponse(code = 201, message = "Aprobador creado correctamente"),
+			@ApiResponse(code = 400, message = "Solicitud Invalida") })
+	public ResponseEntity<ApproverAmount> createPurchaseOrder(@RequestBody ApproverAmount approver) {
+
+		createApproverHandler.execute(approver);
+		return new ResponseEntity<>(HttpStatus.CREATED);
+
+	}
 
 }
