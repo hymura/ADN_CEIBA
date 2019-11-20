@@ -2,12 +2,13 @@ package co.com.ceiba.oc.infraestructura.repositorio.entity;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,17 +31,21 @@ import lombok.NoArgsConstructor;
 public class ApprovalOrderEntity {
 
 	@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int approvalId;
+	@Temporal(TemporalType.DATE)
 	private Date approvalDate;
 	private int appovalAmount;
 	private String motivo;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "PO_HEADER_ID", updatable = true)
-	private PurchaseOrderEntity purchaseOrderEntity;
-
 	@ManyToOne
-	@JoinColumn(name = "USER_ID")
+	  @JoinColumn(name="PO_HEADER_ID")	  
+	private PurchaseOrderEntity purchaseOrderEntity;
+	
+	@ManyToOne
+	  @JoinColumn(name="USER_ID")	  
 	private AppoverAmountEntity appoverAmountEntity;
 
+
 }
+

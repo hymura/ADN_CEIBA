@@ -1,9 +1,11 @@
 package co.com.ceiba.oc.infraestructura.repositorio.entity;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -30,10 +32,11 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "po_header")
+@Table(name = "PO_HEADER")
 public class PurchaseOrderEntity {
 
 	@Id	
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="PO_HEADER_ID")
 	private int poHeaderId;
 	private String orderNumber;
@@ -42,10 +45,10 @@ public class PurchaseOrderEntity {
 	private int buyerId;
 	@Temporal(TemporalType.DATE)
 	private Date approvedDate;
-	private Integer totalAmount;
+	private int totalAmount;
 	private String status;
 	
 	@OneToMany(fetch=FetchType.LAZY)
-	@JoinColumn(name="PO_HEADER_ID")
+	 @JoinColumn(name="PO_HEADER_ID")
 	private Set<ApprovalOrderEntity> approvalOrderEntity;
 }

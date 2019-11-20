@@ -5,7 +5,6 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -26,6 +25,7 @@ import lombok.NoArgsConstructor;
 public class AppoverAmountEntity {
 
 	@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "USER_ID")
 	private int userId;
 	@Column(name = "user_name")
@@ -37,8 +37,8 @@ public class AppoverAmountEntity {
 	@Column(name = "status")
 	private String status;
 
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "USER_ID")
+	@OneToMany(fetch=FetchType.LAZY)
+	 @JoinColumn(name="USER_ID")
 	private Set<ApprovalOrderEntity> approvalOrderEntity;
 
 }

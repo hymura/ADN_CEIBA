@@ -42,7 +42,7 @@ public class ExecuteApprovalController {
 		if (approvalOrder1 == null) {
 			return new ResponseEntity<ApprovalOrder>(HttpStatus.NOT_FOUND);
 		}
-		ApprovalOrder approval = this.generateApprovalOrRejection.execute(approvalOrder1);
-		return new ResponseEntity<>(approval, HttpStatus.OK);
+		//ApprovalOrder approval = this.generateApprovalOrRejection.execute(approvalOrder1);
+		return new ResponseEntity<ApprovalOrder>(this.generateApprovalOrRejection.execute(approvalOrder1), HttpStatus.OK);
 	}
 }

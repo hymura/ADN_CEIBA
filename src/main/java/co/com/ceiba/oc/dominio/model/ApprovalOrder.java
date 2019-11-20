@@ -28,21 +28,25 @@ public class ApprovalOrder {
 		this.motivo = motivo;
 	}
 
-	public ApprovalOrder(int approvalId, int appovalAmount, PurchaseOrder purchaseOder, ApproverAmount approverAmount) {
+/*	public ApprovalOrder(int approvalId, int appovalAmount, PurchaseOrder purchaseOder, ApproverAmount approverAmount) {
 
 		this.approvalId = requireNonNull(approvalId);
 		this.appovalAmount = requireNonNull(appovalAmount);
 		this.purchaseOrder = requireNonNull(purchaseOder);
 		this.approverAmount = requireNonNull(approverAmount);
 	}
-
-	public ApprovalOrder(int approvalId, PurchaseOrder purchaseOder, Date approvalDate,String motivo) {
+*/
+	
+	/*
+	public ApprovalOrder(int approvalId, PurchaseOrder purchaseOder, Date approvalDate,String motivo, int appovalAmount) {
 		this.approvalId = requireNonNull(approvalId);
 		this.purchaseOrder = requireNonNull(purchaseOder);
 		this.approvalDate = approvalDate;
 		this.motivo=motivo;
+		this.appovalAmount = requireNonNull(appovalAmount);
+				
 	}
-
+*/
 	
 	public ApprovalOrder(int approvalId) {
 		
@@ -61,7 +65,9 @@ public class ApprovalOrder {
 
 	public void approvePurchase() {
 		setApprovalDate();
-		purchaseOrder.approve();
+		
+		//this.getPurchaseOder().setApprovedDate(new Date());
+		this.purchaseOrder.approve();
 	}
 
 	public void executeRejectPurchase(String motivo) {

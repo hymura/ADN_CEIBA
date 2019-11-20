@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import co.com.ceiba.oc.dominio.model.ApprovalOrder;
 import co.com.ceiba.oc.dominio.repositorio.ApprovalOrderRepositoy;
 import co.com.ceiba.oc.infraestructura.repositorio.ApprovalOrderRepositoryBd;
+import co.com.ceiba.oc.infraestructura.repositorio.PurchaseOrderRepositoryBd;
 import co.com.ceiba.oc.infraestructura.repositorio.entity.ApprovalOrderEntity;
 import co.com.ceiba.oc.infraestructura.repositorio.entity.factory.ApprovalOrderFactory;
 
@@ -15,11 +16,13 @@ import co.com.ceiba.oc.infraestructura.repositorio.entity.factory.ApprovalOrderF
 @Repository
 public class ApprovalOrderJpaAdapter implements ApprovalOrderRepositoy  {
 	private ApprovalOrderRepositoryBd approvalOrderRepositoyBd;
+	private PurchaseOrderRepositoryBd purchaseOrderRepositoryBd;
 	
 
 	@Autowired
-	public ApprovalOrderJpaAdapter(ApprovalOrderRepositoryBd approvalOrderRepositoyBd) {
-		
+	public ApprovalOrderJpaAdapter(ApprovalOrderRepositoryBd approvalOrderRepositoyBd,
+								   PurchaseOrderRepositoryBd purchaseOrderRepositoryBd) {
+		this.purchaseOrderRepositoryBd = purchaseOrderRepositoryBd;
 		this.approvalOrderRepositoyBd = approvalOrderRepositoyBd;
 	
 	}
@@ -55,8 +58,11 @@ public class ApprovalOrderJpaAdapter implements ApprovalOrderRepositoy  {
 
 	@Override
 	public ApprovalOrder update(ApprovalOrder approvalOrder) {
-
-		ApprovalOrderEntity entity = ApprovalOrderFactory.toEntity(approvalOrder);		
-        return ApprovalOrderFactory.toModel(approvalOrderRepositoyBd.saveAndFlush(entity));
+		ApprovalOrderEntity entity = ApprovalOrderFactory.toEntity(approvalOrder);
+		/*
+		purchaseOrderRepositoryBd.findById(entity.getPurchaseOrderEntity().getPoHeaderId())
+				.ifPresent(entity::setPurchaseOrderEntity);
+		*/		
+        return ApprovalOrderFactory.toModel(approvalOrderRepositoyBd.save(entity));
 	}
 }
