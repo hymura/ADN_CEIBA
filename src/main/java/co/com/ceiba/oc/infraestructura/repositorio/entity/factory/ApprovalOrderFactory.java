@@ -23,7 +23,7 @@ public class ApprovalOrderFactory {
                 .approvalId(approvalOrder.getApprovalId())
                 .approvalDate(approvalOrder.getApprovalDate())
                 .appovalAmount(approvalOrder.getAppovalAmount())
-                .purchaseOrderEntity(PurchaseOrderFactory.toEntity(approvalOrder.getPurchaseOder()))
+                .purchaseOrderEntity(PurchaseOrderFactory.toEntity(approvalOrder.getPurchaseOrder()))
                 .appoverAmountEntity(ApproverFactory.toEntity(approvalOrder.getApproverAmount()))
                 .motivo(approvalOrder.getMotivo())
                 .build();

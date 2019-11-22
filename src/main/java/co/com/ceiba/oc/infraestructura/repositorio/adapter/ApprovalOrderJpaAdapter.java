@@ -61,7 +61,7 @@ public class ApprovalOrderJpaAdapter implements ApprovalOrderRepositoy  {
 	@Override
 	public ApprovalOrder update(ApprovalOrder approvalOrder) {
 		ApprovalOrderEntity entity = ApprovalOrderFactory.toEntity(approvalOrder);
-		PurchaseOrderEntity entity2= PurchaseOrderFactory.toEntity(approvalOrder.getPurchaseOder());
+		PurchaseOrderEntity entity2= PurchaseOrderFactory.toEntity(approvalOrder.getPurchaseOrder());
 		PurchaseOrderFactory.toModel(purchaseOrderRepositoryBd.saveAndFlush(entity2));
 				
         return ApprovalOrderFactory.toModel(approvalOrderRepositoyBd.saveAndFlush(entity));

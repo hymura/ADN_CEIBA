@@ -2,6 +2,8 @@ package co.com.ceiba.oc.infraestructura.repositorio.resource.purchase;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,6 +48,7 @@ public class CreatePurchaseOrderController {
 	}
 
 	@PostMapping
+	@Transactional
 	@ApiOperation(value = "Crear OC", notes = "Servicio para crear una OC")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "OC creado correctamente"),
 			@ApiResponse(code = 400, message = "Solicitud Invalda") })

@@ -1,11 +1,12 @@
 package co.com.ceiba.oc.dominio.model;
 
 
+
 import java.util.Date;
 
 
 public class PurchaseOrder {
-	
+
 	private int poHeaderId;
 	private String orderNumber;
 	private  Date creationDate;
@@ -16,8 +17,9 @@ public class PurchaseOrder {
 	private static final String ESTADO_PENDIENTE="REQ_APPROVAL";
 	private static final String ESTADO_APROBADO="APPROVED";
 	private static final String ESTADO_RECAHAZADO="REJECT";
-		
 	
+	public PurchaseOrder() { }
+
 	public PurchaseOrder(int poHeaderId, String orderNumber, Date creationDate, int buyerId,
 			int totalAmount, String status) {
 	

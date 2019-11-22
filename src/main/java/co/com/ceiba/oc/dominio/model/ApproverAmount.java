@@ -1,4 +1,5 @@
 package co.com.ceiba.oc.dominio.model;
+import java.io.Serializable;
 
 public class ApproverAmount {
 	private int userId;
@@ -8,9 +9,7 @@ public class ApproverAmount {
 	private String status;
 	private static final String ESTADO_ACTIVO = "ACTIVO";
 
-	public ApproverAmount() {
-
-	}
+	public ApproverAmount() {}
 
 	public ApproverAmount(int userId, String userName, int appovalAmountInit, int appovalAmountEnd, String status) {
 		this.userId = userId;

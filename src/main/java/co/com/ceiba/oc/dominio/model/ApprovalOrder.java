@@ -16,13 +16,18 @@ public class ApprovalOrder {
 	private PurchaseOrder purchaseOrder;
 	private ApproverAmount approverAmount;
 	private static final int MONTO_MINIMO = 20000;
+	private static final String ESTADO_RECHAZADO="RECHAZADO";
+	
+	
 
-	public ApprovalOrder(int approvalId, Date approvalDate, int appovalAmount, PurchaseOrder purchaseOder,
+	public ApprovalOrder() {}
+
+	public ApprovalOrder(int approvalId, Date approvalDate, int appovalAmount, PurchaseOrder purchaseOrder,
 			ApproverAmount approverAmount, String motivo) {
 		this.approvalId = requireNonNull(approvalId);
 		this.approvalDate = approvalDate;
 		this.appovalAmount = requireNonNull(appovalAmount);
-		this.purchaseOrder = requireNonNull(purchaseOder);
+		this.purchaseOrder = requireNonNull(purchaseOrder);
 		this.approverAmount = requireNonNull(approverAmount);
 		this.motivo = motivo;
 	}
@@ -55,7 +60,7 @@ public class ApprovalOrder {
 
 	public void rejectPurchase() {
 
-		setMotivo("rechazado");
+		setMotivo(ESTADO_RECHAZADO);
 		this.purchaseOrder.reject();
 
 	}
@@ -98,7 +103,7 @@ public class ApprovalOrder {
 		this.appovalAmount = appovalAmount;
 	}
 
-	public PurchaseOrder getPurchaseOder() {
+	public PurchaseOrder getPurchaseOrder() {
 		return purchaseOrder;
 	}
 
