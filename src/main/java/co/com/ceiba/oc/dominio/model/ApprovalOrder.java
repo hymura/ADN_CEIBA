@@ -28,25 +28,7 @@ public class ApprovalOrder {
 		this.motivo = motivo;
 	}
 
-/*	public ApprovalOrder(int approvalId, int appovalAmount, PurchaseOrder purchaseOder, ApproverAmount approverAmount) {
 
-		this.approvalId = requireNonNull(approvalId);
-		this.appovalAmount = requireNonNull(appovalAmount);
-		this.purchaseOrder = requireNonNull(purchaseOder);
-		this.approverAmount = requireNonNull(approverAmount);
-	}
-*/
-	
-	/*
-	public ApprovalOrder(int approvalId, PurchaseOrder purchaseOder, Date approvalDate,String motivo, int appovalAmount) {
-		this.approvalId = requireNonNull(approvalId);
-		this.purchaseOrder = requireNonNull(purchaseOder);
-		this.approvalDate = approvalDate;
-		this.motivo=motivo;
-		this.appovalAmount = requireNonNull(appovalAmount);
-				
-	}
-*/
 	
 	public ApprovalOrder(int approvalId) {
 		
@@ -54,27 +36,26 @@ public class ApprovalOrder {
 		// TODO Auto-generated constructor stub
 	}
 
-	private boolean validaMontoAprobador(int totalOrden) {
+	public boolean validaMontoAprobador(int totalOrden) {
 
-		if ((totalOrden >= this.approverAmount.getAppovalAmountInit()
-				&& totalOrden <= this.approverAmount.getAppovalAmountEnd())) {
+		if ((totalOrden >= this.approverAmount.getAppovalAmountInit() && totalOrden <= this.approverAmount.getAppovalAmountEnd())) {
 			return true;
 		}
 		return false;
 	}
 
 	public void approvePurchase() {
-		setApprovalDate();
-		
+		setApprovalDate();		
 		//this.getPurchaseOder().setApprovedDate(new Date());
 		this.purchaseOrder.approve();
 	}
 
-	public void executeRejectPurchase(String motivo) {
+	public void rejectPurchase(String motivo) {
 		this.approvalDate = null;
-		this.getPurchaseOder().setStatus(ESTADO_RECHAZDO);
-		//setStatusOrden(this.purchaseOder, ESTADO_RECHAZDO);
 		setMotivo(motivo);
+		this.getPurchaseOder().setStatus(ESTADO_RECHAZDO);
+		this.purchaseOrder.reject();
+		
 	}
 
 	public int getApprovalId() {
@@ -119,17 +100,11 @@ public class ApprovalOrder {
 		return purchaseOrder;
 	}
 
-	public void setPurchaseOder(PurchaseOrder purchaseOrder) {		
-		this.purchaseOrder = purchaseOrder;
-	}
-	
+		
 	public ApproverAmount getApproverAmount() {
 		return approverAmount;
 	}
 
-	public void setApproverAmount(ApproverAmount approverAmount) {
-		this.approverAmount = approverAmount;
-	}
 
 	public String getMotivo() {
 		return motivo;

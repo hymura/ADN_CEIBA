@@ -27,26 +27,25 @@ public class ExecuteApprovalController {
 
 	@Autowired
 	public ExecuteApprovalController(GenerateApprovalOrRejection generateApprovalOrRejection,
-			FindByIdApprovalHandler findByIdApprovalHandler,UpdatePurchaseHandler updatePurchaseHandler) {
+			FindByIdApprovalHandler findByIdApprovalHandler, UpdatePurchaseHandler updatePurchaseHandler) {
 		this.generateApprovalOrRejection = generateApprovalOrRejection;
-		this.findByIdApprovalHandler = findByIdApprovalHandler;		
+		this.findByIdApprovalHandler = findByIdApprovalHandler;
 	}
 
-	@PutMapping("/{approvalId}/{accion}/{motivo}")
+	@PutMapping("/{approvalId}/{action}")
 	@ApiOperation(value = "Actualizar OC", notes = "Servicio para aprobar orden compra")
-	@ApiResponses(value = { 
-			@ApiResponse(code = 201, message = "Aprobacion ejecutada correctamente"),
+	@ApiResponses(value = { @ApiResponse(code = 201, message = "Aprobacion ejecutada correctamente"),
 			@ApiResponse(code = 404, message = "No hay ninguna aprobacion pendiente") })
-	public ResponseEntity<ApprovalOrder> updateApproval(@PathVariable("approvalId") int approvalId, String accion,
+	public ResponseEntity<ApprovalOrder> updateApproval(@PathVariable("approvalId") int approvalId, String action,
 			String motivo) {
 		ApprovalOrder approvalOrder1 = this.findByIdApprovalHandler.execute(approvalId);
-		
-	  
+
 		if (approvalOrder1 == null) {
 			return new ResponseEntity<ApprovalOrder>(HttpStatus.NOT_FOUND);
 		}
 
-				
-		return new ResponseEntity<ApprovalOrder>(this.generateApprovalOrRejection.execute(approvalOrder1), HttpStatus.OK);
+		
+			return new ResponseEntity<ApprovalOrder>(this.generateApprovalOrRejection.execute(approvalOrder1, action),
+					HttpStatus.OK);
 	}
 }

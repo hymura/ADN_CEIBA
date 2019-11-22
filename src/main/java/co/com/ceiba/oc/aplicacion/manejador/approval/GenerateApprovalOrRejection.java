@@ -1,30 +1,45 @@
 package co.com.ceiba.oc.aplicacion.manejador.approval;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.com.ceiba.oc.dominio.model.ApprovalOrder;
 import co.com.ceiba.oc.dominio.servicio.ApprovalOrderServices;
-import co.com.ceiba.oc.dominio.servicio.PurchaseOrderService;
 
 @Component
 public class GenerateApprovalOrRejection {
 
 	private final ApprovalOrderServices approvalOrderServices;
-	private final PurchaseOrderService purchaseOrderService;
 
 	@Autowired
-	public GenerateApprovalOrRejection(ApprovalOrderServices approvalOrderServices,
-									   PurchaseOrderService purchaseOrderService) {
+	public GenerateApprovalOrRejection(ApprovalOrderServices approvalOrderServices) {
 		this.approvalOrderServices = approvalOrderServices;
-		this.purchaseOrderService = purchaseOrderService;
+
 	}
 
 	@Transactional
-	public ApprovalOrder execute(ApprovalOrder approvalOrder) {
-		//PurchaseOrder purchaseOrder = purchaseOrderService.update(approvalOrder.getPurchaseOder());
-		//approvalOrder.setPurchaseOder(approvalOrder.getPurchaseOder());
-		return approvalOrderServices.generateApproval(approvalOrder);
+	public ApprovalOrder execute(ApprovalOrder approvalOrder, String action) {
+		// PurchaseOrder purchaseOrder =
+		// purchaseOrderService.update(approvalOrder.getPurchaseOder());
+		// approvalOrder.setPurchaseOder(approvalOrder.getPurchaseOder());
+		return approvalOrderServices.generateApproval(approvalOrder, action);
 	}
+
+	@Transactional
+	public List<ApprovalOrder> executeApproval(List<ApprovalOrder> approvalOrderList, String action) {
+
+		List<ApprovalOrder> approvalList = new ArrayList<>();
+
+		for (ApprovalOrder approvalOrder : approvalOrderList) {
+
+			approvalList.add(approvalOrderServices.generateApproval(approvalOrder, action));
+		}
+		return approvalList;
+
+	}
+
 }

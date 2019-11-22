@@ -1,7 +1,6 @@
 package co.com.ceiba.oc.infraestructura.repositorio.resource.approval;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +15,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
-@Configuration
 @RestController
 @RequestMapping("/api/aprobacion")
 @Api(tags = "aprobacion")

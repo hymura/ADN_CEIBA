@@ -15,6 +15,7 @@ public class PurchaseOrder {
 	private String status;
 	private static final String ESTADO_PENDIENTE="REQ_APPROVAL";
 	private static final String ESTADO_APROBADO="APPROVED";
+	private static final String ESTADO_RECAHAZADO="REJECT";
 		
 	
 	public PurchaseOrder(int poHeaderId, String orderNumber, Date creationDate, int buyerId,
@@ -55,6 +56,7 @@ public class PurchaseOrder {
 	public Date getCreationDate() {
 		return creationDate;
 	}
+	
 	public void setCreationDate() {
 		this.creationDate = new Date();
 	}
@@ -68,13 +70,13 @@ public class PurchaseOrder {
 		return approvedDate;
 	}
 	
-	public void setApprovedDate(Date approvedDate) {
+	/*public void setApprovedDate(Date approvedDate) {
 		
 		if(this.status.equals(ESTADO_APROBADO)) {
 			this.approvedDate = approvedDate;
 		}
 				
-	}
+	}*/
 	
 	public int getTotalAmount() {
 		return totalAmount;
@@ -99,5 +101,10 @@ public class PurchaseOrder {
 	public void approve() {
 		this.status = ESTADO_APROBADO;
 		this.approvedDate = new Date();
+	}
+
+	public void reject() {
+		this.status = ESTADO_RECAHAZADO;
+		
 	}
 }

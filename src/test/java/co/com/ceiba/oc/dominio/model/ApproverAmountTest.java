@@ -4,6 +4,7 @@ package co.com.ceiba.oc.dominio.model;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class ApproverAmountTest {
 
@@ -24,7 +25,8 @@ public class ApproverAmountTest {
 
 		  Assert.assertEquals(1, approver.getUserId());
 		  Assert.assertEquals("ALEX.GOMEZ", approver.getUserName());
-
+		  Assert.assertEquals(20000, approver.getAppovalAmountInit());
+		  Assert.assertEquals(50000, approver.getAppovalAmountEnd());
 	}
 	
 	@Test		
@@ -32,15 +34,11 @@ public class ApproverAmountTest {
 		
 		//Arrange
 		int appovalAmountInit = 20000;
-		ApproverAmount approver =new ApproverAmount();
-		
+		ApproverAmount approver =new ApproverAmount();		
 		//act
-		approver.setAppovalAmountInit(appovalAmountInit);
-		
+		approver.setAppovalAmountInit(appovalAmountInit);		
 		//Assert
 		 Assert.assertTrue(approver.getAppovalAmountInit()>0);
-		
-		
 	}
 	
 	
@@ -57,11 +55,25 @@ public class ApproverAmountTest {
 		approver.setAppovalAmountEnd(appovalAmountEnd);
 		
 		//Assert		
-		 Assert.assertTrue(approver.getAppovalAmountEnd()>approver.getAppovalAmountInit());
-		
+		 Assert.assertTrue(approver.getAppovalAmountEnd()>approver.getAppovalAmountInit());		
 	}
 	
-
+	public ExpectedException exception = ExpectedException.none();
+	@Test(expected = IllegalArgumentException.class)
+	public void ValidaMontoFinalsifalla() {
+				
+				ApproverAmount approver =new ApproverAmount(1,"Alex.gomez",5000,10000);							
+				approver.setAppovalAmountEnd(2000);
+				
+	}
+			
+	@Test(expected = IllegalArgumentException.class)
+	public void ValidaMontoInicialsifalla() {
+				
+				ApproverAmount approver =new ApproverAmount(1,"Alex.gomez",2000,10000);							
+				approver.setAppovalAmountInit(0);
+				
+	}	
 
 @Test		
 public void TestValidaEstadoAprobador() {
@@ -73,7 +85,6 @@ public void TestValidaEstadoAprobador() {
 	 Assert.assertEquals("ACTIVO",approver.getStatus());	
 	
 }
-
 
 @Test		
 public void TestValidaEstadoiInactivoAprobador() {
@@ -87,7 +98,6 @@ public void TestValidaEstadoiInactivoAprobador() {
 	 Assert.assertEquals("INACTIVO",approver.getStatus());	
 	
 }
-
 
 
 }
