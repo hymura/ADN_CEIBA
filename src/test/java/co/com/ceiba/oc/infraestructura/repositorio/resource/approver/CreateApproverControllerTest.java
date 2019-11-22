@@ -1,6 +1,5 @@
 package co.com.ceiba.oc.infraestructura.repositorio.resource.approver;
 
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -22,32 +21,29 @@ import co.com.ceiba.oc.aplicacion.manejador.approver.FindAllApproverHandler;
 @RunWith(SpringRunner.class)
 @WebMvcTest(CreateApproverController.class)
 public class CreateApproverControllerTest {
-	
-	 @MockBean
-	 private FindAllApproverHandler findAllApproverHandler;
-	 @MockBean
-	 private CreateApproverHandler createApproverHandler;
-	 
-	  
-	  @Autowired
-	    private WebApplicationContext wac;
 
-	    private MockMvc mvc;
+	@MockBean
+	private FindAllApproverHandler findAllApproverHandler;
+	@MockBean
+	private CreateApproverHandler createApproverHandler;
 
-	    @Before
-	    public void setup() {
-	        this.mvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
-	    }
-	    
-	    @Test
-	    public void generaterGoodRequest() throws Exception {
-	        //Arrange	      	    
-	        //Act	  	        
-	        ResultActions result = mvc.perform(get("/api/approver"));
-	      //Assert
-	      result.andExpect(status().is2xxSuccessful());
-	    }
-	    
+	@Autowired
+	private WebApplicationContext wac;
 
-	
+	private MockMvc mvc;
+
+	@Before
+	public void setup() {
+		this.mvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+	}
+
+	@Test
+	public void generaterGoodRequest() throws Exception {
+		// Arrange
+		// Act
+		ResultActions result = mvc.perform(get("/api/approver"));
+		// Assert
+		result.andExpect(status().is2xxSuccessful());
+	}
+
 }

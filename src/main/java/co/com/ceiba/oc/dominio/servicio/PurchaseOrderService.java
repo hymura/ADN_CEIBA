@@ -63,13 +63,7 @@ public class PurchaseOrderService {
 		return this.purchaseOrderRepository.findByOrderNumber(orderNumber);
 	}
 	
-/*	
-	public PurchaseOrder findByIdOc(int PoheaderId) {
-		return this.purchaseOrderRepository.findByIdOc(PoheaderId);
-		
-	}
 	
-*/	
 	/**
 	 * Metodo para consultar todas las OC
 	 * @return
@@ -77,8 +71,6 @@ public class PurchaseOrderService {
 	public List<PurchaseOrder> findAll(){
 		return this.purchaseOrderRepository.findAll();
 	}
-	
-	
-	
+			
 
 }

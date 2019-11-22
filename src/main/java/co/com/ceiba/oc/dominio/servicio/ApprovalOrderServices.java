@@ -68,21 +68,5 @@ public class ApprovalOrderServices {
 		return this.approvalOrderRepository.update(approvalOrder);
 	}
 
-	/*
-	 * public List<ApprovalOrder> generateApprovalList(List<ApprovalOrder>
-	 * approvalOrder) {
-	 * 
-	 * List<ApprovalOrder> listapprovalOrder=new ArrayList<>(); for(ApprovalOrder a:
-	 * approvalOrder) {
-	 * 
-	 * a.approvePurchase(); listapprovalOrder.add(new
-	 * ApprovalOrder(a.getApprovalId(), a.getApprovalDate(),
-	 * a.getAppovalAmount(),a.getPurchaseOder(),a.getApproverAmount(),
-	 * a.getMotivo())); }
-	 * 
-	 * return this.approvalOrderRepository.updateList(listapprovalOrder);
-	 * 
-	 * }
-	 */
 
 }

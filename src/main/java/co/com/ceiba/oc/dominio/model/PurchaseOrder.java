@@ -69,15 +69,7 @@ public class PurchaseOrder {
 	public Date getApprovedDate() {		
 		return approvedDate;
 	}
-	
-	/*public void setApprovedDate(Date approvedDate) {
-		
-		if(this.status.equals(ESTADO_APROBADO)) {
-			this.approvedDate = approvedDate;
-		}
-				
-	}*/
-	
+			
 	public int getTotalAmount() {
 		return totalAmount;
 	}

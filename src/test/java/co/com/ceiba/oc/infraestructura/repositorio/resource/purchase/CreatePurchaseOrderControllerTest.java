@@ -26,33 +26,32 @@ import co.com.ceiba.oc.aplicacion.manejador.purchase.UpdatePurchaseHandler;
 //@SpringBootTest(classes = FindAllPurchaseOrderController.class)
 public class CreatePurchaseOrderControllerTest {
 
-	 @MockBean
-	 private FindAllPurchaseOrderHandler findAllPurchaseOrderHandler;  
-	 @MockBean
-	 private CreatePurchaseHandler createPurchaseHandler;
-	 @MockBean
-	 private UpdatePurchaseHandler updatePurchaseHandler;
-	 @MockBean
-	 private FindByOrderHandler findByOrderHandler;
-	 
-	
-	@Autowired
-	    private WebApplicationContext wac;
-	   
-	    private MockMvc mvc;
+	@MockBean
+	private FindAllPurchaseOrderHandler findAllPurchaseOrderHandler;
+	@MockBean
+	private CreatePurchaseHandler createPurchaseHandler;
+	@MockBean
+	private UpdatePurchaseHandler updatePurchaseHandler;
+	@MockBean
+	private FindByOrderHandler findByOrderHandler;
 
-	    @Before
-	    public void setup() {
-	        this.mvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
-	    }
-	    
-	    @Test
-	    public void generaterGoodRequest() throws Exception {    	    
-	        //Act
-	    
-	        ResultActions result = mvc.perform(get("/api/Orden-Compra"));
-	      //Assert
-	      result.andExpect(status().is2xxSuccessful());
-	    }
-	    
+	@Autowired
+	private WebApplicationContext wac;
+
+	private MockMvc mvc;
+
+	@Before
+	public void setup() {
+		this.mvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+	}
+
+	@Test
+	public void generaterGoodRequest() throws Exception {
+		// Act
+
+		ResultActions result = mvc.perform(get("/api/Orden-Compra"));
+		// Assert
+		result.andExpect(status().is2xxSuccessful());
+	}
+
 }

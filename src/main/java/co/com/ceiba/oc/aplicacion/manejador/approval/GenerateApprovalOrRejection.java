@@ -23,9 +23,7 @@ public class GenerateApprovalOrRejection {
 
 	@Transactional
 	public ApprovalOrder execute(ApprovalOrder approvalOrder, String action) {
-		// PurchaseOrder purchaseOrder =
-		// purchaseOrderService.update(approvalOrder.getPurchaseOder());
-		// approvalOrder.setPurchaseOder(approvalOrder.getPurchaseOder());
+		
 		return approvalOrderServices.generateApproval(approvalOrder, action);
 	}
 

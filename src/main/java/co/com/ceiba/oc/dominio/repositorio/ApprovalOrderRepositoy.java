@@ -11,6 +11,5 @@ public interface ApprovalOrderRepositoy {
 	public ApprovalOrder findByApprovalId(int approvalId);	
 	public ApprovalOrder save (ApprovalOrder approvalOrder);
 	public ApprovalOrder create(ApprovalOrder approvalOrder);
-	public ApprovalOrder update(ApprovalOrder approvalOrder);
-	//public List<ApprovalOrder> updateList(List<ApprovalOrder> approvalOrder);
+	public ApprovalOrder update(ApprovalOrder approvalOrder);	
 }

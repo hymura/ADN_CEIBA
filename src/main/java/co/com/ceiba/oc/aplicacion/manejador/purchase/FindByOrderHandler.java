@@ -16,9 +16,7 @@ public class FindByOrderHandler {
 
 		this.purchaseOrderService = purchaseOrderService;
 	}
-
 	
-	//public List<PurchaseOrder> execute(PurchaseOrder purchaseOrder){
 public PurchaseOrder execute(String orderNumber ) {
 
     return purchaseOrderService.findByOrderNumber(orderNumber);

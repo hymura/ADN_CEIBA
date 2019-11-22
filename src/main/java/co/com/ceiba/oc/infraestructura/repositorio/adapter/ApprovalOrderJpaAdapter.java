@@ -67,28 +67,5 @@ public class ApprovalOrderJpaAdapter implements ApprovalOrderRepositoy  {
         return ApprovalOrderFactory.toModel(approvalOrderRepositoyBd.saveAndFlush(entity));
 	}
 
-/*	
-	@Override
-	public List<ApprovalOrder> updateList(List<ApprovalOrder> approvalOrder) {
-		// TODO Auto-generated method stub
-		
-		List<ApprovalOrderEntity> listApproval=new ArrayList<>();
-		List<PurchaseOrderEntity> listapurchase=new ArrayList<>();
-		
-		for(ApprovalOrder ApprovalOrderBd: approvalOrder) {
-			
-			//ApprovalOrderEntity entity = ApprovalOrderFactory.toEntity(ApprovalOrderBd);
-			//PurchaseOrderEntity entity2= PurchaseOrderFactory.toEntity(ApprovalOrderBd.getPurchaseOder());	
-			listApproval.add(ApprovalOrderFactory.toEntity(ApprovalOrderBd));
-			listapurchase.add(PurchaseOrderFactory.toEntity(ApprovalOrderBd.getPurchaseOder()));
-							
-		}
-		
-		PurchaseOrderFactory.toModel((PurchaseOrderEntity) purchaseOrderRepositoryBd.saveAll(listapurchase));
-		ApprovalOrderFactory.toModel((ApprovalOrderEntity) approvalOrderRepositoyBd.saveAll(listApproval));
-		
-		return approvalOrder;
-	}
-*/
 	
 }

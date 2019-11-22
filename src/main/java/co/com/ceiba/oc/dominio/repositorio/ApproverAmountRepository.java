@@ -2,11 +2,7 @@ package co.com.ceiba.oc.dominio.repositorio;
 
 
 import java.util.List;
-
-
 import co.com.ceiba.oc.dominio.model.ApproverAmount;
-
-
 
 public interface ApproverAmountRepository {
 	

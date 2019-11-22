@@ -18,34 +18,31 @@ import org.springframework.web.context.WebApplicationContext;
 import co.com.ceiba.oc.aplicacion.manejador.approval.CreateApprovalHandler;
 import co.com.ceiba.oc.aplicacion.manejador.approval.FindAllApprovalHandler;
 
-
 @RunWith(SpringRunner.class)
 @WebMvcTest(CreateRegisterApprovalController.class)
 public class CreateRegisterApprovalControllerTest {
 
-	  @MockBean
-	    private FindAllApprovalHandler findAllApprovalHandler;
-	  @MockBean  
-	   private  CreateApprovalHandler createApprovalHandler;
+	@MockBean
+	private FindAllApprovalHandler findAllApprovalHandler;
+	@MockBean
+	private CreateApprovalHandler createApprovalHandler;
 
-	    
-	    @Autowired
-	    private WebApplicationContext wac;
+	@Autowired
+	private WebApplicationContext wac;
 
-	    private MockMvc mvc;
+	private MockMvc mvc;
 
-	    @Before
-	    public void setup() {
-	        this.mvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
-	    }
-	    
-	    @Test
-	    public void generaterGoodRequest() throws Exception {
-	   
-	        
-	        ResultActions result = mvc.perform(get("/api/aprobacion"));
-	      //Assert
-	      result.andExpect(status().is2xxSuccessful());
-	    }
+	@Before
+	public void setup() {
+		this.mvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+	}
+
+	@Test
+	public void generaterGoodRequest() throws Exception {
+
+		ResultActions result = mvc.perform(get("/api/aprobacion"));
+		// Assert
+		result.andExpect(status().is2xxSuccessful());
+	}
 
 }
