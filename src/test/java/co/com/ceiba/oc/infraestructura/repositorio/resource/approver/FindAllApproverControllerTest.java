@@ -19,7 +19,7 @@ import org.springframework.web.context.WebApplicationContext;
 import co.com.ceiba.oc.aplicacion.manejador.approver.FindAllApproverHandler;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(FindAllApproverController.class)
+@WebMvcTest(CreateApproverController.class)
 public class FindAllApproverControllerTest {
 	
 	  @MockBean
