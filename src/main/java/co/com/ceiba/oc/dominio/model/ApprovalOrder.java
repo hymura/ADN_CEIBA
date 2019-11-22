@@ -16,8 +16,7 @@ public class ApprovalOrder {
 	private PurchaseOrder purchaseOrder;
 	private ApproverAmount approverAmount;
 	private static final int MONTO_MINIMO = 20000;
-	private static final String ESTADO_RECHAZDO = "REJECT";
-
+	
 	public ApprovalOrder(int approvalId, Date approvalDate, int appovalAmount, PurchaseOrder purchaseOder,
 			ApproverAmount approverAmount, String motivo) {
 		this.approvalId = requireNonNull(approvalId);
@@ -45,15 +44,21 @@ public class ApprovalOrder {
 	}
 
 	public void approvePurchase() {
-		setApprovalDate();		
-		//this.getPurchaseOder().setApprovedDate(new Date());
-		this.purchaseOrder.approve();
+		
+		if (this.approvalDate==null) {
+			setApprovalDate();		
+			//this.getPurchaseOder().setApprovedDate(new Date());
+			this.purchaseOrder.approve();
+		}else {
+			throw new IllegalArgumentException("La orden de compra"+this.purchaseOrder.getOrderNumber()+" se encuentra Aprobada");
+		}
 	}
 
-	public void rejectPurchase(String motivo) {
-		this.approvalDate = null;
-		setMotivo(motivo);
-		this.getPurchaseOder().setStatus(ESTADO_RECHAZDO);
+	public void rejectPurchase() {
+		//this.approvalDate = null;
+		setMotivo("rechazado");
+		
+		//this.getPurchaseOder().setStatus(ESTADO_RECHAZDO);
 		this.purchaseOrder.reject();
 		
 	}

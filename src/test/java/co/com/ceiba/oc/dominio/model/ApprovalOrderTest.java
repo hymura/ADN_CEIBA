@@ -1,25 +1,17 @@
 package co.com.ceiba.oc.dominio.model;
 
-import static java.util.Objects.requireNonNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.time.Clock;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 
 
 
@@ -88,7 +80,7 @@ public class ApprovalOrderTest {
 		PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",new Date(System.currentTimeMillis()),1,3000,"REQ_APPROVAL");
 		ApproverAmount approver =new ApproverAmount(1,"Alex.gomez",2000,5000);	
 		ApprovalOrder approvalOrder = new ApprovalOrder(1,null,3000,orderPurchase,approver,null);
-		approvalOrder.rejectPurchase("Rechazadoo");
+		approvalOrder.rejectPurchase();
 	
 		Assert.assertEquals("REJECT", orderPurchase.getStatus());
 	
@@ -99,7 +91,7 @@ public class ApprovalOrderTest {
 		PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",new Date(System.currentTimeMillis()),1,3000,"REQ_APPROVAL");
 		ApproverAmount approver =new ApproverAmount(1,"Alex.gomez",2000,5000);	
 		ApprovalOrder approvalOrder = new ApprovalOrder(1,null,3000,orderPurchase,approver,null);
-		approvalOrder.rejectPurchase("Rechazadoo");
+		approvalOrder.rejectPurchase();
 	
 		Assert.assertEquals("REJECT", orderPurchase.getStatus());
 	
@@ -121,6 +113,23 @@ public class ApprovalOrderTest {
 	        }
 		
     }
+	
+	
+	public void testPurchaseWhenApprovedException() {
+		 
+		 try {
+		PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",new Date(),1,3000,"APPROVED");
+		ApproverAmount approver =new ApproverAmount(1,"Alex.gomez",2000,5000);			
+		ApprovalOrder approvalOrder = new ApprovalOrder(1,new Date(),3000,orderPurchase,approver,null);		
+		approvalOrder.setApprovalDate();
+		Assert.assertEquals("APPROVED", orderPurchase.getStatus());
+	
+	    fail();
+	        } catch (IllegalArgumentException ex) {
+	            assertEquals("La orden de compra"+2505+" se encuentra Aprobada", ex.getMessage());
+	        }
+		
+   }
 
 	@Rule
     public ExpectedException exception = ExpectedException.none();

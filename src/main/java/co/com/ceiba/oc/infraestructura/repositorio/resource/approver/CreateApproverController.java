@@ -29,9 +29,10 @@ public class CreateApproverController {
 	private final FindAllApproverHandler findAllApproverHandler;
 
 	@Autowired
-	public CreateApproverController(CreateApproverHandler createApproverHandler,FindAllApproverHandler findAllApproverHandler) {
+	public CreateApproverController(CreateApproverHandler createApproverHandler,
+			FindAllApproverHandler findAllApproverHandler) {
 		this.createApproverHandler = createApproverHandler;
-		this.findAllApproverHandler=findAllApproverHandler;
+		this.findAllApproverHandler = findAllApproverHandler;
 	}
 
 	@PostMapping
@@ -45,16 +46,15 @@ public class CreateApproverController {
 		return new ResponseEntity<>(HttpStatus.CREATED);
 
 	}
-	
 
 	@GetMapping
 	@ApiOperation(value = "Listar Aprobadores", notes = "Servicio para traer los aprobadores")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "aprobadores no encontrados"),
 			@ApiResponse(code = 404, message = "OC no encontrados") })
-public  ResponseEntity<List<ApproverAmount>>  findAll(){
-		
+	public ResponseEntity<List<ApproverAmount>> findAll() {
+
 		return ResponseEntity.ok(this.findAllApproverHandler.execute());
-				
+
 	}
 
 }

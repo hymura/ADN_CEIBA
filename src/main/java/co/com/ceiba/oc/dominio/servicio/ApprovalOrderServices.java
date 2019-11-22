@@ -61,7 +61,8 @@ public class ApprovalOrderServices {
 		if (action.equals("APROBAR")) {
 			approvalOrder.approvePurchase();
 		}else {
-			approvalOrder.rejectPurchase(approvalOrder.getMotivo());
+			approvalOrder.rejectPurchase();
+			//approvalOrder.rejectPurchase(approvalOrder.getMotivo());
 		}
 
 		return this.approvalOrderRepository.update(approvalOrder);

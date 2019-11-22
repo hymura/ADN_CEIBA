@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,9 +28,10 @@ public class ExecuteApprovalController {
 
 	@Autowired
 	public ExecuteApprovalController(GenerateApprovalOrRejection generateApprovalOrRejection,
-			FindByIdApprovalHandler findByIdApprovalHandler, UpdatePurchaseHandler updatePurchaseHandler) {
+			FindByIdApprovalHandler findByIdApprovalHandler) {
 		this.generateApprovalOrRejection = generateApprovalOrRejection;
 		this.findByIdApprovalHandler = findByIdApprovalHandler;
+		
 	}
 
 	@PutMapping("/{approvalId}/{action}")
@@ -43,9 +45,10 @@ public class ExecuteApprovalController {
 		if (approvalOrder1 == null) {
 			return new ResponseEntity<ApprovalOrder>(HttpStatus.NOT_FOUND);
 		}
-
 		
 			return new ResponseEntity<ApprovalOrder>(this.generateApprovalOrRejection.execute(approvalOrder1, action),
 					HttpStatus.OK);
 	}
+
+	
 }

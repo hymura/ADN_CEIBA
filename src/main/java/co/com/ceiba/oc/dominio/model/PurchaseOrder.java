@@ -105,6 +105,7 @@ public class PurchaseOrder {
 
 	public void reject() {
 		this.status = ESTADO_RECAHAZADO;
+		this.approvedDate = new Date();
 		
 	}
 }
