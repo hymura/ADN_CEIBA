@@ -41,13 +41,7 @@ public class CreateRegisterApprovalControllerTest {
 	    
 	    @Test
 	    public void generaterGoodRequest() throws Exception {
-	        //Arrange
-	        //String responseExpected = "[{\"poHeaderId\":4,\"orderNumber\":\"2485\",\"creationDate\":\"2019-11-14\",\"buyerId\":1,\"approvedDate\":\"2019-11-14\",\"totalAmount\":1500,\"status\":null},{\"poHeaderId\":5,\"orderNumber\":\"7\",\"creationDate\":\"2019-11-06\",\"buyerId\":1,\"approvedDate\":null,\"totalAmount\":2000000,\"status\":\"p\"},{\"poHeaderId\":1,\"orderNumber\":\"1\",\"creationDate\":\"2019-11-07\",\"buyerId\":1,\"approvedDate\":null,\"totalAmount\":200000,\"status\":\"p\"},{\"poHeaderId\":2,\"orderNumber\":\"2\",\"creationDate\":\"2019-11-07\",\"buyerId\":1,\"approvedDate\":null,\"totalAmount\":300000,\"status\":\"p\"},{\"poHeaderId\":3,\"orderNumber\":\"3\",\"creationDate\":\"2019-11-07\",\"buyerId\":1,\"approvedDate\":null,\"totalAmount\":500000,\"status\":\"p\"}]";
-	    
-	        //Act
-	        //Assert
-	     /*   mvc.perform(get("/api/ConsultarCompra"))	                
-	                .andExpect(status().isOk()); */
+	   
 	        
 	        ResultActions result = mvc.perform(get("/api/aprobacion"));
 	      //Assert

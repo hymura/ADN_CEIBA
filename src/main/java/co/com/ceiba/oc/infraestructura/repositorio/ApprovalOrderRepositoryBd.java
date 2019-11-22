@@ -1,7 +1,5 @@
 package co.com.ceiba.oc.infraestructura.repositorio;
 
-
-
 import co.com.ceiba.oc.infraestructura.repositorio.entity.ApprovalOrderEntity;
 
 import java.util.List;
@@ -20,7 +18,6 @@ public interface ApprovalOrderRepositoryBd extends JpaRepository<ApprovalOrderEn
 	 */
 	@Query("Select pao from ApprovalOrderEntity pao where pao.approvalId =:approvalId")
     public ApprovalOrderEntity findByApprovalId(@Param("approvalId") int approvalId);
-	//public ApprovalOrderEntity findByApprovalId(int approvalId);
 	
 	/**
 	 * Definicion de metodo para buscar en toda la bandeja de aprobacion

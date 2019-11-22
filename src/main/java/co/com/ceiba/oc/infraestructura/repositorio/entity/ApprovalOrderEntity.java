@@ -30,8 +30,7 @@ import lombok.NoArgsConstructor;
 
 public class ApprovalOrderEntity {
 
-	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id	
 	private int approvalId;
 	@Temporal(TemporalType.DATE)
 	private Date approvalDate;

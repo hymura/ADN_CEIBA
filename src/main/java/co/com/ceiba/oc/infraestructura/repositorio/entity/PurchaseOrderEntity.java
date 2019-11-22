@@ -34,7 +34,6 @@ import java.util.Set;
 public class PurchaseOrderEntity {
 
 	@Id	
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="PO_HEADER_ID")
 	private int poHeaderId;
 	private String orderNumber;

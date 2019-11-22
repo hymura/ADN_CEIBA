@@ -24,8 +24,7 @@ import lombok.NoArgsConstructor;
 
 public class AppoverAmountEntity {
 
-	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id	
 	@Column(name = "USER_ID")
 	private int userId;
 	@Column(name = "user_name")

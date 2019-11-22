@@ -47,9 +47,7 @@ public class CreatePurchaseOrderControllerTest {
 	    }
 	    
 	    @Test
-	    public void generaterGoodRequest() throws Exception {
-	        //Arrange
-	    	    
+	    public void generaterGoodRequest() throws Exception {    	    
 	        //Act
 	    
 	        ResultActions result = mvc.perform(get("/api/Orden-Compra"));

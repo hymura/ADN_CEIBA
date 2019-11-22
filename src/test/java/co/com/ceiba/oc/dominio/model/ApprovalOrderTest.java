@@ -25,11 +25,7 @@ public class ApprovalOrderTest {
 		
 		 PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",new Date(System.currentTimeMillis()),1,3000,"REQ_APPROVAL");
 		 ApproverAmount approver =new ApproverAmount(1,"ALEX.GOMEZ",2000 ,5000);			 
-		 ApprovalOrder  approvalOrder=new ApprovalOrder(1,new Date(),30000,orderPurchase,approver,"Aprobado");		 
-		 //approvalOrder.setApprovalDate();
-		 
-		// approvalOrder.setStatusOrden(orderPurchase);		 
-		 
+		 ApprovalOrder  approvalOrder=new ApprovalOrder(1,new Date(),30000,orderPurchase,approver,"Aprobado");		 		  
 		 Assert.assertNotNull( approvalOrder.getApprovalDate());
 		 
 		
@@ -148,10 +144,7 @@ public class ApprovalOrderTest {
 	 @Test(expected = IllegalArgumentException.class)
 	 public void setApprovalDate_whenNow_thenGetFixedLocalDateTime() {
 		 
-		 LocalDate date = LocalDate.of(2019,11,17);
-	    // PowerMockito.mockStatic(LocalDate.class);
-
-		 //   Mockito.when(LocalDate.now()).thenReturn(date);
+		 	LocalDate date = LocalDate.of(2019,11,17);
 		    PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",new Date(System.currentTimeMillis()),1,20,"REQ_APPROVAL");
 	     ApproverAmount approver =new ApproverAmount(1,"Alex.gomez",2000,5000);	
 		 ApprovalOrder approvalOrder = new ApprovalOrder(1,null,5,orderPurchase,approver,null);

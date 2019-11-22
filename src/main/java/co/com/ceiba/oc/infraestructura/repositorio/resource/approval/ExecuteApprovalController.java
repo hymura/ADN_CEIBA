@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.com.ceiba.oc.aplicacion.manejador.approval.FindByIdApprovalHandler;
 import co.com.ceiba.oc.aplicacion.manejador.approval.GenerateApprovalOrRejection;
-import co.com.ceiba.oc.aplicacion.manejador.purchase.UpdatePurchaseHandler;
 import co.com.ceiba.oc.dominio.model.ApprovalOrder;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
