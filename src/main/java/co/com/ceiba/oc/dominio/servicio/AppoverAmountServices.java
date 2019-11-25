@@ -2,7 +2,6 @@ package co.com.ceiba.oc.dominio.servicio;
 
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
 import co.com.ceiba.oc.dominio.model.ApproverAmount;
 import co.com.ceiba.oc.dominio.repositorio.ApproverAmountRepository;
 
@@ -30,7 +29,6 @@ public class AppoverAmountServices {
 	 * @param cliente
 	 * @return
 	 */
-	@Transactional
 	public ApproverAmount create(ApproverAmount appoverAmount) {
 		return this.approverAmountRepository.save(appoverAmount);
 	}
@@ -41,7 +39,6 @@ public class AppoverAmountServices {
 	 * @param cliente
 	 * @return
 	 */
-	@Transactional
 	public ApproverAmount update(ApproverAmount appoverAmount) {
 		return this.approverAmountRepository.save(appoverAmount);
 	}
@@ -51,7 +48,6 @@ public class AppoverAmountServices {
 	 * 
 	 * @param cliente
 	 */
-	@Transactional
 	public void delete(ApproverAmount appoverAmount) {
 		this.approverAmountRepository.delete(appoverAmount);
 	}
