@@ -3,6 +3,8 @@ package co.com.ceiba.oc.dominio.servicio;
 import java.util.List;
 
 import co.com.ceiba.oc.dominio.model.ApprovalOrder;
+import co.com.ceiba.oc.dominio.model.ApproverAmount;
+import co.com.ceiba.oc.dominio.model.PurchaseOrder;
 import co.com.ceiba.oc.dominio.repositorio.ApprovalOrderRepositoy;
 
 public class ApprovalOrderServices {
@@ -67,6 +69,20 @@ public class ApprovalOrderServices {
 
 		return this.approvalOrderRepository.update(approvalOrder);
 	}
+
+	public ApprovalOrder sendToapproval(PurchaseOrder purchaseOrder, ApproverAmount approverAmount) {
+		
+		ApprovalOrder approvalOrder=new	ApprovalOrder();
+		approvalOrder.setApproverAmount(approverAmount);
+		approvalOrder.setPurchaseOrder(purchaseOrder);
+		approvalOrder.setAppovalAmount(approvalOrder.getPurchaseOrder().getTotalAmount());
+		approvalOrder.setMotivo("Enviar para para aprobacion");
+		
+		
+		return this.approvalOrderRepository.create(approvalOrder);
+	}
+
+
 
 
 }

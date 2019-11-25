@@ -2,6 +2,7 @@ package co.com.ceiba.oc.dominio.model;
 
 import java.util.Date;
 
+
 import static java.util.Objects.requireNonNull;
 
 import java.time.DayOfWeek;
@@ -15,7 +16,7 @@ public class ApprovalOrder {
 	private String motivo;
 	private PurchaseOrder purchaseOrder;
 	private ApproverAmount approverAmount;
-	private static final int MONTO_MINIMO = 20000;
+	private static final int MONTO_MINIMO = 2000;
 	private static final String ESTADO_RECHAZADO="RECHAZADO";
 	
 	
@@ -106,9 +107,20 @@ public class ApprovalOrder {
 	public PurchaseOrder getPurchaseOrder() {
 		return purchaseOrder;
 	}
+	
+
+	
+	public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
+		this.purchaseOrder = purchaseOrder;
+	}
+	
 
 	public ApproverAmount getApproverAmount() {
 		return approverAmount;
+	}
+		
+	public void setApproverAmount(ApproverAmount approverAmount) {
+		this.approverAmount = approverAmount;
 	}
 
 	public String getMotivo() {

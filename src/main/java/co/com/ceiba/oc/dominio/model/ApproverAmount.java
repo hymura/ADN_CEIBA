@@ -1,5 +1,4 @@
 package co.com.ceiba.oc.dominio.model;
-import java.io.Serializable;
 
 public class ApproverAmount {
 	private int userId;

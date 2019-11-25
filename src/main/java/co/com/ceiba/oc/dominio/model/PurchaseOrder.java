@@ -5,6 +5,7 @@ package co.com.ceiba.oc.dominio.model;
 import java.util.Date;
 
 
+
 public class PurchaseOrder {
 
 	private int poHeaderId;
