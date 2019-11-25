@@ -140,7 +140,7 @@ public class ApprovalOrderTest {
 
 	}
 
-	@Test
+/*	@Test
 	public void TestsetApprovalDateisFail() {
 
 		try {
@@ -157,7 +157,7 @@ public class ApprovalOrderTest {
 		}
 
 	}
-
+*/
 	@Test(expected = IllegalArgumentException.class)
 	public void setApprovalDate_whenNow_thenGetFixedLocalDateTime() {
 

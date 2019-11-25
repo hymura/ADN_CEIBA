@@ -20,14 +20,6 @@ configurations {
 	}
 }
 
-jacocoTestReport {
-	reports {
-		xml.enabled true
-		csv.enabled true
-		html.destination file("${buildDir}/test-results/jacocoHtml")
-	}
-}
-
 repositories {
 	mavenCentral()
 	maven {
@@ -61,6 +53,10 @@ dependencies {
 	}
 }
 
-test {
-	useJUnitPlatform()
-} 
+jacocoTestReport {
+	reports {
+		xml.enabled true
+		csv.enabled true
+		html.destination file("${buildDir}/test-results/jacocoHtml")
+	}
+}
