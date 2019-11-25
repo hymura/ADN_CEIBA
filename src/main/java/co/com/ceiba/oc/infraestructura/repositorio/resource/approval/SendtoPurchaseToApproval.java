@@ -44,8 +44,7 @@ public class SendtoPurchaseToApproval {
 		
 		ApproverAmount approverAmount= this.findByAmountApproverHandler.execute(purchaseOrder.getTotalAmount());
 
-		if (approverAmount == null) {
-			//return new ResponseEntity<ApprovalOrder>(HttpStatus.NOT_FOUND);
+		if (approverAmount == null) {			
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		

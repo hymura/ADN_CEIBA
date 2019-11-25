@@ -10,7 +10,7 @@ import co.com.ceiba.oc.dominio.repositorio.ApprovalOrderRepositoy;
 public class ApprovalOrderServices {
 
 	private final ApprovalOrderRepositoy approvalOrderRepository;
-	private final String APPROVED="APROBAR";
+	private final static String STAUS_APPROVED="APROBAR";
 
 	public ApprovalOrderServices(ApprovalOrderRepositoy approvalOrderRep) {
 		this.approvalOrderRepository = approvalOrderRep;
@@ -61,7 +61,7 @@ public class ApprovalOrderServices {
 
 	public ApprovalOrder generateApproval(ApprovalOrder approvalOrder, String action) {
 
-		if (action.equals(APPROVED)) {
+		if (action.equals(STAUS_APPROVED)) {
 			approvalOrder.approvePurchase();
 		}else {
 			approvalOrder.rejectPurchase();			

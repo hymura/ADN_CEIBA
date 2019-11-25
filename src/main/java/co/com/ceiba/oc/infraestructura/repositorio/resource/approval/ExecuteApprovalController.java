@@ -42,8 +42,7 @@ public class ExecuteApprovalController {
 		ApprovalOrder approvalOrder1 = this.findByIdApprovalHandler.execute(approvalId);
 
 		if (approvalOrder1 == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			//return new ResponseEntity<ApprovalOrder>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);			
 		}
 		
 			return new ResponseEntity<>(this.generateApprovalOrRejection.execute(approvalOrder1, action),

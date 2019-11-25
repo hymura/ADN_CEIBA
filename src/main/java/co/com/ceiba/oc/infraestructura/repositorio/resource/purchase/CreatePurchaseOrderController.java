@@ -68,7 +68,7 @@ public class CreatePurchaseOrderController {
 				
 		PurchaseOrder purchaseOrder1 = this.findByOrderHandler.execute(orderNumber);
 		if (purchaseOrder1==null) {
-			return new ResponseEntity<PurchaseOrder>(HttpStatus.NOT_FOUND);		
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);		
 			
 		}else {
 			return new ResponseEntity<>(this.updatePurchaseHandler.execute(purchaseOrder), HttpStatus.OK);

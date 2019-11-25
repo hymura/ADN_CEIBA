@@ -38,22 +38,16 @@ public class CreateRegisterApprovalController {
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "registro de aprobacion creado correctamente"),
 			@ApiResponse(code = 400, message = "Solicitud Invalida") })
 	public ResponseEntity<ApprovalOrder> createPurchaseOrder(@RequestBody ApprovalOrder approvalOrder) {
-
 		createApprovalHandler.execute(approvalOrder);
 		return new ResponseEntity<>(HttpStatus.CREATED);
-
 	}
 	
 	@GetMapping
 	@ApiOperation(value = "Listar Registro Aprobacion", notes = "Servicio para traer el Registro de aprobacion")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Regitro aprobacion encontrados"),
 			@ApiResponse(code = 404, message = "Regitro aprobacion no encontrados") })
-public  ResponseEntity<List<ApprovalOrder>>  findAll(){
-		
-		return ResponseEntity.ok(this.findAllApprovalHandler.execute());
-				
+public  ResponseEntity<List<ApprovalOrder>>  findAll(){		
+		return ResponseEntity.ok(this.findAllApprovalHandler.execute());				
 	}
-
-	
 
 }
