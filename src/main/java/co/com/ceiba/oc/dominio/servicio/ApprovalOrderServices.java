@@ -10,7 +10,7 @@ import co.com.ceiba.oc.dominio.repositorio.ApprovalOrderRepositoy;
 public class ApprovalOrderServices {
 
 	private final ApprovalOrderRepositoy approvalOrderRepository;
-	private final static String STAUS_APPROVED="APROBAR";
+	private static final String STAUS_APPROVED="APROBAR";
 
 	public ApprovalOrderServices(ApprovalOrderRepositoy approvalOrderRep) {
 		this.approvalOrderRepository = approvalOrderRep;

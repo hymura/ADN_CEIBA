@@ -150,6 +150,7 @@ public class ApprovalOrderTest {
 			ApprovalOrder approvalOrder = new ApprovalOrder(1, null, 20, orderPurchase, approver, null);
 
 			approvalOrder.setApprovalDate();
+			Assert.assertEquals(new Date(),approvalOrder.getApprovalDate());
 			fail();
 		} catch (IllegalArgumentException ex) {
 			assertEquals("Fecha no habil para aprobacion :", ex.getMessage());
