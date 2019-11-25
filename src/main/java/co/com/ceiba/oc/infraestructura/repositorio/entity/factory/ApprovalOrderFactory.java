@@ -6,7 +6,7 @@ import co.com.ceiba.oc.dominio.model.PurchaseOrder;
 import co.com.ceiba.oc.infraestructura.repositorio.entity.ApprovalOrderEntity;
 
 
-public class ApprovalOrderFactory {
+public final class ApprovalOrderFactory {
 
 	private ApprovalOrderFactory() {}
 	

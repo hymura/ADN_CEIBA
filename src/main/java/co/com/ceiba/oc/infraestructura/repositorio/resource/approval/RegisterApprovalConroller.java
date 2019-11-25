@@ -38,7 +38,8 @@ public class RegisterApprovalConroller {
 			@ApiResponse(code = 404, message = "No hay ninguna aprobacion pendiente") })
 	public ResponseEntity<List<ApprovalOrder>> updateApproval(@RequestBody List<ApprovalOrder> approval, String action) {		
 				
-		return new ResponseEntity<List<ApprovalOrder>>(this.generateApprovalOrRejection.executeApproval(approval,action), HttpStatus.OK);
+		//return new ResponseEntity<List<ApprovalOrder>>(this.generateApprovalOrRejection.executeApproval(approval,action), HttpStatus.OK);
+		return new ResponseEntity<>(this.generateApprovalOrRejection.executeApproval(approval,action), HttpStatus.OK);
 	}
 
 }

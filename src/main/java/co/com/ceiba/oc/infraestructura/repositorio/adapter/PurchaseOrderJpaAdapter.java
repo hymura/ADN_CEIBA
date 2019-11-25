@@ -34,8 +34,8 @@ public class PurchaseOrderJpaAdapter implements PurchaseOrderRepository {
 	}
 
 	@Override
-	public PurchaseOrder findByIdOc(int PoheaderId) {
-		PurchaseOrderEntity purchaseOrderEntity = purchaseOrderRepositoryBd.findByIdOc(PoheaderId);
+	public PurchaseOrder findByIdOc(int poheaderId) {
+		PurchaseOrderEntity purchaseOrderEntity = purchaseOrderRepositoryBd.findByIdOc(poheaderId);
 		return PurchaseOrderFactory.toModel(purchaseOrderEntity);		
 	
 				
@@ -63,13 +63,6 @@ public class PurchaseOrderJpaAdapter implements PurchaseOrderRepository {
 		
 	}
 
-	@Override
-	public PurchaseOrder update(PurchaseOrder purchaseOrder) {
-		 PurchaseOrderEntity entity = PurchaseOrderFactory.toEntity(purchaseOrder);
-	       return PurchaseOrderFactory.toModel(purchaseOrderRepositoryBd.save(entity));
-	}
-
-	
 	
 
 }

@@ -31,8 +31,8 @@ public class AppoverAmountServices {
 	 * @return
 	 */
 	@Transactional
-	public ApproverAmount create(ApproverAmount AppoverAmount) {
-		return this.approverAmountRepository.save(AppoverAmount);
+	public ApproverAmount create(ApproverAmount appoverAmount) {
+		return this.approverAmountRepository.save(appoverAmount);
 	}
 
 	/**
@@ -42,8 +42,8 @@ public class AppoverAmountServices {
 	 * @return
 	 */
 	@Transactional
-	public ApproverAmount update(ApproverAmount AppoverAmount) {
-		return this.approverAmountRepository.save(AppoverAmount);
+	public ApproverAmount update(ApproverAmount appoverAmount) {
+		return this.approverAmountRepository.save(appoverAmount);
 	}
 
 	/**
@@ -52,8 +52,8 @@ public class AppoverAmountServices {
 	 * @param cliente
 	 */
 	@Transactional
-	public void delete(ApproverAmount AppoverAmount) {
-		this.approverAmountRepository.delete(AppoverAmount);
+	public void delete(ApproverAmount appoverAmount) {
+		this.approverAmountRepository.delete(appoverAmount);
 	}
 
 	/**

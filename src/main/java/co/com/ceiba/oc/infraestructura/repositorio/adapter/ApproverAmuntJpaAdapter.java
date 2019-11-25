@@ -62,15 +62,6 @@ public class ApproverAmuntJpaAdapter  implements ApproverAmountRepository {
 		AppoverAmountEntity entity = ApproverFactory.toEntity(appoverAmount);
 		approverAmountRepositoryBd.delete(entity);		
 	}
-
-	@Override
-	public ApproverAmount update(ApproverAmount appoverAmount) {
-
-		AppoverAmountEntity entity = ApproverFactory.toEntity(appoverAmount);
-        return ApproverFactory.toModel(approverAmountRepositoryBd.save(entity));
-	} 
-
-	
 	
 	
 

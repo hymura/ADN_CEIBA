@@ -9,8 +9,7 @@ public interface ApproverAmountRepository {
 	public ApproverAmount findByAmountApprover(int amountTotal, String status);
 	public List<ApproverAmount> findAll();
 	public ApproverAmount save (ApproverAmount appoverAmount);
-	public void delete(ApproverAmount AppoverAmount);
-	public ApproverAmount update(ApproverAmount AppoverAmount);
+	public void delete(ApproverAmount appoverAmount);
 	public ApproverAmount findByApprover(int userId);
 		
 

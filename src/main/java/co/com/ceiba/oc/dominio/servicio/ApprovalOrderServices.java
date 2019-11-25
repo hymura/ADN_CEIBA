@@ -10,6 +10,7 @@ import co.com.ceiba.oc.dominio.repositorio.ApprovalOrderRepositoy;
 public class ApprovalOrderServices {
 
 	private final ApprovalOrderRepositoy approvalOrderRepository;
+	private final String APPROVED="APROBAR";
 
 	public ApprovalOrderServices(ApprovalOrderRepositoy approvalOrderRep) {
 		this.approvalOrderRepository = approvalOrderRep;
@@ -60,11 +61,10 @@ public class ApprovalOrderServices {
 
 	public ApprovalOrder generateApproval(ApprovalOrder approvalOrder, String action) {
 
-		if (action.equals("APROBAR")) {
+		if (action.equals(APPROVED)) {
 			approvalOrder.approvePurchase();
 		}else {
-			approvalOrder.rejectPurchase();
-			//approvalOrder.rejectPurchase(approvalOrder.getMotivo());
+			approvalOrder.rejectPurchase();			
 		}
 
 		return this.approvalOrderRepository.update(approvalOrder);
@@ -79,7 +79,7 @@ public class ApprovalOrderServices {
 		approvalOrder.setMotivo("Enviar para para aprobacion");
 		
 		
-		return this.approvalOrderRepository.create(approvalOrder);
+		return this.approvalOrderRepository.save(approvalOrder);
 	}
 
 

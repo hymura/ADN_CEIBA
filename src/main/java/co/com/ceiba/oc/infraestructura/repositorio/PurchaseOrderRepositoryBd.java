@@ -21,8 +21,8 @@ public interface  PurchaseOrderRepositoryBd  extends JpaRepository<PurchaseOrder
 	public PurchaseOrderEntity findByOrderNumber(@Param("orderNumber")  String orderNumber);
 	
 
-	@Query("Select pao from PurchaseOrderEntity pao where pao.poHeaderId =:PoheaderId")
-	public PurchaseOrderEntity findByIdOc(int PoheaderId);
+	@Query("Select pao from PurchaseOrderEntity pao where pao.poHeaderId =:poheaderId")
+	public PurchaseOrderEntity findByIdOc(int poheaderId);
 	
 	/**
 	 * Definicin de mtodo para buscar todas las OC
