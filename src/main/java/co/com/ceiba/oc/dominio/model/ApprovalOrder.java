@@ -35,16 +35,13 @@ public class ApprovalOrder {
 
 	public ApprovalOrder(int approvalId) {
 
-		this.approvalId = approvalId;
-		// TODO Auto-generated constructor stub
+		this.approvalId = approvalId;	
 	}
 
 	public boolean validaMontoAprobador(int totalOrden) {
 
-		if ((totalOrden >= this.approverAmount.getAppovalAmountInit()
-				&& totalOrden <= this.approverAmount.getAppovalAmountEnd())) {
+		if ((totalOrden >= this.approverAmount.getAppovalAmountInit()&& totalOrden <= this.approverAmount.getAppovalAmountEnd())) 
 			return true;
-		}
 		return false;
 	}
 
