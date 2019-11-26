@@ -21,6 +21,7 @@ import co.com.ceiba.oc.aplicacion.manejador.purchase.FindAllPurchaseOrderHandler
 import co.com.ceiba.oc.aplicacion.manejador.purchase.FindByOrderHandler;
 import co.com.ceiba.oc.aplicacion.manejador.purchase.UpdatePurchaseHandler;
 
+
 @RunWith(SpringRunner.class)
 @WebMvcTest(CreatePurchaseOrderController.class)
 //@SpringBootTest(classes = FindAllPurchaseOrderController.class)
@@ -37,12 +38,11 @@ public class CreatePurchaseOrderControllerTest {
 
 	@Autowired
 	private WebApplicationContext wac;
-
 	private MockMvc mvc;
 
 	@Before
 	public void setup() {
-		this.mvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+		this.mvc = MockMvcBuilders.webAppContextSetup(this.wac).build();		
 	}
 
 	@Test
@@ -54,4 +54,8 @@ public class CreatePurchaseOrderControllerTest {
 		result.andExpect(status().is2xxSuccessful());
 	}
 
+
+		
+	
+	
 }
