@@ -3,7 +3,6 @@ package co.com.ceiba.oc.infraestructura.repositorio.resource.approver;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import javax.transaction.Transactional;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import co.com.ceiba.oc.AprobacionOcApplication;
@@ -24,11 +24,16 @@ import co.com.ceiba.oc.AprobacionOcApplication;
 @Transactional
 public class CreateApproverIntegrationTest {
 	
-
-	@Autowired
+  @Autowired
     private WebApplicationContext wac;
     private MockMvc mvc;
     
+  /*
+    public CreateApproverIntegrationTest(WebApplicationContext wac,MockMvc mvc) {
+    	this.wac = wac;
+    	this.mvc = mvc;
+    }
+   */ 
     
     @Before
     public void setup() {
@@ -37,8 +42,7 @@ public class CreateApproverIntegrationTest {
   
     @Test
     public void processAuditGoodRequest1() throws Exception {
-    	
-    	  
+
         //Arrange
     	               
         String jsonParameters = "{\r\n" + 
