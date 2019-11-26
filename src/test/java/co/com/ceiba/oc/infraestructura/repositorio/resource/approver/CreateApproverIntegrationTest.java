@@ -10,30 +10,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import co.com.ceiba.oc.AprobacionOcApplication;
 
 @RunWith(SpringRunner.class)
-@WebAppConfiguration
 @SpringBootTest(classes = AprobacionOcApplication.class)
-@Transactional
 public class CreateApproverIntegrationTest {
 	
   @Autowired
     private WebApplicationContext wac;
     private MockMvc mvc;
     
-  /*
-    public CreateApproverIntegrationTest(WebApplicationContext wac,MockMvc mvc) {
-    	this.wac = wac;
-    	this.mvc = mvc;
-    }
-   */ 
+
     
     @Before
     public void setup() {
