@@ -17,6 +17,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import co.com.ceiba.oc.aplicacion.manejador.approval.CreateApprovalHandler;
 import co.com.ceiba.oc.aplicacion.manejador.approval.FindAllApprovalHandler;
+import co.com.ceiba.oc.infraestructura.controlador.approval.CreateRegisterApprovalController;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(CreateRegisterApprovalController.class)

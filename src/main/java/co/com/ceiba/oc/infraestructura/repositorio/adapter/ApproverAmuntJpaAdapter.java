@@ -20,13 +20,12 @@ import co.com.ceiba.oc.infraestructura.repositorio.entity.factory.ApproverFactor
 public class ApproverAmuntJpaAdapter  implements ApproverAmountRepository {
 	
 
-	private AppoverAmountRepositoryBd approverAmountRepositoryBd;
-	
+	private AppoverAmountRepositoryBd approverAmountRepositoryBd;	
 	
 	@Autowired
 	public ApproverAmuntJpaAdapter(AppoverAmountRepositoryBd approverAmountRepositoryBd) {
 
-		this.approverAmountRepositoryBd = approverAmountRepositoryBd;
+		this.approverAmountRepositoryBd = approverAmountRepositoryBd;		
 	}
 
 	@Override

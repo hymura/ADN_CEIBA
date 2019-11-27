@@ -17,6 +17,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import co.com.ceiba.oc.aplicacion.manejador.approver.CreateApproverHandler;
 import co.com.ceiba.oc.aplicacion.manejador.approver.FindAllApproverHandler;
+import co.com.ceiba.oc.infraestructura.controlador.approver.CreateApproverController;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(CreateApproverController.class)

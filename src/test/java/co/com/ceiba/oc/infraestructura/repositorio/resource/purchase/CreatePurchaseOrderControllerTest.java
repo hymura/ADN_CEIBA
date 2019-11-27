@@ -20,6 +20,7 @@ import co.com.ceiba.oc.aplicacion.manejador.purchase.CreatePurchaseHandler;
 import co.com.ceiba.oc.aplicacion.manejador.purchase.FindAllPurchaseOrderHandler;
 import co.com.ceiba.oc.aplicacion.manejador.purchase.FindByOrderHandler;
 import co.com.ceiba.oc.aplicacion.manejador.purchase.UpdatePurchaseHandler;
+import co.com.ceiba.oc.infraestructura.controlador.purchase.CreatePurchaseOrderController;
 
 
 @RunWith(SpringRunner.class)

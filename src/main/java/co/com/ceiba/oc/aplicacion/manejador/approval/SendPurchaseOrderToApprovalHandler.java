@@ -19,7 +19,6 @@ public class SendPurchaseOrderToApprovalHandler {
 			this.approvalOrderServices=approvalOrderServices;
 	}
 
-	//@Transactional(readOnly = true)
 	@Transactional
 	public ApprovalOrder execute (PurchaseOrder purchaseOrder, ApproverAmount approverAmount) {
 	

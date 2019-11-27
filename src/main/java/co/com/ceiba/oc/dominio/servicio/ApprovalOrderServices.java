@@ -9,6 +9,7 @@ import co.com.ceiba.oc.dominio.repositorio.ApprovalOrderRepositoy;
 
 public class ApprovalOrderServices {
 
+	private static final String ENVIAR_PARA_PARA_APROBACION = "Enviar para para aprobacion";
 	private final ApprovalOrderRepositoy approvalOrderRepository;
 	private static final String STAUS_APPROVED="APROBAR";
 
@@ -76,7 +77,7 @@ public class ApprovalOrderServices {
 		approvalOrder.setApproverAmount(approverAmount);
 		approvalOrder.setPurchaseOrder(purchaseOrder);
 		approvalOrder.setAppovalAmount(approvalOrder.getPurchaseOrder().getTotalAmount());
-		approvalOrder.setMotivo("Enviar para para aprobacion");
+		approvalOrder.setMotivo(ENVIAR_PARA_PARA_APROBACION);
 		
 		
 		return this.approvalOrderRepository.save(approvalOrder);
