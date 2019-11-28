@@ -55,7 +55,7 @@ values (10000000, 5000001, 'ACTIVO', 'HYMURA');
 
 
 insert into PO_APPROVAL_ORDER (APPOVAL_AMOUNT, APPROVAL_DATE, MOTIVO, USER_ID, PO_HEADER_ID)
-values (300000, null, null,  1, 1);
+values (300000, null, null,1, 1);
 
 insert into PO_APPROVAL_ORDER (APPOVAL_AMOUNT, APPROVAL_DATE, MOTIVO, USER_ID, PO_HEADER_ID)
 values (500000, null, null, 3, 3);
