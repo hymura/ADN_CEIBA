@@ -37,7 +37,7 @@ public class ExecuteApprovalController {
 	@ApiOperation(value = "Actualizar OC", notes = "Servicio para aprobar orden compra")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Aprobacion ejecutada correctamente"),
 			@ApiResponse(code = 404, message = "No hay ninguna aprobacion pendiente") })
-	public ResponseEntity<ApprovalOrder> updateApproval(@PathVariable("approvalId") int approvalId, String action,
+	public ResponseEntity<ApprovalOrder> updateApproval(@PathVariable("approvalId") int approvalId, @PathVariable("action") String action,
 			String motivo) {
 		ApprovalOrder approvalOrder1 = this.findByIdApprovalHandler.execute(approvalId);
 

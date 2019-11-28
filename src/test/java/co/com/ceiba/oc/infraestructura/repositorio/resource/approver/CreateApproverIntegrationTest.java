@@ -10,10 +10,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -132,7 +130,7 @@ public class CreateApproverIntegrationTest {
         		"}";
         //Act Assert
                 
-        mvc.perform(put("/api/aprobar/1/{action}?action='APROBAR'")
+        mvc.perform(put("/api/aprobar/1/APROBAR")
         		.contentType(MediaType.APPLICATION_JSON)
         		//.contentType(MediaType.APPLICATION_JSON)
                 .content(jsonParameters))
