@@ -31,7 +31,7 @@ public class RegisterApprovalConroller {
 		
 	}
 
-	@PostMapping(consumes = "application/json", produces = "application/json")
+	@PostMapping //(consumes = "application/json", produces = "application/json")
 	@ApiOperation(value = "Aprobacion OC", notes = "Servicio para aprobar o rechazar orden compra")
 	@ApiResponses(value = { 
 			@ApiResponse(code = 201, message = "Ejecutada correctamente"),

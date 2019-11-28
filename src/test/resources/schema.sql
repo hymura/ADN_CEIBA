@@ -1,5 +1,3 @@
-create table IF NOT EXISTS PO_HEADER
-(
   po_header_id  INT AUTO_INCREMENT PRIMARY KEY,
   approved_date DATETIME NOT NULL,
   buyer_id      INT NOT NULL,
@@ -9,14 +7,14 @@ create table IF NOT EXISTS PO_HEADER
   total_amount  INT
 );
 
-create table PO_APPOVER_AMOUNT
+create table IF NOT EXISTS PO_APPOVER_AMOUNT
 (
   user_id             int not null AUTO_INCREMENT PRIMARY KEY,
   appoval_amount_init int not null,
   appoval_amount_end  int not null,
   status              VARCHAR(150),
-  user_name           VARCHAR(150
-  );
+  user_name           VARCHAR(150)
+ );
 
 create table IF NOT EXISTS PO_APPROVAL_ORDER
 (
@@ -27,7 +25,6 @@ create table IF NOT EXISTS PO_APPROVAL_ORDER
   user_id        INT REFERENCES PO_APPOVER_AMOUNT (user_id),
   po_header_id   INT REFERENCES PO_HEADER(po_header_id)
 );
-
 
 
 insert into PO.PO_HEADER (PO_HEADER_ID, APPROVED_DATE, BUYER_ID, CREATION_DATE, ORDER_NUMBER, STATUS, TOTAL_AMOUNT)
@@ -56,12 +53,12 @@ insert into PO_APPOVER_AMOUNT (USER_ID, APPOVAL_AMOUNT_END, APPOVAL_AMOUNT_INIT,
 values (4, 10000000, 5000001, 'ACTIVO', 'HYMURA');
 
 
-insert into PO_APPrOVAL_ORDER (APPROVAL_ID, APPOVAL_AMOUNT, APPROVAL_DATE, MOTIVO, USER_ID, PO_HEADER_ID)
+insert into PO_APPROVAL_ORDER (APPROVAL_ID, APPOVAL_AMOUNT, APPROVAL_DATE, MOTIVO, USER_ID, PO_HEADER_ID)
 values (1, 300000, to_date('26-11-2019 13:42:18', 'dd-mm-yyyy hh24:mi:ss'), 'RECHAZADO', 1, 1);
 
-insert into PO_APPrOVAL_ORDER (APPROVAL_ID, APPOVAL_AMOUNT, APPROVAL_DATE, MOTIVO, USER_ID, PO_HEADER_ID)
+insert into PO_APPROVAL_ORDER (APPROVAL_ID, APPOVAL_AMOUNT, APPROVAL_DATE, MOTIVO, USER_ID, PO_HEADER_ID)
 values (2, 500000, null, null, 3, 3);
 
-insert into PO_APPrOVAL_ORDER (APPROVAL_ID, APPOVAL_AMOUNT, APPROVAL_DATE, MOTIVO, USER_ID, PO_HEADER_ID)
+insert into PO_APPROVAL_ORDER (APPROVAL_ID, APPOVAL_AMOUNT, APPROVAL_DATE, MOTIVO, USER_ID, PO_HEADER_ID)
 values (3, 300000, null, 'Enviar para para aprobacion', 1, 2);
 
