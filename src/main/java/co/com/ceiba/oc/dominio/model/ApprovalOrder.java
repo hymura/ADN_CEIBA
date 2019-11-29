@@ -40,12 +40,7 @@ public class ApprovalOrder {
 
 	public boolean validaMontoAprobador(int totalOrden) {
 
-		  return (totalOrden >= this.approverAmount.getAppovalAmountInit()&& totalOrden <= this.approverAmount.getAppovalAmountEnd())? true: false;
-				  
-	/*	if ((totalOrden >= this.approverAmount.getAppovalAmountInit()&& totalOrden <= this.approverAmount.getAppovalAmountEnd())) {
-			return true;
-		}
-		return false;*/
+		  return (totalOrden >= this.approverAmount.getAppovalAmountInit()&& totalOrden <= this.approverAmount.getAppovalAmountEnd())? true: false;				  	
 	}
 
 	public void approvePurchase() {
