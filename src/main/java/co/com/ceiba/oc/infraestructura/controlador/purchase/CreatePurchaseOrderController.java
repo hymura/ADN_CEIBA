@@ -65,15 +65,10 @@ public class CreatePurchaseOrderController {
 			@ApiResponse(code = 404, message = "OC  no encontrada") })
 	
 	public ResponseEntity<PurchaseOrder> updateCliente(@PathVariable("orderNumber") String orderNumber, PurchaseOrder purchaseOrder ){
-				
+						
 		PurchaseOrder purchaseOrder1 = this.findByOrderHandler.execute(orderNumber);
-		if (purchaseOrder1==null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);		
-			
-		}else {
-			return new ResponseEntity<>(this.updatePurchaseHandler.execute(purchaseOrder), HttpStatus.OK);
+		return (purchaseOrder1==null)? new ResponseEntity<>(HttpStatus.NOT_FOUND): new ResponseEntity<>(this.updatePurchaseHandler.execute(purchaseOrder), HttpStatus.OK);
 				
-		}
 	}
 		
 		@GetMapping

@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import org.junit.Assert;
 
@@ -19,10 +18,11 @@ public class ApprovalOrderTest {
 	public void testValidarRegistros() {
 		// Arrange
 
-		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505", new Date(System.currentTimeMillis()), 1, 3000,
+		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505", 1, 3000,
 				"REQ_APPROVAL");
 		ApproverAmount approver = new ApproverAmount(1, "ALEX.GOMEZ", 2000, 5000);
-		ApprovalOrder approvalOrder = new ApprovalOrder(1, new Date(), 30000, orderPurchase, approver, "Aprobado");
+		ApprovalOrder approvalOrder = new ApprovalOrder(1,  30000, orderPurchase, approver, "Aprobado");
+		approvalOrder.setApprovalDate();
 		Assert.assertNotNull(approvalOrder.getApprovalDate());
 
 	}
@@ -30,7 +30,7 @@ public class ApprovalOrderTest {
 	@Test
 	public void testRegisterOrdertoApproval() {
 		ApprovalOrder approvalOrder = new ApprovalOrder();
-		PurchaseOrder orderPurchase = new PurchaseOrder(2, "2506", new Date(), 1, 3000, "REQ_APPROVAL");
+		PurchaseOrder orderPurchase = new PurchaseOrder(2, "2506", 1, 3000, "REQ_APPROVAL");
 		ApproverAmount approver = new ApproverAmount(1, "ALEX.GOMEZ", 2000, 50000);
 		approvalOrder.setPurchaseOrder(orderPurchase);
 		approvalOrder.setApproverAmount(approver);
@@ -44,10 +44,10 @@ public class ApprovalOrderTest {
 
 	@Test
 	public void testValidarMontoiistrue() {
-		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505", new Date(System.currentTimeMillis()), 1, 3000,
+		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505", 1, 3000,
 				"REQ_APPROVAL");
 		ApproverAmount approver = new ApproverAmount(1, "Alex.gomez", 2000, 5000);
-		ApprovalOrder approvalOrder = new ApprovalOrder(1, null, 3000, orderPurchase, approver,
+		ApprovalOrder approvalOrder = new ApprovalOrder(1, 3000, orderPurchase, approver,
 				"PENDIENTE POR APROBAR");
 
 		assertTrue(approvalOrder.validaMontoAprobador(orderPurchase.getTotalAmount()));
@@ -61,21 +61,20 @@ public class ApprovalOrderTest {
 
 	@Test
 	public void testValidarMontoiisfalse() {
-		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505", new Date(System.currentTimeMillis()), 1, 5,
+		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505",  1, 5,
 				"REQ_APPROVAL");
 		ApproverAmount approver = new ApproverAmount(1, "Alex.gomez", 2000, 5000);
-		ApprovalOrder approvalOrder = new ApprovalOrder(1, null, 5, orderPurchase, approver, null);
-
+		ApprovalOrder approvalOrder = new ApprovalOrder(1, 5, orderPurchase, approver, null);
 		assertFalse(approvalOrder.validaMontoAprobador(orderPurchase.getTotalAmount()));
 
 	}
 
 	@Test
 	public void testGenearteApproval() {
-		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505", new Date(System.currentTimeMillis()), 1, 3000,
+		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505",  1, 3000,
 				"REQ_APPROVAL");
 		ApproverAmount approver = new ApproverAmount(1, "Alex.gomez", 2000, 5000);
-		ApprovalOrder approvalOrder = new ApprovalOrder(1, null, 3000, orderPurchase, approver, null);
+		ApprovalOrder approvalOrder = new ApprovalOrder(1, 3000, orderPurchase, approver, null);
 		approvalOrder.setApprovalDate();
 
 		Assert.assertNotNull(approvalOrder.getApprovalDate());
@@ -84,10 +83,10 @@ public class ApprovalOrderTest {
 
 	@Test
 	public void testRejectOrder() {
-		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505", new Date(System.currentTimeMillis()), 1, 3000,
+		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505",  1, 3000,
 				"REQ_APPROVAL");
 		ApproverAmount approver = new ApproverAmount(1, "Alex.gomez", 2000, 5000);
-		ApprovalOrder approvalOrder = new ApprovalOrder(1, null, 3000, orderPurchase, approver, null);
+		ApprovalOrder approvalOrder = new ApprovalOrder(1, 3000, orderPurchase, approver, null);
 		approvalOrder.rejectPurchase();
 
 		Assert.assertEquals("REJECT", orderPurchase.getStatus());
@@ -96,10 +95,10 @@ public class ApprovalOrderTest {
 
 	@Test
 	public void test() {
-		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505", new Date(System.currentTimeMillis()), 1, 3000,
+		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505", 1, 3000,
 				"REQ_APPROVAL");
 		ApproverAmount approver = new ApproverAmount(1, "Alex.gomez", 2000, 5000);
-		ApprovalOrder approvalOrder = new ApprovalOrder(1, null, 3000, orderPurchase, approver, null);
+		ApprovalOrder approvalOrder = new ApprovalOrder(1,3000, orderPurchase, approver, null);
 		approvalOrder.rejectPurchase();
 
 		Assert.assertEquals("REJECT", orderPurchase.getStatus());
@@ -110,11 +109,11 @@ public class ApprovalOrderTest {
 	public void testAppovalAmountisFail() {
 		final int MONTO_MINIMO = 2000;
 		try {
-			PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505", new Date(System.currentTimeMillis()), 1, 3000,
+			PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505",  1, 3000,
 					"REQ_APPROVAL");
 			ApproverAmount approver = new ApproverAmount(1, "Alex.gomez", 2000, 5000);
 
-			ApprovalOrder approvalOrder = new ApprovalOrder(1, null, 5, orderPurchase, approver, null);
+			ApprovalOrder approvalOrder = new ApprovalOrder(1,  5, orderPurchase, approver, null);
 			approvalOrder.setAppovalAmount(20);
 			fail();
 		} catch (IllegalArgumentException ex) {
@@ -127,9 +126,10 @@ public class ApprovalOrderTest {
 	public void testPurchaseWhenApprovedException() {
 
 		try {
-			PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505", new Date(), 1, 3000, "APPROVED");
+			PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505",  1, 3000, "APPROVED");
 			ApproverAmount approver = new ApproverAmount(1, "Alex.gomez", 2000, 5000);
-			ApprovalOrder approvalOrder = new ApprovalOrder(1, new Date(), 3000, orderPurchase, approver, null);
+			ApprovalOrder approvalOrder = new ApprovalOrder(1,  3000, orderPurchase, approver, null);
+			approvalOrder.setApprovalDate();
 			approvalOrder.approvePurchase();
 			// Assert.assertEquals(new Date(),approvalOrder.getApprovalDate());
 
@@ -162,10 +162,10 @@ public class ApprovalOrderTest {
 	public void setApprovalDate_whenNow_thenGetFixedLocalDateTime() {
 
 		LocalDate date = LocalDate.of(2019, 11, 17);
-		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505", new Date(System.currentTimeMillis()), 1, 20,
+		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505",  1, 20,
 				"REQ_APPROVAL");
 		ApproverAmount approver = new ApproverAmount(1, "Alex.gomez", 2000, 5000);
-		ApprovalOrder approvalOrder = new ApprovalOrder(1, null, 5, orderPurchase, approver, null);
+		ApprovalOrder approvalOrder = new ApprovalOrder(1, 5, orderPurchase, approver, null);
 
 		approvalOrder.setApprovalDate();
 

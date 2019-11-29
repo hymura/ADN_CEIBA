@@ -23,10 +23,9 @@ public class ApprovalOrder {
 
 	public ApprovalOrder() {}
 
-	public ApprovalOrder(int approvalId, Date approvalDate, int appovalAmount, PurchaseOrder purchaseOrder,
+	public ApprovalOrder(int approvalId,  int appovalAmount, PurchaseOrder purchaseOrder,
 			ApproverAmount approverAmount, String motivo) {
 		this.approvalId = requireNonNull(approvalId);
-		this.approvalDate = approvalDate;
 		this.appovalAmount = requireNonNull(appovalAmount);
 		this.purchaseOrder = requireNonNull(purchaseOrder);
 		this.approverAmount = requireNonNull(approverAmount);

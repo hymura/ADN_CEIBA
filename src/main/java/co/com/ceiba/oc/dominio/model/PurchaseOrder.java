@@ -18,25 +18,25 @@ public class PurchaseOrder {
 	public PurchaseOrder() {
 	}
 
-	public PurchaseOrder(int poHeaderId, String orderNumber, Date creationDate, int buyerId, int totalAmount,
+	public PurchaseOrder(int poHeaderId, String orderNumber, int buyerId, int totalAmount,
 			String status) {
 
 		this.poHeaderId = poHeaderId;
 		this.orderNumber = orderNumber;
-		this.creationDate = creationDate;
 		this.buyerId = buyerId;
 		this.totalAmount = totalAmount;
+		this.creationDate=new Date();
 		this.status = status;
 
 	}
 
-	public PurchaseOrder(int poHeaderId, String orderNumber, Date creationDate, int buyerId, int totalAmount) {
+	public PurchaseOrder(int poHeaderId, String orderNumber, int buyerId, int totalAmount) {
 
 		this.poHeaderId = poHeaderId;
 		this.orderNumber = orderNumber;
-		this.creationDate = creationDate;
 		this.buyerId = buyerId;
 		this.totalAmount = totalAmount;
+		this.creationDate=new Date();
 		this.status = ESTADO_PENDIENTE;
 
 	}

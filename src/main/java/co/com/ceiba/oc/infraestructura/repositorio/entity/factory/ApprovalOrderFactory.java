@@ -13,7 +13,7 @@ public final class ApprovalOrderFactory {
 	public static ApprovalOrder toModel(ApprovalOrderEntity entity) {
 		PurchaseOrder purchaseOrder = PurchaseOrderFactory.toModel(entity.getPurchaseOrderEntity());
 		ApproverAmount approverAmount = ApproverFactory.toModel(entity.getAppoverAmountEntity());		
-		return new ApprovalOrder (entity.getApprovalId(),entity.getApprovalDate(),entity.getAppovalAmount(),purchaseOrder,approverAmount,entity.getMotivo());
+		return new ApprovalOrder (entity.getApprovalId(),entity.getAppovalAmount(),purchaseOrder,approverAmount,entity.getMotivo());
 		
 	}
 	

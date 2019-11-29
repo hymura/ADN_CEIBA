@@ -13,7 +13,7 @@ public class PurchaseOrderTest {
 	public void testIngresarOrdenCompra() {
 		
 		   //Arrange
-		 PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",new Date(),1,2000,"REQ_APPROVAL");		
+		 PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",1,2000,"REQ_APPROVAL");		
         //ACT
        
         //Assert
@@ -31,7 +31,7 @@ public class PurchaseOrderTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void TestOrderNumberiffail () {
 		//Arrange		 
-		PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",new Date(System.currentTimeMillis()),1,2000,"REQ_APPROVAL");		
+		PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",1,2000,"REQ_APPROVAL");		
 		//Arrange
 		 orderPurchase.setOrderNumber("ALX2505");			
 	}
@@ -39,7 +39,7 @@ public class PurchaseOrderTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void TestTotalAmountFail() {
 		//Arrange		 
-		PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",new Date(System.currentTimeMillis()),1,2000,"REQ_APPROVAL");		
+		PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",1,2000,"REQ_APPROVAL");		
 		//Arrange
 		orderPurchase.setTotalAmount(0);	
 		//Assert.assertTrue(orderPurchase.getTotalAmount()>0);
@@ -55,7 +55,7 @@ public class PurchaseOrderTest {
 	 @Test
 	 public void TestApproveOrder(){
 		//Arrange		 
-		PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",new Date(System.currentTimeMillis()),1,2000,"REQ_APPROVAL");		
+		PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",1,2000,"REQ_APPROVAL");		
 		//Arrange
 		 orderPurchase.approve();		
 		 Assert.assertEquals("APPROVED", orderPurchase.getStatus());
@@ -66,7 +66,7 @@ public class PurchaseOrderTest {
 	 @Test
 	 public void TestReject(){
 		//Arrange		 
-		PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",new Date(System.currentTimeMillis()),1,2000,"REQ_APPROVAL");		
+		PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",1,2000,"REQ_APPROVAL");		
 		//Arrange
 		 orderPurchase.reject();		
 		 Assert.assertEquals("REJECT", orderPurchase.getStatus());			

@@ -4,7 +4,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -65,7 +64,7 @@ public class PurchaseOrderServiceTest {
 	@Test
 	public void TestDeletePuraseorder() {
 		// Arrange
-		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505", new Date(), 1, 2000, "REQ_APPROVAL");
+		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505", 1, 2000, "REQ_APPROVAL");
 
 		purchaseOrderService.delete(orderPurchase);
 
@@ -79,7 +78,7 @@ public class PurchaseOrderServiceTest {
 	@Test
 	public void TestFindByOrderNumber() {
 		// Arrange
-		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505", new Date(), 1, 2000, "REQ_APPROVAL");
+		PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505",  1, 2000, "REQ_APPROVAL");
 		Mockito.when(purchaseOrderRepository.findByOrderNumber(Mockito.anyString())).thenReturn(orderPurchase);
 		PurchaseOrder purchaseOrdertResponse = purchaseOrderService.findByOrderNumber("2505");
 
@@ -92,8 +91,8 @@ public class PurchaseOrderServiceTest {
 	public void findAll() {
 
 		List<PurchaseOrder> orderPurchaseList = new ArrayList<>();
-		orderPurchaseList.add(new PurchaseOrder(1, "2505", null, 1, 2000, "REQ_APPROVAL"));
-		orderPurchaseList.add(new PurchaseOrder(2, "2506", null, 1, 2000, "REQ_APPROVAL"));
+		orderPurchaseList.add(new PurchaseOrder(1, "2505",  1, 2000, "REQ_APPROVAL"));
+		orderPurchaseList.add(new PurchaseOrder(2, "2506",  1, 2000, "REQ_APPROVAL"));
 
 		Mockito.when(purchaseOrderRepository.findAll()).thenReturn(orderPurchaseList);
 		List<PurchaseOrder> orderPurchaseList1 = purchaseOrderService.findAll();

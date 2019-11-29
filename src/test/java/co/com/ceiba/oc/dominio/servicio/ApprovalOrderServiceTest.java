@@ -2,7 +2,6 @@ package co.com.ceiba.oc.dominio.servicio;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Date;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -67,9 +66,9 @@ public class ApprovalOrderServiceTest {
 	public void testFindByApprovalId(){
 		
 		// Arrange
-				PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505", new Date(), 1, 3000, "APPROVED");
+				PurchaseOrder orderPurchase = new PurchaseOrder(1, "2505",  1, 3000, "APPROVED");
 				ApproverAmount approver = new ApproverAmount(1, "Alex.gomez", 2000, 5000);
-				ApprovalOrder approvalOrder = new ApprovalOrder(1, new Date(), 3000, orderPurchase, approver, null);
+				ApprovalOrder approvalOrder = new ApprovalOrder(1,  3000, orderPurchase, approver, null);
 				
 						
 				Mockito.when(approvalOrderRepositoy.findByApprovalId(Mockito.anyInt())).thenReturn(approvalOrder);

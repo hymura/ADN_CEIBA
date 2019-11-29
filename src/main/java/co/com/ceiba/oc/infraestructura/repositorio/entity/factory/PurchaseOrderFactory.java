@@ -8,7 +8,7 @@ public final class PurchaseOrderFactory {
 	private PurchaseOrderFactory() { }
 
     public static PurchaseOrder toModel(PurchaseOrderEntity entity) {
-        return new PurchaseOrder(entity.getPoHeaderId(),entity.getOrderNumber(),entity.getCreationDate(),entity.getBuyerId(),entity.getTotalAmount(),entity.getStatus());
+        return new PurchaseOrder(entity.getPoHeaderId(),entity.getOrderNumber(),entity.getBuyerId(),entity.getTotalAmount(),entity.getStatus());
     }
 
     public static PurchaseOrderEntity toEntity(PurchaseOrder purchaseOrder) {

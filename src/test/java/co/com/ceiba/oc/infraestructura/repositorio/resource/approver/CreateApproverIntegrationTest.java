@@ -2,9 +2,6 @@ package co.com.ceiba.oc.infraestructura.repositorio.resource.approver;
 
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -14,9 +11,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-
 import javax.transaction.Transactional;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -36,10 +29,8 @@ import org.springframework.web.context.WebApplicationContext;
 import co.com.ceiba.oc.AprobacionOcApplication;
 import co.com.ceiba.oc.aplicacion.manejador.approver.CreateApproverHandler;
 import co.com.ceiba.oc.aplicacion.manejador.approver.FindAllApproverHandler;
-import co.com.ceiba.oc.aplicacion.manejador.purchase.FindAllPurchaseOrderHandler;
 import co.com.ceiba.oc.dominio.model.PurchaseOrder;
 import co.com.ceiba.oc.dominio.repositorio.PurchaseOrderRepository;
-import co.com.ceiba.oc.infraestructura.controlador.purchase.CreatePurchaseOrderController;
 
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
@@ -111,8 +102,7 @@ public class CreateApproverIntegrationTest {
         //Arrange    	               
         String jsonParameters = "{\r\n" + 
         		"    \"approvedDate\": \"\",\r\n" + 
-        		"    \"buyerId\": 1,\r\n" + 
-        		"    \"creationDate\": \"2019-11-07\",\r\n" + 
+        		"    \"buyerId\": 1,\r\n" +         		
         		"    \"orderNumber\": \"2\",\r\n" + 
         		"    \"poHeaderId\": 2,\r\n" + 
         		"    \"status\": \"REQ_APPROVAL\",\r\n" + 
@@ -166,8 +156,8 @@ public class CreateApproverIntegrationTest {
     @Test
     public void testGetAllPurchaseSuccess() throws Exception {           
        
-        when(this.purchaseOrderRepository.findAll()).thenReturn(Arrays.asList(new PurchaseOrder(1,"1",new Date(),1,300000,"REQ_APPROVAL"),
-        		new PurchaseOrder(2,"2",new Date(),1,30000,"REQ_APPROVAL")));
+        when(this.purchaseOrderRepository.findAll()).thenReturn(Arrays.asList(new PurchaseOrder(1,"1",1,300000,"REQ_APPROVAL"),
+        		new PurchaseOrder(2,"2",1,30000,"REQ_APPROVAL")));
 
         mvc.perform(get("/api/Orden-Compra"))                
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
@@ -194,7 +184,7 @@ public class CreateApproverIntegrationTest {
   
     @Test   
     public void testUpdatPurchaseSuccess() throws Exception {
-    	 when(this.purchaseOrderRepository.findByOrderNumber("1")).thenReturn(new PurchaseOrder(1,"1",new Date(),1,300000,"REQ_APPROVAL"));
+    	 when(this.purchaseOrderRepository.findByOrderNumber("1")).thenReturn(new PurchaseOrder(1,"1",1,300000,"REQ_APPROVAL"));
          
     	 String jsonParameters = "{\r\n" + 
     	 		"  \"poHeaderId\": 0,\r\n" + 
