@@ -191,4 +191,29 @@ public class CreateApproverIntegrationTest {
        
     }
     
+  
+    @Test   
+    public void testUpdatPurchaseSuccess() throws Exception {
+    	 when(this.purchaseOrderRepository.findByOrderNumber("1")).thenReturn(new PurchaseOrder(1,"1",new Date(),1,300000,"REQ_APPROVAL"));
+         
+    	 String jsonParameters = "{\r\n" + 
+    	 		"  \"poHeaderId\": 0,\r\n" + 
+    	 		"  \"orderNumber\": \"1\",\r\n" + 
+    	 		"  \"creationDate\": null,\r\n" + 
+    	 		"  \"buyerId\": 0,\r\n" + 
+    	 		"  \"approvedDate\": null,\r\n" + 
+    	 		"  \"totalAmount\": 25000,\r\n" + 
+    	 		"  \"status\": null\r\n" + 
+    	 		"}";
+    	 
+        mvc.perform(put("/api/Orden-Compra/1?orderNumber=1&amp;totalAmount=25000")        		
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(jsonParameters))
+                .andExpect(status().isOk());
+        
+       
+    }  
+  
+    
+    
 }
