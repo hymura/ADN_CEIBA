@@ -146,9 +146,8 @@ public class CreateApproverIntegrationTest {
         mvc.perform(put("/api/aprobar/1/APROBAR")
         		.contentType(MediaType.APPLICATION_JSON)
         		//.contentType(MediaType.APPLICATION_JSON)
-                .content(jsonParameters))
+                .content(jsonParameters))        		
         		.andExpect(status().isOk());
-        
        
     }  
     

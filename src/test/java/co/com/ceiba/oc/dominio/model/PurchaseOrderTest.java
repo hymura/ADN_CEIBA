@@ -3,17 +3,25 @@ package co.com.ceiba.oc.dominio.model;
 import java.util.Date;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 public class PurchaseOrderTest {
-
+	
+	private PurchaseOrder orderPurchase;
+	
+	 @Before
+	    public void setup() {
+		  orderPurchase = new PurchaseOrder(1,"2505",1,2000,"REQ_APPROVAL");		 
+	 }
+	 
 	
 	@Test		
 	public void testIngresarOrdenCompra() {
 		
 		   //Arrange
-		 PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",1,2000,"REQ_APPROVAL");		
+		 		
         //ACT
        
         //Assert
@@ -30,24 +38,19 @@ public class PurchaseOrderTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void TestOrderNumberiffail () {
-		//Arrange		 
-		PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",1,2000,"REQ_APPROVAL");		
-		//Arrange
+		//Arrange		 				
 		 orderPurchase.setOrderNumber("ALX2505");			
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void TestTotalAmountFail() {
-		//Arrange		 
-		PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",1,2000,"REQ_APPROVAL");		
-		//Arrange
+				 					
 		orderPurchase.setTotalAmount(0);	
 		//Assert.assertTrue(orderPurchase.getTotalAmount()>0);
 	}
 		  
 	  @Test
-	    public void TestOrdenNumberWheOnlyNumber() {
-		  PurchaseOrder orderPurchase = new PurchaseOrder(1);  
+	    public void TestOrdenNumberWheOnlyNumber() {		   
 		  orderPurchase.setOrderNumber("2505");		  		  
 		  Assert.assertTrue("Ok",orderPurchase.getOrderNumber().matches("[Z0-9]+") );
 	    }
@@ -64,9 +67,7 @@ public class PurchaseOrderTest {
 	}
 	  
 	 @Test
-	 public void TestReject(){
-		//Arrange		 
-		PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",1,2000,"REQ_APPROVAL");		
+	 public void TestReject(){		
 		//Arrange
 		 orderPurchase.reject();		
 		 Assert.assertEquals("REJECT", orderPurchase.getStatus());			

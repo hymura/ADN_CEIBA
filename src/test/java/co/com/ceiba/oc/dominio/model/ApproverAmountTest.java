@@ -3,10 +3,17 @@ package co.com.ceiba.oc.dominio.model;
 
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 public class ApproverAmountTest {
+	
+	private  ApproverAmount approver;
+	 @Before
+	    public void setup() {
+		 approver =new ApproverAmount(1,"Alex.gomez",3000,5000);					
+	 }
 
 	@Test
 	public void testIngresarAprobadores() {
@@ -17,16 +24,16 @@ public class ApproverAmountTest {
 		int appovalAmountEnd = 50000;
 		
 		
-		ApproverAmount approver =new ApproverAmount();
-		approver.setUserId(userId);
-		approver.setUserName(userName);
-		approver.setAppovalAmountInit(appovalAmountInit);
-		approver.setAppovalAmountEnd(appovalAmountEnd);
+		ApproverAmount approver1 =new ApproverAmount();
+		approver1.setUserId(userId);
+		approver1.setUserName(userName);
+		approver1.setAppovalAmountInit(appovalAmountInit);
+		approver1.setAppovalAmountEnd(appovalAmountEnd);
 
 		  Assert.assertEquals(1, approver.getUserId());
-		  Assert.assertEquals("ALEX.GOMEZ", approver.getUserName());
-		  Assert.assertEquals(20000, approver.getAppovalAmountInit());
-		  Assert.assertEquals(50000, approver.getAppovalAmountEnd());
+		  Assert.assertEquals("ALEX.GOMEZ", approver1.getUserName());
+		  Assert.assertEquals(20000, approver1.getAppovalAmountInit());
+		  Assert.assertEquals(50000, approver1.getAppovalAmountEnd());
 	}
 	
 	@Test		
@@ -34,11 +41,11 @@ public class ApproverAmountTest {
 		
 		//Arrange
 		int appovalAmountInit = 20000;
-		ApproverAmount approver =new ApproverAmount();		
+		ApproverAmount approver1 =new ApproverAmount();		
 		//act
-		approver.setAppovalAmountInit(appovalAmountInit);		
+		approver1.setAppovalAmountInit(appovalAmountInit);		
 		//Assert
-		 Assert.assertTrue(approver.getAppovalAmountInit()>0);
+		 Assert.assertTrue(approver1.getAppovalAmountInit()>0);
 	}
 	
 	
@@ -48,51 +55,46 @@ public class ApproverAmountTest {
 		//Arrange
 		int appovalAmountInit = 20000;
 		int appovalAmountEnd = 50000;
-		ApproverAmount approver =new ApproverAmount();
+		ApproverAmount approver1 =new ApproverAmount();
 		
 		//act
-		approver.setAppovalAmountInit(appovalAmountInit);
-		approver.setAppovalAmountEnd(appovalAmountEnd);
+		approver1.setAppovalAmountInit(appovalAmountInit);
+		approver1.setAppovalAmountEnd(appovalAmountEnd);
 		
 		//Assert		
-		 Assert.assertTrue(approver.getAppovalAmountEnd()>approver.getAppovalAmountInit());		
+		 Assert.assertTrue(approver1.getAppovalAmountEnd()>approver1.getAppovalAmountInit());		
 	}
 	
 	public ExpectedException exception = ExpectedException.none();
 	@Test(expected = IllegalArgumentException.class)
 	public void ValidaMontoFinalsifalla() {
-				
-				ApproverAmount approver =new ApproverAmount(1,"Alex.gomez",5000,10000);							
+												
 				approver.setAppovalAmountEnd(2000);
 				
 	}
 			
 	@Test(expected = IllegalArgumentException.class)
 	public void ValidaMontoInicialsifalla() {
-				
-				ApproverAmount approver =new ApproverAmount(1,"Alex.gomez",2000,10000);							
+													
 				approver.setAppovalAmountInit(0);
 				
 	}	
 
 @Test		
 public void TestValidaEstadoAprobador() {
-	
-	//Arrange
-	ApproverAmount approver =new ApproverAmount(1,"Alex.gomez",2000,5000);	
+	String status="ACTIVO";
 	//act		
 	//Assert
-	 Assert.assertEquals("ACTIVO",approver.getStatus());	
+	 Assert.assertEquals(status,approver.getStatus());	
 	
 }
 
 @Test		
 public void TestValidaEstadoiInactivoAprobador() {
 	
-	//Arrange
-	ApproverAmount approver =new ApproverAmount(1,"Alex.gomez",2000,5000,"ACTIVO");	
+	String status="INACTIVO";
 	//act	
-	approver.setStatus("INACTIVO");
+	approver.setStatus(status);
 	
 	//Assert
 	 Assert.assertEquals("INACTIVO",approver.getStatus());	
