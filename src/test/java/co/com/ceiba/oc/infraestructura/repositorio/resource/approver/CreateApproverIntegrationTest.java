@@ -169,14 +169,24 @@ public class CreateApproverIntegrationTest {
         when(this.purchaseOrderRepository.findAll()).thenReturn(Arrays.asList(new PurchaseOrder(1,"1",new Date(),1,300000,"REQ_APPROVAL"),
         		new PurchaseOrder(2,"2",new Date(),1,30000,"REQ_APPROVAL")));
 
-        mvc.perform(get("/api/Orden-Compra"))
-                .andExpect(status().is2xxSuccessful())
+        mvc.perform(get("/api/Orden-Compra"))                
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 //.andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].poHeaderId", is(1)))
                 .andExpect(jsonPath("$[0].orderNumber", is("1")))
                 .andExpect(jsonPath("$[1].poHeaderId", is(2)))
-                .andExpect(jsonPath("$[1].orderNumber", is("2")));
+                .andExpect(jsonPath("$[1].orderNumber", is("2")))
+                .andExpect(status().is2xxSuccessful());
+
+       
+    }
+    
+    
+    @Test
+    public void testGetAllApproverSuccess() throws Exception {                         
+        mvc.perform(get("/api/approver"))                
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().is2xxSuccessful());              
 
        
     }
