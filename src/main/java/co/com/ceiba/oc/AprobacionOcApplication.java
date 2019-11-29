@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AprobacionOcApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AprobacionOcApplication.class, args);
+		SpringApplication.run(AprobacionOcApplication.class);
 	}
 
 }
