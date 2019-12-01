@@ -1,6 +1,5 @@
 package co.com.ceiba.oc.dominio.model;
-
-
+import static co.com.ceiba.oc.builderstest.ApproverAmountBuilder.anApproverAmount;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,10 +8,19 @@ import org.junit.rules.ExpectedException;
 
 public class ApproverAmountTest {
 	
-	private  ApproverAmount approver;
+	ApproverAmount approver;
+	
 	 @Before
 	    public void setup() {
-		 approver =new ApproverAmount(1,"Alex.gomez",3000,5000);					
+		
+		 //Given
+		 approver = anApproverAmount().
+	        					      withUserId(1).
+	        					      withUerName("ALEX.GOMEZ").
+	        					      withAppovalAmountInit(2000).
+	        					      withappovalAmountEnd(50000).
+	        					      build();
+	        					
 	 }
 
 	@Test
@@ -20,20 +28,14 @@ public class ApproverAmountTest {
 		
 		int userId = 1;
 		String userName ="ALEX.GOMEZ";
-		int appovalAmountInit = 20000;
+		int appovalAmountInit = 2000;
 		int appovalAmountEnd = 50000;
-		
-		
-		ApproverAmount approver1 =new ApproverAmount();
-		approver1.setUserId(userId);
-		approver1.setUserName(userName);
-		approver1.setAppovalAmountInit(appovalAmountInit);
-		approver1.setAppovalAmountEnd(appovalAmountEnd);
-
-		  Assert.assertEquals(1, approver.getUserId());
-		  Assert.assertEquals("ALEX.GOMEZ", approver1.getUserName());
-		  Assert.assertEquals(20000, approver1.getAppovalAmountInit());
-		  Assert.assertEquals(50000, approver1.getAppovalAmountEnd());
+	
+		 
+		Assert.assertEquals(userId, approver.getUserId());
+		  Assert.assertEquals(userName, approver.getUserName());
+		  Assert.assertEquals(appovalAmountInit, approver.getAppovalAmountInit());
+		  Assert.assertEquals(appovalAmountEnd, approver.getAppovalAmountEnd());
 	}
 	
 	@Test		

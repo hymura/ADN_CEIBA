@@ -1,5 +1,7 @@
 package co.com.ceiba.oc.dominio.model;
 
+import static co.com.ceiba.oc.builderstest.PurchaseOrderBuilder.aPurchaseOrder;
+
 import java.util.Date;
 
 import org.junit.Assert;
@@ -13,7 +15,13 @@ public class PurchaseOrderTest {
 	
 	 @Before
 	    public void setup() {
-		  orderPurchase = new PurchaseOrder(1,"2505",1,2000,"REQ_APPROVAL");		 
+		 
+		  orderPurchase = aPurchaseOrder().withPoHeaderId(1)
+			      .withOrderNumber("2505")
+			      .withBuyerId(1)
+			      .withStatus("REQ_APPROVAL")
+			      .withTotalAmount(2000)			  
+			      .build();		 
 	 }
 	 
 	
@@ -89,8 +97,6 @@ public class PurchaseOrderTest {
 		 Assert.assertEquals("REQ_APPROVAL", orderPurchase.getStatus());
 		 
 	 }
-	 
-	 
-	
+
 	 
 }
