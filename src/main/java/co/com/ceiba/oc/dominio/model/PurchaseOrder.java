@@ -11,6 +11,7 @@ public class PurchaseOrder {
 	private Date approvedDate;
 	private int totalAmount;
 	private String status;
+	private static final String ESTADO_PENDIENTE = "REQ_APPROVAL";
 	private static final String ESTADO_APROBADO = "APPROVED";
 	private static final String ESTADO_RECAHAZADO = "REJECT";
 
@@ -28,7 +29,7 @@ public class PurchaseOrder {
 		this.status = status;
 
 	}
-/*
+
 	public PurchaseOrder(int poHeaderId, String orderNumber, int buyerId, int totalAmount) {
 
 		this.poHeaderId = poHeaderId;
@@ -40,7 +41,7 @@ public class PurchaseOrder {
 
 	}
 
-*/
+
 	public PurchaseOrder(int poHeaderId) {
 		this.poHeaderId = poHeaderId;
 	}
