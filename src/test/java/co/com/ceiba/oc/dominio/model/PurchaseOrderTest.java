@@ -51,20 +51,20 @@ public class PurchaseOrderTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void TestTotalAmountFail() {
+	public void testTotalAmountFail() {
 				 					
 		orderPurchase.setTotalAmount(0);	
 		//Assert.assertTrue(orderPurchase.getTotalAmount()>0);
 	}
 		  
 	  @Test
-	    public void TestOrdenNumberWheOnlyNumber() {		   
+	    public void testOrdenNumberWheOnlyNumber() {		   
 		  orderPurchase.setOrderNumber("2505");		  		  
 		  Assert.assertTrue("Ok",orderPurchase.getOrderNumber().matches("[Z0-9]+") );
 	    }
 	  
 	 @Test
-	 public void TestApproveOrder(){
+	 public void testApproveOrder(){
 		//Arrange		 
 		PurchaseOrder orderPurchase = new PurchaseOrder(1,"2505",1,2000,"REQ_APPROVAL");		
 		//Arrange
@@ -75,14 +75,14 @@ public class PurchaseOrderTest {
 	}
 	  
 	 @Test
-	 public void TestReject(){		
+	 public void testReject(){		
 		//Arrange
 		 orderPurchase.reject();		
 		 Assert.assertEquals("REJECT", orderPurchase.getStatus());			
 	}	
 	
 	 @Test 
-	 public void TestSetsPurchaseOrder(){
+	 public void testSetsPurchaseOrder(){
 		 PurchaseOrder orderPurchase= new PurchaseOrder(1);
 		 orderPurchase.setBuyerId(1);
 		 orderPurchase.setTotalAmount(2000);
@@ -98,5 +98,11 @@ public class PurchaseOrderTest {
 		 
 	 }
 
+	 @Test	 
+	 public void testConstructorPurchaseOrder() {
+		 
+		 PurchaseOrder orderPurchase= new PurchaseOrder(1, "2507",1,30000);
+		 Assert.assertEquals("REQ_APPROVAL", orderPurchase.getStatus());
+	 }
 	 
 }
