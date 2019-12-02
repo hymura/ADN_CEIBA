@@ -1,6 +1,5 @@
 package co.com.ceiba.oc.infraestructura.repositorio.resource.approver;
 
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -46,6 +45,7 @@ public class CreateApproverIntegrationTest {
 	private CreateApproverHandler createApproverHandler;
 	@MockBean
 	private PurchaseOrderRepository purchaseOrderRepository;
+
 	
   @Autowired
     private WebApplicationContext wac;
@@ -116,12 +116,21 @@ public class CreateApproverIntegrationTest {
                 .andExpect(status().isOk());
     }
     
+    @Test
+    public void testGetAllApproverSuccess() throws Exception {                         
+        mvc.perform(get("/api/approver"))                
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().is2xxSuccessful());              
+       
+    }   
+    
+    
     @Test   
     public void testExecuteApproval() throws Exception {
         //Arrange    	               
-        String jsonParameters = "{\r\n" + 
+    	String jsonParameters = "{\r\n" + 
         		"    \"approvalId\": 1,\r\n" + 
-        		"    \"approvalDate\": \"2019-11-21T16:56:53.526+0000\",\r\n" + 
+        		"    \"approvalDate\": \"2019-12-02T16:56:53.526+0000\",\r\n" + 
         		"    \"appovalAmount\": 300000,\r\n" + 
         		"    \"motivo\": \"1\",\r\n" + 
         		"    \"approverAmount\": {\r\n" + 
@@ -142,12 +151,15 @@ public class CreateApproverIntegrationTest {
         		"    }\r\n" + 
         		"}";
         //Act Assert
-                
+        
+    	
+    	//when(this.approvalOrderRepositoy.findByIdApprovalHandler(1)).thenReturn(new PurchaseOrder(1,"1",1,300000,"REQ_APPROVAL"));
+    	
         mvc.perform(put("/api/aprobar/1/APROBAR")
         		.contentType(MediaType.APPLICATION_JSON)
         		//.contentType(MediaType.APPLICATION_JSON)
                 .content(jsonParameters))        		
-        		.andExpect(status().isOk());
+        	    .andExpect(status().isOk());
        
     }  
     
@@ -165,21 +177,22 @@ public class CreateApproverIntegrationTest {
                 .andExpect(jsonPath("$[0].orderNumber", is("1")))
                 .andExpect(jsonPath("$[1].poHeaderId", is(2)))
                 .andExpect(jsonPath("$[1].orderNumber", is("2")))
-                .andExpect(status().is2xxSuccessful());
-
-       
+                .andExpect(status().is2xxSuccessful());       
     }
-    
-    
+        
+        
     @Test
-    public void testGetAllApproverSuccess() throws Exception {                         
-        mvc.perform(get("/api/approver"))                
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(status().is2xxSuccessful());              
+    public void testGetAllApprovalSucces() throws Exception {   
+    	
+      
 
-       
-    }
-    
+        mvc.perform(get("/api/aprobacion"))                
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                //.andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0].approvalId", is(1)))
+                .andExpect(jsonPath("$[0].appovalAmount", is(300000)))                
+                .andExpect(status().is2xxSuccessful());      
+    }    
   
     @Test   
     public void testUpdatPurchaseSuccess() throws Exception {
